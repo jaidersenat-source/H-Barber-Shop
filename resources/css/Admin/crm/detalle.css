@@ -1,0 +1,406 @@
+/* ============================================
+   CRM DETALLE CLIENTE - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+}
+
+/* Contenedor principal del módulo detalle */
+#modulo-crm-detalle {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Header con título y botón volver */
+.header-flex-responsive {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.header-flex-responsive h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--negro) !important;
+}
+
+/* Botón volver */
+.volver-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--blanco);
+    color: var(--rojo-principal);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.volver-btn:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.volver-btn:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Formulario de filtros */
+#modulo-crm-detalle form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    padding: 1.5rem;
+    background: var(--gris-claro);
+    border-radius: 6px;
+    border-left: 4px solid var(--rojo-principal);
+}
+
+/* Inputs de formulario */
+.form-control {
+    padding: 10px 14px;
+    border: 2px solid var(--gris-medio);
+    border-radius: 4px;
+    font-size: 1rem;
+    min-width: 200px;
+    transition: all 0.3s ease;
+    background: var(--blanco);
+    color: var(--negro);
+}
+
+.form-control:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+.form-control::placeholder {
+    color: var(--gris-medio);
+}
+
+/* Botones */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 120px;
+    text-align: center;
+}
+
+.btn:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+.btn-primary {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.btn-primary:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-secondary {
+    background: var(--gris-oscuro);
+    color: var(--blanco);
+}
+
+.btn-secondary:hover {
+    background: var(--negro);
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    background: var(--blanco);
+    color: var(--rojo-principal);
+    border: 2px solid var(--rojo-principal);
+}
+
+.btn-outline-primary:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+}
+
+/* Tarjetas de estadísticas */
+#modulo-crm-detalle > div[style*="display:flex"] {
+    display: flex !important;
+    gap: 24px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 24px !important;
+}
+
+#modulo-crm-detalle > div > div[style*="background:#f8f9fa"] {
+    flex: 1 !important;
+    min-width: 220px !important;
+    background: var(--gris-claro) !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    border-left: 4px solid var(--rojo-principal) !important;
+    transition: all 0.3s ease !important;
+}
+
+#modulo-crm-detalle > div > div[style*="background:#f8f9fa"]:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+#modulo-crm-detalle > div > div span {
+    font-size: 1.1em !important;
+    color: var(--gris-medio) !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+    font-weight: 600 !important;
+}
+
+#modulo-crm-detalle > div > div div {
+    font-size: 1.7em !important;
+    font-weight: bold !important;
+    color: var(--negro) !important;
+}
+
+/* Títulos de sección */
+#modulo-crm-detalle h3 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--rojo-principal);
+}
+
+#modulo-crm-detalle h3:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    background: var(--blanco);
+}
+
+.table thead {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.table thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--gris-claro);
+    transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: var(--rojo-claro);
+}
+
+.table tbody tr:focus-within {
+    background: var(--rojo-claro);
+    outline: 2px solid var(--rojo-principal);
+    outline-offset: -2px;
+}
+
+.table tbody td {
+    padding: 12px;
+    color: var(--gris-oscuro);
+    font-size: 0.95rem;
+}
+
+.table tbody td[style*="text-align:center"] {
+    color: var(--gris-medio);
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .header-flex-responsive {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .header-flex-responsive .volver-btn {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    #modulo-crm-detalle {
+        padding: 1rem;
+    }
+
+    #modulo-crm-detalle form {
+        padding: 1rem;
+    }
+
+    .form-control {
+        min-width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    #modulo-crm-detalle > div[style*="display:flex"] {
+        flex-direction: column;
+    }
+
+    #modulo-crm-detalle > div > div[style*="background:#f8f9fa"] {
+        min-width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--gris-claro);
+        border-radius: 6px;
+        padding: 1rem;
+    }
+
+    .table tbody td {
+        display: block;
+        text-align: left;
+        padding: 8px 0;
+        border: none;
+    }
+
+    .table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--negro);
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Estados de carga */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .table tbody tr:hover,
+    .table tbody tr:focus-within {
+        background: var(--rojo-claro);
+        border: 3px solid var(--negro);
+    }
+
+    .btn:focus,
+    .volver-btn:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Accesibilidad aria-label */
+[aria-label] {
+    cursor: pointer;
+}
+
+[role="main"] {
+    scroll-margin-top: 2rem;
+}

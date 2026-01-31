@@ -1,0 +1,565 @@
+/* ============================================
+   PRODUCTOS - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+}
+
+/* Contenedor principal de productos */
+.productos-container {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Header con título y botón crear */
+.productos-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 2rem !important;
+    gap: 1.5rem !important;
+    flex-wrap: wrap !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 3px solid var(--rojo-principal) !important;
+}
+
+.productos-header h2 {
+    margin: 0 !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: var(--negro) !important;
+}
+
+.productos-header h2:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* Botón crear producto */
+.crear-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    font-size: 1rem;
+}
+
+.crear-btn:hover {
+    background: var(--rojo-oscuro);
+    border-color: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.crear-btn:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Alerta de éxito */
+.productos-container p[style*="color:green"] {
+    color: var(--rojo-principal) !important;
+    background: var(--rojo-claro) !important;
+    padding: 12px 16px !important;
+    border-radius: 6px !important;
+    border-left: 4px solid var(--rojo-principal) !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Lista accesible para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Tabla de productos */
+.productos-tabla {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--blanco);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.productos-tabla thead {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.productos-tabla thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.productos-tabla tbody tr {
+    border-bottom: 1px solid var(--gris-claro);
+    transition: background 0.2s ease;
+}
+
+.productos-tabla tbody tr:hover {
+    background: var(--rojo-claro);
+}
+
+.productos-tabla tbody tr:focus-within {
+    background: var(--rojo-claro);
+    outline: 2px solid var(--rojo-principal);
+    outline-offset: -2px;
+}
+
+.productos-tabla tbody td {
+    padding: 12px;
+    color: var(--gris-oscuro);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Imágenes de productos */
+.productos-tabla tbody td img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--gris-claro);
+    transition: all 0.3s ease;
+}
+
+.productos-tabla tbody td img:hover {
+    transform: scale(1.1);
+    border-color: var(--rojo-principal);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.productos-tabla tbody td img:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    transform: scale(1.1);
+}
+
+/* Contenedor de acciones */
+.acciones {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.acciones form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+/* Botones de acción */
+.btn-accion {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Botón editar */
+.btn-editar {
+    color: var(--rojo-principal);
+    background: transparent;
+}
+
+.btn-editar:hover {
+    background: var(--rojo-claro);
+    color: var(--rojo-oscuro);
+}
+
+.btn-editar:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Botón eliminar */
+.btn-eliminar-producto {
+    color: var(--rojo-principal);
+    background: transparent;
+}
+
+.btn-eliminar-producto:hover {
+    background: var(--rojo-claro);
+    color: var(--rojo-oscuro);
+}
+
+.btn-eliminar-producto:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Modal de eliminación */
+.modal-eliminar-producto {
+    position: fixed !important;
+    z-index: 9999 !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.modal-eliminar-producto > div {
+    background: var(--blanco) !important;
+    padding: 2.5rem 2rem 2rem 2rem !important;
+    border-radius: 12px !important;
+    max-width: 90vw !important;
+    width: 450px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    outline: 0 !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    border: 3px solid var(--rojo-principal) !important;
+}
+
+/* Botón cerrar modal (X) */
+#cerrar-modal-eliminar-producto {
+    position: absolute !important;
+    top: 18px !important;
+    right: 18px !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 2rem !important;
+    color: var(--gris-oscuro) !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+}
+
+#cerrar-modal-eliminar-producto:hover {
+    background: var(--rojo-claro) !important;
+    color: var(--rojo-principal) !important;
+}
+
+#cerrar-modal-eliminar-producto:focus {
+    outline: 3px solid var(--rojo-principal) !important;
+    outline-offset: 2px !important;
+}
+
+/* Título del modal */
+#modal-eliminar-producto-titulo {
+    margin: 0 0 0.5rem 0 !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    color: var(--negro) !important;
+    text-align: center !important;
+}
+
+/* Texto del modal */
+.modal-eliminar-producto p {
+    margin: 0 0 2rem 0 !important;
+    font-size: 1.1rem !important;
+    color: var(--gris-oscuro) !important;
+    text-align: center !important;
+}
+
+/* Contenedor de botones del modal */
+.modal-eliminar-producto > div > div {
+    display: flex !important;
+    gap: 1rem !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+/* Botón cancelar */
+#cancelar-eliminar-producto {
+    background: var(--blanco) !important;
+    color: var(--negro) !important;
+    border: 2px solid var(--negro) !important;
+    border-radius: 6px !important;
+    padding: 0.8rem 2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+#cancelar-eliminar-producto:hover {
+    background: var(--gris-oscuro) !important;
+    color: var(--blanco) !important;
+    transform: translateY(-2px) !important;
+}
+
+#cancelar-eliminar-producto:focus {
+    outline: 3px solid var(--rojo-principal) !important;
+    outline-offset: 3px !important;
+}
+
+/* Botón confirmar eliminación */
+#confirmar-eliminar-producto {
+    background: var(--rojo-principal) !important;
+    color: var(--blanco) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.8rem 2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+#confirmar-eliminar-producto:hover {
+    background: var(--rojo-oscuro) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;
+}
+
+#confirmar-eliminar-producto:focus {
+    outline: 3px solid var(--rojo-principal) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 5px var(--rojo-claro) !important;
+}
+
+/* Estilos adicionales para columnas específicas */
+.productos-tabla tbody td[aria-label="Precio"],
+.productos-tabla tbody td[aria-label="Precio final"] {
+    font-weight: 600;
+    color: var(--rojo-principal);
+}
+
+.productos-tabla tbody td[aria-label="Descuento"] {
+    color: var(--rojo-oscuro);
+    font-weight: 600;
+}
+
+.productos-tabla tbody td[aria-label="Stock"] {
+    font-weight: 600;
+}
+
+.productos-tabla tbody td[aria-label="Estado"] {
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .productos-container {
+        padding: 1rem;
+    }
+
+    .productos-header {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+
+    .crear-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .productos-tabla {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .productos-tabla thead {
+        display: none;
+    }
+
+    .productos-tabla tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--gris-claro);
+        border-radius: 6px;
+        padding: 1rem;
+    }
+
+    .productos-tabla tbody td {
+        display: block;
+        text-align: left;
+        padding: 8px 0;
+        border: none;
+    }
+
+    .productos-tabla tbody td::before {
+        content: attr(aria-label) ": ";
+        font-weight: 700;
+        color: var(--negro);
+        display: inline-block;
+        margin-right: 8px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    .productos-tabla tbody td[aria-label="Imagen"] {
+        text-align: center;
+        padding: 12px 0;
+    }
+
+    .productos-tabla tbody td[aria-label="Imagen"]::before {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .productos-tabla tbody td[aria-label="Imagen"] img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .productos-tabla tbody td[aria-label="Acciones"] {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--gris-claro);
+    }
+
+    .productos-tabla tbody td[aria-label="Acciones"]::before {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .acciones {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn-accion {
+        width: 100%;
+        text-align: center;
+    }
+
+    .modal-eliminar-producto > div {
+        width: 95vw !important;
+        padding: 2rem 1.5rem 1.5rem 1.5rem !important;
+    }
+
+    .modal-eliminar-producto > div > div {
+        flex-direction: column;
+        gap: 0.75rem !important;
+    }
+
+    #cancelar-eliminar-producto,
+    #confirmar-eliminar-producto {
+        width: 100%;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .productos-tabla tbody tr:hover,
+    .productos-tabla tbody tr:focus-within {
+        background: var(--rojo-claro);
+        border: 3px solid var(--negro);
+    }
+
+    .crear-btn:focus,
+    .btn-accion:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Accesibilidad para elementos interactivos */
+[role="dialog"] {
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+[tabindex] {
+    cursor: pointer;
+}

@@ -1,0 +1,396 @@
+/* ===== RESET Y BASE ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* ===== SKIP LINK ===== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  z-index: 10000;
+  font-weight: bold;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #8b2332;
+  outline-offset: 2px;
+}
+
+/* ===== HEADER MÓVIL ===== */
+.mobile-header {
+  display: none;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  color: #fff;
+  padding: 14px 18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+.mobile-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+}
+.mobile-header h1 span {
+  color: #8b2332;
+}
+.menu-toggle {
+  background: linear-gradient(135deg, #8b2332 0%, #a92d3f 100%);
+  color: #fff;
+  border: none;
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  box-shadow: 0 2px 8px rgba(139, 35, 50, 0.3);
+  transition: all 0.3s ease;
+}
+.menu-toggle:focus {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.menu-toggle:hover {
+  background: linear-gradient(135deg, #a92d3f 0%, #c23950 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 35, 50, 0.4);
+}
+
+/* ===== OVERLAY MÓVIL ===== */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1001;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+  color: #fff;
+  height: 100vh;
+  min-height: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1002;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+}
+.sidebar-header {
+  padding: 20px 20px; /* Reducido padding superior de 28px a 20px */
+  border-bottom: 2px solid #8b2332;
+  text-align: center;
+  background: rgba(139, 35, 50, 0.1);
+}
+/* Nuevo estilo dedicado para el logo del sidebar */
+.sidebar-logo {
+  max-width: 80px; /* Reducido de 120px a 80px */
+  height: auto;
+  display: block;
+  margin: 0 auto 12px auto; /* Aumentado margen inferior de 8px a 12px para mejor espaciado */
+}
+.sidebar-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.sidebar-header h2 span {
+  color: #8b2332;
+}
+.sidebar-header p {
+  margin: 10px 0 0;
+  font-size: 0.88rem;
+  color: #b8b8b8;
+  font-weight: 500;
+}
+
+/* ===== NAVEGACIÓN ===== */
+.sidebar-nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nav-list li {
+  margin-bottom: 6px;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #e0e0e0;
+  padding: 13px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 0.96rem;
+  min-height: 44px;
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+.nav-link:hover {
+  background: rgba(139, 35, 50, 0.2);
+  color: #fff;
+  transform: translateX(4px);
+}
+.nav-link:focus {
+  outline: none;
+  background: rgba(139, 35, 50, 0.25);
+  border-color: #8b2332;
+}
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  background: linear-gradient(135deg, #8b2332 0%, #a92d3f 100%);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(139, 35, 50, 0.4);
+}
+.nav-link[aria-current="page"]:focus {
+  border-color: #fff;
+}
+.nav-icon {
+  width: 22px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* ===== SECCIÓN INFERIOR (Config y Logout) ===== */
+.sidebar-footer {
+  padding: 16px 12px 24px;
+  border-top: 2px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-footer .logout-form {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sidebar-footer .logout-btn {
+  width: 100%;
+  padding: 12px 14px;
+
+  background: #a13c3c !important;
+  color: #ffffff !important;
+
+  border: none !important;
+  border-radius: 10px;
+
+  box-shadow: none !important;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.config-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #e0e0e0;
+  padding: 13px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 0.96rem;
+  min-height: 44px;
+  border: 2px solid transparent;
+  background: rgba(42, 42, 42, 0.6);
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+.config-link:hover {
+  background: rgba(139, 35, 50, 0.2);
+  color: #fff;
+  transform: translateX(4px);
+}
+.config-link:focus {
+  outline: none;
+  border-color: #8b2332;
+  background: rgba(139, 35, 50, 0.25);
+}
+.logout-form {
+  margin: 0;
+}
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #8b2332 0%, #a92d3f 100%);
+  color: #fff;
+  padding: 14px 16px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 48px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(139, 35, 50, 0.3);
+}
+.logout-btn:hover {
+  background: linear-gradient(135deg, #a92d3f 0%, #c23950 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 35, 50, 0.5);
+}
+.logout-btn:focus {
+  outline: none;
+  border-color: #fff;
+  background: linear-gradient(135deg, #a92d3f 0%, #c23950 100%);
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-content {
+  margin-left: 260px;
+  padding: 32px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+.main-content:focus {
+  outline: none;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: #fff;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #8b2332;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 6px 24px rgba(139, 35, 50, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ===== UTILIDADES ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+  }
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    width: 280px;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+    padding-top: 80px;
+  }
+  .sidebar-close {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 14px;
+    border-bottom: 2px solid #2a2a2a;
+    background: rgba(139, 35, 50, 0.1);
+  }
+  .close-btn {
+    background: rgba(42, 42, 42, 0.8);
+    color: #fff;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+  }
+  .close-btn:hover {
+    background: #8b2332;
+  }
+  .close-btn:focus {
+    outline: 3px solid #8b2332;
+    outline-offset: 2px;
+  }
+}
+@media (min-width: 769px) {
+  .sidebar-close {
+    display: none;
+  }
+}
+
+/* ===== PREFERENCIAS DE MOVIMIENTO REDUCIDO ===== */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .nav-link,
+  .config-link,
+  .logout-btn,
+  .menu-toggle,
+  .card {
+    transition: none;
+  }
+}

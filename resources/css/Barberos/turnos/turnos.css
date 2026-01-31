@@ -1,0 +1,491 @@
+/* ============================================
+   MIS TURNOS SEMANALES - DISEÑO PROFESIONAL
+   Paleta: Azul, Negro y Blanco (Barbero)
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color - Paleta Barbero (Azul) */
+:root {
+    --azul-principal: #2563EB;
+    --azul-oscuro: #1E40AF;
+    --azul-claro: #DBEAFE;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    --success: #059669;
+    --success-light: #D1FAE5;
+    --warning: #F59E0B;
+    --danger: #DC2626;
+    --danger-light: #FEE2E2;
+}
+
+/* Contenedor principal (card) */
+.card {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header con título y botón */
+.card > div[style*="display:flex"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 2rem !important;
+    gap: 1.5rem !important;
+    flex-wrap: wrap !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 3px solid var(--azul-principal) !important;
+}
+
+/* Título principal */
+.card h2 {
+    margin: 0 !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: var(--negro) !important;
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-oscuro));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card h2:focus {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 4px;
+    -webkit-text-fill-color: var(--azul-principal);
+}
+
+/* Botón registrar turno */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px !important;
+    background: var(--azul-principal) !important;
+    color: var(--blanco) !important;
+    border: 2px solid var(--azul-principal) !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background: var(--azul-oscuro) !important;
+    border-color: var(--azul-oscuro) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4) !important;
+}
+
+.btn-primary:focus {
+    outline: 3px solid var(--azul-principal) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 5px var(--azul-claro) !important;
+}
+
+/* Información del documento */
+.card > p {
+    margin: 0 0 1.5rem 0;
+    padding: 12px 16px;
+    background: var(--azul-claro);
+    border-radius: 6px;
+    border-left: 4px solid var(--azul-principal);
+    font-size: 1rem;
+}
+
+.card > p strong {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+}
+
+/* Mensaje sin turnos */
+.card > p:last-child {
+    text-align: center;
+    color: var(--gris-medio);
+    font-size: 1.1rem;
+    padding: 3rem 2rem;
+    background: var(--gris-claro);
+    border-radius: 8px;
+    border-left: 4px solid var(--azul-principal);
+    font-style: italic;
+    margin: 0;
+}
+
+/* Tabla de turnos */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--blanco);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-oscuro));
+    color: var(--blanco);
+}
+
+.table thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--azul-oscuro);
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--gris-claro);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.table tbody tr::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--azul-principal);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: var(--azul-claro);
+    transform: translateX(4px);
+}
+
+.table tbody tr:hover::before {
+    transform: scaleY(1);
+}
+
+.table tbody tr:focus-within {
+    background: var(--azul-claro);
+    outline: 2px solid var(--azul-principal);
+    outline-offset: -2px;
+}
+
+.table tbody td {
+    padding: 14px 12px;
+    color: var(--gris-oscuro);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Columna Fecha */
+.table tbody td:nth-child(1) {
+    font-weight: 700;
+    color: var(--azul-principal);
+}
+
+/* Columna Hora */
+.table tbody td:nth-child(2) {
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    font-family: 'Courier New', monospace;
+}
+
+/* Columna Cliente */
+.table tbody td:nth-child(3) {
+    font-weight: 600;
+    color: var(--negro);
+}
+
+/* Columna Estado */
+.table tbody td:nth-child(4) {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+/* Estados visuales */
+.table tbody tr:has(td:nth-child(4):contains("Confirmado")) td:nth-child(4),
+.table tbody tr:has(td:nth-child(4):contains("confirmado")) td:nth-child(4) {
+    color: var(--success);
+}
+
+.table tbody tr:has(td:nth-child(4):contains("Realizado")) td:nth-child(4),
+.table tbody tr:has(td:nth-child(4):contains("realizado")) td:nth-child(4) {
+    color: var(--success);
+}
+
+.table tbody tr:has(td:nth-child(4):contains("Pendiente")) td:nth-child(4),
+.table tbody tr:has(td:nth-child(4):contains("pendiente")) td:nth-child(4) {
+    color: var(--warning);
+}
+
+.table tbody tr:has(td:nth-child(4):contains("Cancelado")) td:nth-child(4),
+.table tbody tr:has(td:nth-child(4):contains("cancelado")) td:nth-child(4) {
+    color: var(--danger);
+}
+
+/* Columna Documento */
+.table tbody td:nth-child(5) {
+    font-family: 'Courier New', monospace;
+    color: var(--gris-medio);
+}
+
+/* Columna Acciones - Formulario */
+.table tbody td:last-child form {
+    display: inline-block !important;
+    margin: 0 !important;
+}
+
+/* Select de cambio de estado */
+.table tbody td:last-child select {
+    padding: 8px 30px 8px 12px;
+    border: 2px solid var(--azul-principal);
+    border-radius: 4px;
+    background: var(--blanco);
+    color: var(--azul-oscuro);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232563EB' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.table tbody td:last-child select:hover {
+    background-color: var(--azul-claro);
+    border-color: var(--azul-oscuro);
+}
+
+.table tbody td:last-child select:focus {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--azul-claro);
+    border-color: var(--azul-principal);
+}
+
+.table tbody td:last-child select option {
+    padding: 8px;
+    font-weight: 600;
+}
+
+.table tbody td:last-child select option[value=""] {
+    color: var(--gris-medio);
+}
+
+.table tbody td:last-child select option[value="Realizado"] {
+    color: var(--success);
+}
+
+.table tbody td:last-child select option[value="Cancelado"] {
+    color: var(--danger);
+}
+
+.table tbody td:last-child select option[value="Reprogramado"] {
+    color: var(--warning);
+}
+
+/* Animación de entrada de filas */
+.table tbody tr {
+    animation: slideInRow 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+.table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.table tbody tr:nth-child(2) { animation-delay: 0.15s; }
+.table tbody tr:nth-child(3) { animation-delay: 0.2s; }
+.table tbody tr:nth-child(4) { animation-delay: 0.25s; }
+.table tbody tr:nth-child(5) { animation-delay: 0.3s; }
+.table tbody tr:nth-child(6) { animation-delay: 0.35s; }
+.table tbody tr:nth-child(7) { animation-delay: 0.4s; }
+
+@keyframes slideInRow {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        padding: 1rem;
+    }
+
+    .card > div[style*="display:flex"] {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+
+    .card h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .btn-primary {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--azul-claro);
+        border-left: 4px solid var(--azul-principal);
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+    }
+
+    .table tbody tr::before {
+        display: none;
+    }
+
+    .table tbody tr:hover {
+        transform: none;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+
+    .table tbody td {
+        display: block;
+        text-align: left;
+        padding: 8px 0;
+        border: none;
+    }
+
+    .table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--azul-principal);
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    /* Labels específicos para móviles */
+    .table tbody td:nth-child(1)::before { content: "Fecha: "; }
+    .table tbody td:nth-child(2)::before { content: "Hora: "; }
+    .table tbody td:nth-child(3)::before { content: "Cliente: "; }
+    .table tbody td:nth-child(4)::before { content: "Estado: "; }
+    .table tbody td:nth-child(5)::before { content: "Documento: "; }
+    .table tbody td:nth-child(6)::before { content: "Acciones: "; }
+
+    /* Fecha destacada en móvil */
+    .table tbody td:nth-child(1) {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--azul-claro);
+    }
+
+    /* Select en móvil */
+    .table tbody td:last-child {
+        margin-top: 12px;
+    }
+
+    .table tbody td:last-child select {
+        width: 100%;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+/* Texto oculto para lectores de pantalla */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .table tbody tr:hover {
+        border: 3px solid var(--azul-principal);
+    }
+
+    .table tbody tr::before {
+        width: 6px;
+    }
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--azul-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Loading state para select */
+.table tbody td:last-child form.loading select {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Mejora visual cuando el select está abierto */
+.table tbody td:last-child select:focus option:checked {
+    background: var(--azul-claro);
+    color: var(--azul-oscuro);
+}

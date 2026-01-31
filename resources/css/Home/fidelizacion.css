@@ -1,0 +1,1258 @@
+/* ============================================================================
+   FIDELIZACIÓN - H BARBER SHOP SAS
+   Paleta: Rojo, Negro, Blanco con toques Dorados
+   Estructura CSS organizada y modular
+   ============================================================================ */
+
+/* ============================================================================
+   📋 TABLA DE CONTENIDOS
+   ----------------------------------------------------------------------------
+   1.  Variables y Tokens de Diseño
+   2.  Reset y Estilos Base
+   3.  Sistema de Layout
+   4.  Sistema Tipográfico
+   5.  Componente: Navegación
+   6.  Componente: Hero Section
+   7.  Componente: Tarjeta 3D Interactiva
+   8.  Componente: Formulario de Consulta
+   9.  Componente: Resultado de Consulta
+   10. Sección: Cómo Funciona
+   11. Sección: Beneficios
+   12. Componente: Footer
+   13. Utilidades y Helpers
+   14. Animaciones y Transiciones
+   15. Media Queries (Responsive)
+   ============================================================================ */
+
+
+/* ============================================================================
+   1. VARIABLES Y TOKENS DE DISEÑO
+   ============================================================================ */
+
+:root {
+    /* === Paleta de Colores === */
+    /* Rojos */
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    
+    /* Neutros */
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    
+    /* Dorados */
+    --dorado: #D4AF37;
+    --dorado-oscuro: #B8960B;
+    
+    /* === Familias Tipográficas === */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    
+    /* === Tamaños de Fuente === */
+    --text-xs: 0.7rem;
+    --text-sm: 0.9rem;
+    --text-base: 1rem;
+    --text-lg: 1.2rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 1.8rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.5rem;
+    
+    /* === Espaciado === */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 2.5rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 5rem;
+    
+    /* === Bordes === */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 20px;
+    --radius-full: 50%;
+    
+    /* === Sombras === */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(220, 38, 38, 0.4);
+    --shadow-lg: 0 10px 30px rgba(220, 38, 38, 0.5);
+    --shadow-xl: 0 20px 50px rgba(220, 38, 38, 0.3);
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 10px 30px rgba(212, 175, 55, 0.4);
+    
+    /* === Transiciones === */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* === Z-Index === */
+    --z-base: 1;
+    --z-dropdown: 10;
+    --z-sticky: 100;
+    --z-fixed: 1000;
+    --z-modal: 2000;
+}
+
+
+/* ============================================================================
+   2. RESET Y ESTILOS BASE
+   ============================================================================ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--negro);
+    color: var(--blanco);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* ============================================================================
+   3. SISTEMA DE LAYOUT
+   ============================================================================ */
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.section {
+    padding: 80px 0;
+    background: var(--negro);
+}
+
+
+/* ============================================================================
+   4. SISTEMA TIPOGRÁFICO
+   ============================================================================ */
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--blanco);
+    margin-bottom: var(--space-sm);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--gris-claro);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.gold-text {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+/* ============================================================================
+   5. COMPONENTE: NAVEGACIÓN
+   ============================================================================ */
+
+/* === Contenedor Principal === */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-fixed);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-lg);
+}
+
+/* === Logo === */
+.nav-logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: opacity var(--transition-base);
+}
+
+.nav-logo a:hover {
+    opacity: 0.8;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--blanco);
+    letter-spacing: 2px;
+}
+
+/* === Links de Navegación === */
+.nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-base);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--rojo-principal);
+    transition: width var(--transition-base);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--rojo-principal);
+}
+
+/* === Botones de Navegación === */
+.nav-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+}
+
+.btn-primary {
+    padding: 10px 24px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-login {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px solid var(--rojo-principal);
+    border-radius: var(--radius-full);
+    color: var(--rojo-principal);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.nav-login:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: rotate(15deg);
+}
+
+/* === Toggle Mobile === */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 2px;
+    background: var(--blanco);
+    transition: all var(--transition-base);
+}
+
+
+/* ============================================================================
+   6. COMPONENTE: HERO SECTION
+   ============================================================================ */
+
+.page-hero {
+    padding: 140px 0 80px;
+    background: linear-gradient(135deg, #000000 0%, #1F2937 100%);
+    position: relative;
+    overflow: hidden;
+    margin-top: 73px;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: var(--z-dropdown);
+    text-align: center;
+}
+
+
+/* ============================================================================
+   7. COMPONENTE: TARJETA 3D INTERACTIVA
+   ============================================================================ */
+
+/* === Contenedor Principal === */
+.card-3d-container {
+    perspective: 1000px;
+    margin: 0 auto;
+    max-width: 450px;
+}
+
+.card-3d {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform var(--transition-slow);
+}
+
+.card-3d-container:hover .card-3d {
+    transform: rotateY(180deg);
+}
+
+/* === Caras de la Tarjeta === */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--radius-2xl);
+    padding: 30px;
+    box-shadow: var(--shadow-card);
+}
+
+/* === Frente de la Tarjeta === */
+.card-front {
+    background: linear-gradient(135deg, var(--rojo-oscuro) 0%, var(--negro) 100%);
+    border: 2px solid var(--dorado);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(212, 175, 55, 0.03) 10px,
+        rgba(212, 175, 55, 0.03) 20px
+    );
+    pointer-events: none;
+}
+
+.card-chip {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    border-radius: var(--radius-md);
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-chip::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 25px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.2) 2px,
+        rgba(0, 0, 0, 0.2) 4px
+    );
+    border-radius: 4px;
+}
+
+.card-logo {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--dorado);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1;
+}
+
+.card-logo span {
+    font-size: var(--text-xs);
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.card-number {
+    font-size: var(--text-xl);
+    letter-spacing: 4px;
+    color: var(--blanco);
+    margin: 30px 0 20px;
+    font-family: var(--font-mono);
+}
+
+.card-member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-member-label {
+    font-size: var(--text-xs);
+    color: var(--gris-claro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-member-name {
+    font-size: 1.1rem;
+    color: var(--blanco);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.card-tier {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.card-tier-label {
+    font-size: var(--text-xs);
+    color: var(--gris-claro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-tier-value {
+    font-size: 1.3rem;
+    color: var(--dorado);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* === Reverso de la Tarjeta === */
+.card-back {
+    background: linear-gradient(135deg, var(--gris-oscuro) 0%, var(--negro) 100%);
+    border: 2px solid var(--rojo-principal);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-back-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--dorado);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.card-back-info {
+    color: var(--gris-claro);
+    line-height: 1.6;
+    font-size: var(--text-sm);
+    margin-bottom: 30px;
+}
+
+.card-barcode {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    align-items: flex-end;
+    height: 40px;
+}
+
+.card-barcode span {
+    width: 3px;
+    background: var(--blanco);
+    border-radius: 1px;
+}
+
+
+/* ============================================================================
+   8. COMPONENTE: FORMULARIO DE CONSULTA
+   ============================================================================ */
+
+.consulta-form {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+.consulta-form h3 {
+    font-size: var(--text-2xl);
+    color: var(--blanco);
+    margin-bottom: 0.8rem;
+}
+
+.consulta-form p {
+    color: var(--gris-claro);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+}
+
+/* === Tabs del Formulario === */
+.form-tabs {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.form-tab {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid rgba(220, 38, 38, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--gris-claro);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.form-tab.active {
+    background: var(--rojo-principal);
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.form-tab:hover:not(.active) {
+    border-color: var(--rojo-principal);
+    color: var(--rojo-principal);
+}
+
+/* === Grupo de Inputs === */
+.input-group {
+    margin-bottom: var(--space-md);
+}
+
+.input-group label {
+    display: block;
+    color: var(--blanco);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    font-size: 0.95rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--blanco);
+    font-size: var(--text-base);
+    font-family: var(--font-body);
+    transition: all var(--transition-base);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--rojo-principal);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.input-group input::placeholder {
+    color: var(--gris-medio);
+}
+
+/* === Botón de Consulta === */
+.btn-consultar {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--rojo-principal), var(--rojo-oscuro));
+    color: var(--blanco);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-consultar:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+
+/* ============================================================================
+   9. COMPONENTE: RESULTADO DE CONSULTA
+   ============================================================================ */
+
+.resultado-consulta {
+    background: linear-gradient(135deg, var(--gris-oscuro) 0%, rgba(220, 38, 38, 0.1) 100%);
+    border: 2px solid var(--dorado);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    display: none;
+}
+
+.resultado-consulta.visible {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* === Header del Resultado === */
+.resultado-header {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.resultado-header h4 {
+    font-size: var(--text-2xl);
+    color: var(--blanco);
+    margin-bottom: var(--space-xs);
+}
+
+.resultado-header span {
+    color: var(--dorado);
+    font-size: var(--text-sm);
+}
+
+/* === Contenedor de Progreso === */
+.progreso-container {
+    margin-bottom: var(--space-xl);
+}
+
+.progreso-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+    color: var(--gris-claro);
+    font-size: 0.95rem;
+}
+
+.progreso-info strong {
+    color: var(--blanco);
+    font-size: 1.1rem;
+}
+
+/* === Barra de Progreso === */
+.progreso-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.progreso-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--rojo-principal), var(--dorado));
+    border-radius: 10px;
+    transition: width 1s ease-out;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+}
+
+/* === Visualización de Cortes === */
+.cortes-visual {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    margin-bottom: var(--space-lg);
+}
+
+.corte-icon {
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    border: 2px solid;
+    transition: all var(--transition-base);
+}
+
+.corte-icon.completado {
+    background: linear-gradient(135deg, var(--rojo-principal), var(--rojo-oscuro));
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.corte-icon.pendiente {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(220, 38, 38, 0.3);
+    color: var(--gris-medio);
+}
+
+.corte-icon.gratis {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    border-color: var(--dorado);
+    color: var(--negro);
+    animation: pulse 2s infinite;
+}
+
+/* === Mensaje del Resultado === */
+.resultado-mensaje {
+    text-align: center;
+    padding: var(--space-md);
+    background: rgba(220, 38, 38, 0.1);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--rojo-principal);
+}
+
+.resultado-mensaje p {
+    color: var(--gris-claro);
+    font-size: var(--text-base);
+    margin: 0;
+}
+
+.resultado-mensaje span {
+    display: inline-block;
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--dorado);
+    font-family: var(--font-heading);
+    margin: var(--space-xs);
+}
+
+
+/* ============================================================================
+   10. SECCIÓN: CÓMO FUNCIONA
+   ============================================================================ */
+
+.como-funciona {
+    background: linear-gradient(180deg, #000000 0%, #1F2937 50%, #000000 100%);
+    padding: 100px 0;
+}
+
+.pasos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-4xl);
+}
+
+.paso-card {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.paso-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rojo-principal), var(--dorado));
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.paso-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--rojo-principal);
+    box-shadow: var(--shadow-xl);
+}
+
+.paso-card:hover::before {
+    transform: scaleX(1);
+}
+
+.paso-numero {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto var(--space-md);
+    background: linear-gradient(135deg, var(--rojo-principal), var(--rojo-oscuro));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--blanco);
+    font-family: var(--font-heading);
+    box-shadow: var(--shadow-gold);
+}
+
+.paso-card h4 {
+    font-size: var(--text-xl);
+    color: var(--blanco);
+    margin-bottom: var(--space-sm);
+}
+
+.paso-card p {
+    color: var(--gris-claro);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+
+/* ============================================================================
+   11. SECCIÓN: BENEFICIOS
+   ============================================================================ */
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-4xl);
+}
+
+.beneficio-card {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.beneficio-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--dorado);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+}
+
+.beneficio-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-md);
+    background: rgba(212, 175, 55, 0.1);
+    border: 2px solid var(--dorado);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.beneficio-card:hover .beneficio-icon {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    transform: scale(1.1);
+}
+
+.beneficio-card:hover .beneficio-icon svg {
+    stroke: var(--negro);
+}
+
+.beneficio-card h4 {
+    font-size: 1.4rem;
+    color: var(--blanco);
+    margin-bottom: var(--space-sm);
+}
+
+.beneficio-card p {
+    color: var(--gris-claro);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+
+/* ============================================================================
+   12. COMPONENTE: FOOTER
+   ============================================================================ */
+
+.footer {
+    background: var(--negro);
+    padding: 60px 0 30px;
+    border-top: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.footer-col h3.footer-logo {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--dorado);
+    margin-bottom: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-col h3.footer-logo span {
+    font-size: var(--text-sm);
+    color: var(--blanco);
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.footer-col p {
+    color: var(--gris-claro);
+    line-height: 1.8;
+}
+
+.footer-col h4 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-md);
+    color: var(--blanco);
+    font-family: var(--font-heading);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.8rem;
+    color: var(--gris-claro);
+}
+
+.footer-col ul li a {
+    color: var(--gris-claro);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.footer-col ul li a:hover {
+    color: var(--rojo-principal);
+}
+
+.footer-bottom {
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(220, 38, 38, 0.2);
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: var(--gris-medio);
+}
+
+
+/* ============================================================================
+   13. UTILIDADES Y HELPERS
+   ============================================================================ */
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--negro);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rojo-principal);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rojo-oscuro);
+}
+
+
+/* ============================================================================
+   14. ANIMACIONES Y TRANSICIONES
+   ============================================================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+}
+
+
+/* ============================================================================
+   15. MEDIA QUERIES (RESPONSIVE)
+   ============================================================================ */
+
+/* === Tablets y Pantallas Medianas (1024px) === */
+@media (max-width: 1024px) {
+    .card-3d-container {
+        max-width: 400px;
+    }
+    
+    .card-front,
+    .card-back {
+        height: 250px;
+    }
+}
+
+/* === Tablets (768px) === */
+@media (max-width: 768px) {
+    /* Navegación */
+    .nav-links,
+    .nav-login {
+        display: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    /* Hero */
+    .page-hero {
+        padding: 100px 0 60px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    /* Grid de tarjeta */
+    .page-hero .container > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+    
+    /* Tarjeta 3D */
+    .card-3d-container {
+        max-width: 100%;
+    }
+    
+    /* Formularios */
+    .consulta-form,
+    .resultado-consulta {
+        padding: var(--space-lg);
+    }
+    
+    /* Cortes visual */
+    .cortes-visual {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    /* Grids */
+    .pasos-grid,
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .como-funciona {
+        padding: 60px 0;
+    }
+}
+
+/* === Móviles (480px) === */
+@media (max-width: 480px) {
+    /* Layout */
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .navbar .container {
+        padding: var(--space-sm);
+    }
+    
+    /* Hero */
+    .page-hero {
+        padding: 80px 0 50px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: var(--text-base);
+    }
+    
+    /* Tarjeta 3D */
+    .card-3d {
+        height: 240px;
+    }
+    
+    .card-front,
+    .card-back {
+        padding: 20px;
+    }
+    
+    .card-logo {
+        font-size: var(--text-4xl);
+        top: 20px;
+        right: 20px;
+    }
+    
+    .card-number {
+        font-size: var(--text-lg);
+        letter-spacing: 2px;
+    }
+    
+    /* Formularios */
+    .consulta-form {
+        padding: var(--space-md);
+    }
+    
+    .consulta-form h3 {
+        font-size: var(--text-xl);
+    }
+    
+    .resultado-consulta {
+        padding: var(--space-md);
+    }
+    
+    .resultado-header h4 {
+        font-size: var(--text-xl);
+    }
+    
+    .cortes-visual {
+        gap: 6px;
+    }
+    
+    .resultado-mensaje span {
+        font-size: var(--text-xl);
+    }
+    
+    /* Cards */
+    .paso-card,
+    .beneficio-card {
+        padding: var(--space-lg) var(--space-md);
+    }
+}
+
+
+/* ============================================================================
+   FIN DEL ARCHIVO CSS
+   ============================================================================ */

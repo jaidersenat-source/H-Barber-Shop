@@ -1,0 +1,613 @@
+/* ============================================
+   REPORTES GENERALES - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+}
+
+/* Contenedor principal de reportes */
+.reportes-container {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Título principal */
+#reporte-titulo {
+    margin: 0 0 2rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+#reporte-titulo:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* Texto oculto para lectores de pantalla */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.sr-only:focus,
+.sr-only:active {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+}
+
+/* Formulario de filtros */
+.reporte-form {
+    background: var(--gris-claro);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--rojo-principal);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.reporte-form:focus-within {
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Grupo de formulario */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-group label {
+    font-weight: 700;
+    color: var(--negro);
+    font-size: 0.95rem;
+}
+
+.form-group label:hover {
+    color: var(--rojo-principal);
+    cursor: pointer;
+}
+
+.form-group input[type="date"] {
+    padding: 10px 12px;
+    border: 2px solid var(--gris-medio);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.form-group input[type="date"]:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Grupo de botones */
+.btn-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 100%;
+}
+
+.btn-group button,
+.btn-group .btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Botón generar reporte */
+.btn-group button[type="submit"] {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.btn-group button[type="submit"]:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.btn-group button[type="submit"]:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Botón PDF */
+.btn-pdf {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.btn-pdf:hover {
+    background: var(--gris-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-pdf:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Botón Excel */
+.btn-excel {
+    background: var(--rojo-oscuro);
+    color: var(--blanco);
+}
+
+.btn-excel:hover {
+    background: var(--negro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(153, 27, 27, 0.4);
+}
+
+.btn-excel:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Sección de métricas */
+.reporte-metricas {
+    margin-top: 2rem;
+}
+
+.reporte-metricas > h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--rojo-principal);
+}
+
+/* Lista de métricas principales */
+.metricas-principales {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tarjeta de métrica */
+.metrica-card {
+    background: var(--gris-claro);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--rojo-principal);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.metrica-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.2);
+}
+
+.metrica-card.ventas {
+    border-left-color: var(--rojo-principal);
+}
+
+.metrica-card.cortes {
+    border-left-color: var(--negro);
+}
+
+.metrica-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gris-oscuro);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metrica-valor {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--rojo-principal);
+    line-height: 1;
+}
+
+.metrica-card.cortes .metrica-valor {
+    color: var(--negro);
+}
+
+/* Secciones de reporte */
+.reporte-seccion {
+    background: var(--blanco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 2px solid var(--gris-claro);
+    border-left: 4px solid var(--rojo-principal);
+}
+
+.reporte-seccion h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--rojo-principal);
+}
+
+/* Tablas de reporte */
+.tabla-reporte {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--blanco);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.tabla-reporte thead {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.tabla-reporte thead th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.tabla-reporte thead th.num {
+    text-align: right;
+}
+
+.tabla-reporte tbody tr {
+    border-bottom: 1px solid var(--gris-claro);
+    transition: background 0.2s ease;
+}
+
+.tabla-reporte tbody tr:hover {
+    background: var(--rojo-claro);
+}
+
+.tabla-reporte tbody td {
+    padding: 12px;
+    color: var(--gris-oscuro);
+    font-size: 0.95rem;
+}
+
+.tabla-reporte tbody td.num {
+    text-align: right;
+    font-weight: 700;
+    color: var(--negro);
+    font-size: 1.05rem;
+}
+
+.tabla-reporte tbody td.moneda {
+    text-align: right;
+    font-weight: 700;
+    color: var(--rojo-principal);
+    font-size: 1.1rem;
+}
+
+/* Fila vacía */
+.tabla-reporte .fila-vacia td {
+    text-align: center;
+    color: var(--gris-medio);
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Footer de tabla */
+.tabla-reporte tfoot {
+    background: var(--gris-claro);
+    font-weight: 700;
+}
+
+.tabla-reporte tfoot tr {
+    border-top: 3px solid var(--rojo-principal);
+}
+
+.tabla-reporte tfoot th,
+.tabla-reporte tfoot td {
+    padding: 14px 12px;
+    font-size: 1.05rem;
+}
+
+.tabla-reporte tfoot th {
+    text-align: left;
+    color: var(--negro);
+}
+
+.tabla-reporte tfoot td.num {
+    text-align: right;
+    color: var(--negro);
+}
+
+.tabla-reporte tfoot td.moneda {
+    text-align: right;
+    color: var(--rojo-principal);
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reportes-container {
+        padding: 1rem;
+    }
+
+    #reporte-titulo {
+        font-size: 1.8rem;
+    }
+
+    .reporte-form {
+        padding: 1rem;
+        flex-direction: column;
+    }
+
+    .form-group {
+        min-width: 100%;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn-group button,
+    .btn-group .btn {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .metricas-principales {
+        grid-template-columns: 1fr;
+    }
+
+    .metrica-card {
+        padding: 1.25rem;
+    }
+
+    .metrica-valor {
+        font-size: 2rem;
+    }
+
+    .reporte-seccion {
+        padding: 1rem;
+    }
+
+    .reporte-seccion h4 {
+        font-size: 1.1rem;
+    }
+
+    .tabla-reporte {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .tabla-reporte thead {
+        display: none;
+    }
+
+    .tabla-reporte tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 2px solid var(--gris-claro);
+        border-radius: 6px;
+        padding: 1rem;
+    }
+
+    .tabla-reporte tbody td {
+        display: block;
+        text-align: left !important;
+        padding: 8px 0;
+        border: none;
+    }
+
+    .tabla-reporte tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--negro);
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    .tabla-reporte tbody td.num::before {
+        content: "Cantidad: ";
+    }
+
+    .tabla-reporte tbody td.moneda::before {
+        content: "Total: ";
+    }
+
+    .tabla-reporte tfoot {
+        display: block;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 6px;
+        border: 3px solid var(--rojo-principal);
+    }
+
+    .tabla-reporte tfoot tr {
+        display: block;
+    }
+
+    .tabla-reporte tfoot th,
+    .tabla-reporte tfoot td {
+        display: block;
+        text-align: left !important;
+        padding: 8px 0;
+    }
+
+    .tabla-reporte tfoot th::before {
+        content: "Total General: ";
+        font-weight: 700;
+    }
+
+    .tabla-reporte tfoot td::before {
+        font-weight: 700;
+        color: var(--negro);
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .tabla-reporte tfoot td.num::before {
+        content: "Cantidad Total: ";
+    }
+
+    .tabla-reporte tfoot td.moneda::before {
+        content: "Ventas Totales: ";
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .metrica-card:hover {
+        border-left-width: 6px;
+    }
+
+    .tabla-reporte tbody tr:hover {
+        border: 3px solid var(--negro);
+    }
+}
+
+/* Animación de entrada */
+.reportes-container {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación de métricas */
+.metrica-card {
+    animation: slideIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.metrica-card:nth-child(1) { animation-delay: 0.1s; }
+.metrica-card:nth-child(2) { animation-delay: 0.2s; }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Role regions accesibles */
+[role="region"],
+[role="main"] {
+    scroll-margin-top: 2rem;
+}
+
+/* Status announcement */
+#reporte-status {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

@@ -1,0 +1,369 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fondo rojo intenso similar a la imagen de referencia */
+  background: linear-gradient(135deg, #6b2020 0%, #1f1d1d 50%, #6b2020 100%);
+  color: #333;
+  padding: 2rem;
+}
+
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  min-height: 550px;
+  /* Contenedor sin fondo, los lados tendrán sus propios colores */
+  background: transparent;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Sección izquierda con fondo rojo y patrón de herramientas de barbería */
+.brand-section {
+  flex: 1;
+  background: linear-gradient(135deg, #8b1538 0%, #a62c4a 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Patrón de herramientas de barbería en el fondo */
+.brand-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M20 10 L22 10 L22 30 L20 30 Z M24 15 L28 15 L28 25 L24 25 Z M30 10 L32 10 L32 30 L30 30 Z M34 15 L38 15 L38 25 L34 25 Z M15 35 Q15 40 20 40 Q25 40 25 35 L25 32 L15 32 Z M50 50 L55 45 M50 45 L55 50'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 1;
+}
+
+.brand-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Logo cuadrado semitransparente con candado */
+.brand-logo {
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+.brand-logo svg {
+  width: 45px;
+  height: 45px;
+  fill: white;
+}
+
+.brand-section h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.brand-section p {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+}
+
+/* Sección derecha con fondo oscuro como en la imagen de referencia */
+.form-section {
+  flex: 1;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Encabezado con texto blanco sobre fondo oscuro */
+.login-header {
+  margin-bottom: 2rem;
+}
+
+.login-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.login-header p {
+  color: #b0b0b0;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.alert-error {
+  background: rgba(231, 76, 60, 0.15);
+  border-left: 4px solid #e74c3c;
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  margin-bottom: 1.5rem;
+  color: #ff6b6b;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.alert-error::before {
+  content: "⚠";
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+/* Etiquetas blancas para fondo oscuro */
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-size: 0.875rem;
+}
+
+/* Campos de entrada blancos con bordes sutiles */
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  transition: all 0.2s ease;
+  background: white;
+  color: #1a1a1a;
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #8b1538;
+  box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.1);
+}
+
+.form-group input:hover:not(:focus) {
+  border-color: #666;
+}
+
+/* Botón principal rojo/granate como en la imagen */
+.btn-primary {
+  width: 100%;
+  padding: 0.875rem;
+  background: linear-gradient(135deg, #8b1538 0%, #a62c4a 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #6b0f2a 0%, #8b1538 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 21, 56, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.3);
+}
+
+.form-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn-link {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+/* Botón secundario blanco sobre fondo oscuro */
+.btn-secondary {
+  background: white;
+  color: #1a1a1a;
+  border: 1px solid #404040;
+}
+
+.btn-secondary:hover {
+  background: #f5f5f5;
+  border-color: #666;
+}
+
+/* Enlace de texto claro sobre fondo oscuro */
+.btn-text {
+  background: transparent;
+  color: #b0b0b0;
+}
+
+.btn-text:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* Divisor claro sobre fondo oscuro */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #808080;
+  font-size: 0.8125rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #404040;
+}
+
+.divider span {
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .login-container {
+    flex-direction: column;
+    max-width: 500px;
+    min-height: auto;
+  }
+
+  .brand-section {
+    min-height: 250px;
+    padding: 2rem 1.5rem;
+  }
+
+  .brand-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .brand-section p {
+    font-size: 0.875rem;
+  }
+
+  .brand-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+  }
+
+  .brand-logo svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .form-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .login-container {
+    border-radius: 16px;
+  }
+
+  .brand-section {
+    min-height: 200px;
+    padding: 1.5rem 1rem;
+  }
+
+  .form-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .login-box {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -1,0 +1,733 @@
+/* ============================================
+   ESTILOS LISTADO DE FACTURAS
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+/* === CONTENEDOR PRINCIPAL === */
+.facturas-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 1600px;
+    border: 2px solid #e5e5e5;
+}
+
+/* === TÍTULO === */
+.facturas-container h2 {
+    color: #000000;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.5px;
+    border-bottom: 3px solid #dc0000;
+    padding-bottom: 1rem;
+}
+
+/* === FORMULARIO DE FILTROS === */
+.facturas-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 2px solid #e5e5e5;
+}
+
+.filtro-grupo {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filtro-grupo label {
+    display: block;
+    color: #000000;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
+.filtro-grupo .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #000000;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.filtro-grupo .form-control:hover {
+    border-color: #9ca3af;
+}
+
+.filtro-grupo .form-control:focus {
+    outline: none;
+    border-color: #dc0000;
+    box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
+}
+
+/* === BOTONES === */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: #dc0000;
+    color: #ffffff;
+    border-color: #dc0000;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #b80000;
+    border-color: #b80000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+    outline: 3px solid rgba(220, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+.btn-secondary {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    outline: 3px solid rgba(0, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+.btn-info {
+    background: #dc0000;
+    color: #ffffff;
+    border-color: #dc0000;
+}
+
+.btn-info:hover,
+.btn-info:focus {
+    background: #b80000;
+    border-color: #b80000;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(220, 0, 0, 0.3);
+}
+
+.btn-danger {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background: #dc0000;
+    border-color: #dc0000;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(220, 0, 0, 0.3);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+/* === TABLA WRAPPER === */
+.facturas-table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* === TABLA === */
+.facturas-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* === ENCABEZADOS DE TABLA === */
+.facturas-table thead {
+    background: #000000;
+    color: #ffffff;
+}
+
+.facturas-table thead th {
+    padding: 1.25rem 1rem;
+    font-weight: 600;
+    text-align: left;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #dc0000;
+    white-space: nowrap;
+}
+
+/* === FILAS DE TABLA === */
+.facturas-table tbody tr {
+    border-bottom: 1px solid #e5e5e5;
+    transition: background-color 0.2s ease;
+}
+
+.facturas-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.facturas-table tbody tr:hover {
+    background: #f8f8f8;
+}
+
+.facturas-table tbody tr:focus-within {
+    background: #fff5f5;
+    outline: 2px solid #dc0000;
+    outline-offset: -2px;
+}
+
+.facturas-table tbody td {
+    padding: 1rem;
+    color: #333333;
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+/* === COLUMNAS ESPECÍFICAS === */
+.facturas-table tbody td[data-label="ID"] {
+    font-weight: 700;
+    color: #dc0000;
+}
+
+.facturas-table tbody td[data-label="Total"],
+.facturas-table tbody td[data-label="Abono"],
+.facturas-table tbody td[data-label="Total con descuento"] {
+    font-weight: 600;
+    color: #000000;
+}
+
+.facturas-table tbody td[data-label="Descuento (%)"] {
+    color: #10b981;
+    font-weight: 600;
+}
+
+/* === COLUMNA DE ACCIONES === */
+.facturas-table tbody td.acciones {
+    white-space: nowrap;
+}
+
+.facturas-table tbody td.acciones .btn {
+    margin: 0.25rem;
+}
+
+/* === ACCESIBILIDAD === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* === FOCUS VISIBLE === */
+*:focus-visible {
+    outline: 3px solid #dc0000;
+    outline-offset: 3px;
+}
+
+/* === MODAL DE CONTRASEÑA === */
+.modal-admin {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.modal-admin-content {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 90vw;
+    width: 500px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid #e5e5e5;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-admin-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #666666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.modal-admin-close:hover,
+.modal-admin-close:focus {
+    color: #dc0000;
+    transform: scale(1.2);
+}
+
+.modal-admin-content h3 {
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    border-bottom: 2px solid #dc0000;
+    padding-bottom: 0.75rem;
+}
+
+#modal-admin-msg {
+    color: #333333;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.modal-admin-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #000000;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.modal-admin-input:hover {
+    border-color: #9ca3af;
+}
+
+.modal-admin-input:focus {
+    outline: none;
+    border-color: #dc0000;
+    box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
+}
+
+.modal-admin-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.modal-admin-accept,
+.modal-admin-cancel {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.modal-admin-accept {
+    background: #dc0000;
+    color: #ffffff;
+    border-color: #dc0000;
+}
+
+.modal-admin-accept:hover,
+.modal-admin-accept:focus {
+    background: #b80000;
+    border-color: #b80000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+    outline: 3px solid rgba(220, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+.modal-admin-cancel {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.modal-admin-cancel:hover,
+.modal-admin-cancel:focus {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    outline: 3px solid rgba(0, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+/* === RESPONSIVIDAD TABLET === */
+@media (max-width: 1024px) {
+    .facturas-container {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+
+    .facturas-table thead th {
+        padding: 1rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .facturas-table tbody td {
+        padding: 0.85rem 0.75rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 768px) {
+    .facturas-container {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    .facturas-container h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Filtros en móvil */
+    .facturas-filtros {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+
+    .filtro-grupo {
+        min-width: 100%;
+    }
+
+    .facturas-filtros .btn {
+        width: 100%;
+    }
+
+    /* Tabla como tarjetas */
+    .facturas-table-wrapper {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .facturas-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .facturas-table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 0;
+        background: #ffffff;
+    }
+
+    .facturas-table tbody tr:nth-child(even) {
+        background: #ffffff;
+    }
+
+    .facturas-table tbody tr:hover {
+        background: #ffffff;
+        border-color: #dc0000;
+    }
+
+    .facturas-table tbody td {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 1rem;
+        text-align: left;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid #f0f0f0;
+        align-items: center;
+    }
+
+    .facturas-table tbody td:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background: #f8f8f8;
+    }
+
+    .facturas-table tbody td:last-child {
+        border-bottom: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .facturas-table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #000000;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Columna de acciones en móvil */
+    .facturas-table tbody td.acciones {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .facturas-table tbody td.acciones::before {
+        margin-bottom: 0.5rem;
+    }
+
+    .facturas-table tbody td.acciones .btn {
+        width: 100%;
+        margin: 0.25rem 0;
+    }
+
+    /* Modal en móvil */
+    .modal-admin-content {
+        width: calc(100% - 2rem);
+        padding: 1.5rem;
+    }
+
+    .modal-admin-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .modal-admin-actions {
+        flex-direction: column-reverse;
+    }
+
+    .modal-admin-accept,
+    .modal-admin-cancel {
+        width: 100%;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL PEQUEÑO === */
+@media (max-width: 480px) {
+    .facturas-container {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .facturas-container h2 {
+        font-size: 1.25rem;
+    }
+
+    .facturas-filtros {
+        padding: 1rem;
+    }
+
+    .filtro-grupo label {
+        font-size: 0.85rem;
+    }
+
+    .filtro-grupo .form-control {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.9rem;
+    }
+
+    .facturas-table tbody td {
+        grid-template-columns: 120px 1fr;
+        gap: 0.75rem;
+        padding: 0.85rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .facturas-table tbody td::before {
+        font-size: 0.75rem;
+    }
+
+    .btn-sm {
+        font-size: 0.8rem;
+        padding: 0.45rem 0.85rem;
+    }
+
+    .modal-admin-content {
+        padding: 1.25rem;
+    }
+
+    .modal-admin-input {
+        padding: 0.75rem 0.875rem;
+        font-size: 0.95rem;
+    }
+
+    .modal-admin-accept,
+    .modal-admin-cancel {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* === CONTRASTE ALTO === */
+@media (prefers-contrast: high) {
+    .facturas-container {
+        border: 3px solid #000000;
+    }
+
+    .facturas-table thead {
+        border-bottom: 4px solid #dc0000;
+    }
+
+    .facturas-table tbody tr {
+        border: 2px solid #000000;
+    }
+
+    .modal-admin-content {
+        border: 3px solid #000000;
+    }
+
+    .filtros-form {
+        border: 3px solid #000000;
+    }
+}
+
+/* === MODO REDUCIDO DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* === LANDSCAPE EN MÓVILES === */
+@media (max-width: 768px) and (orientation: landscape) {
+    .facturas-container {
+        padding: 1rem 1.5rem;
+    }
+
+    .facturas-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-admin-content {
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .modal-admin-actions {
+        flex-direction: row;
+    }
+
+    .modal-admin-accept,
+    .modal-admin-cancel {
+        width: auto;
+        flex: 1;
+    }
+}
+
+/* === ANIMACIÓN DE CARGA === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.facturas-table tbody tr {
+    animation: fadeIn 0.3s ease-out;
+    animation-fill-mode: both;
+}
+
+/* === MEJORAS VISUALES === */
+.facturas-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.facturas-table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+.facturas-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.facturas-table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+.facturas-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+/* === FOCUS EN CONTAINER === */
+.facturas-container:focus-within {
+    box-shadow: 0 6px 24px rgba(220, 0, 0, 0.15);
+}
+
+/* === OVERLAY DEL MODAL === */
+.modal-admin::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(220, 0, 0, 0.1), transparent);
+}
+
+/* === INDICADORES DE ESTADO === */
+.facturas-table tbody td[data-label="Total con descuento"] {
+    position: relative;
+}
+
+.facturas-table tbody td[data-label="Total con descuento"]::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    background: #10b981;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .facturas-table tbody td[data-label="Total con descuento"]::after {
+        display: none;
+    }
+}

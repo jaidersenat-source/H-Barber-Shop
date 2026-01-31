@@ -1,0 +1,318 @@
+/* ============================================
+   CRM ACCESIBLE - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+}
+
+/* Contenedor principal del módulo CRM */
+#modulo-crm {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Formulario de búsqueda */
+#modulo-crm form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    align-items: flex-end;
+    padding: 1.5rem;
+    background: var(--gris-claro);
+    border-radius: 6px;
+    border-left: 4px solid var(--rojo-principal);
+}
+
+/* Inputs de formulario */
+.form-control {
+    padding: 10px 14px;
+    border: 2px solid var(--gris-medio);
+    border-radius: 4px;
+    font-size: 1rem;
+    min-width: 200px;
+    transition: all 0.3s ease;
+    background: var(--blanco);
+    color: var(--negro);
+}
+
+.form-control:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+.form-control::placeholder {
+    color: var(--gris-medio);
+}
+
+/* Botones */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 120px;
+    text-align: center;
+}
+
+.btn:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+.btn-primary {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.btn-primary:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-secondary {
+    background: var(--gris-oscuro);
+    color: var(--blanco);
+}
+
+.btn-secondary:hover {
+    background: var(--negro);
+    transform: translateY(-2px);
+}
+
+.btn-exportar-pdf {
+    background: var(--negro);
+    color: var(--blanco);
+    border: 2px solid var(--rojo-principal);
+}
+
+.btn-exportar-pdf:hover {
+    background: var(--rojo-principal);
+    border-color: var(--negro);
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    min-width: auto;
+}
+
+/* Lista accesible para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    background: var(--blanco);
+}
+
+.table thead {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.table thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--gris-claro);
+    transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: var(--rojo-claro);
+}
+
+.table tbody tr:focus-within {
+    background: var(--rojo-claro);
+    outline: 2px solid var(--rojo-principal);
+    outline-offset: -2px;
+}
+
+.table tbody td {
+    padding: 12px;
+    color: var(--gris-oscuro);
+    font-size: 0.95rem;
+}
+
+/* Cliente inactivo */
+.table tbody tr[style*="border:2px solid #f59e42"] {
+    border: 3px solid var(--rojo-principal) !important;
+    background: var(--rojo-claro);
+}
+
+.table tbody tr[style*="border:2px solid #f59e42"] td {
+    font-weight: 500;
+}
+
+/* Alerta de cliente inactivo */
+.table td div[style*="color:#d97706"] {
+    color: var(--rojo-oscuro) !important;
+    font-weight: 700 !important;
+    padding: 8px;
+    background: var(--rojo-claro);
+    border-left: 4px solid var(--rojo-principal);
+    margin-top: 8px;
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #modulo-crm {
+        padding: 1rem;
+    }
+
+    #modulo-crm form {
+        padding: 1rem;
+    }
+
+    .form-control {
+        min-width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--gris-claro);
+        border-radius: 6px;
+        padding: 1rem;
+    }
+
+    .table tbody td {
+        display: block;
+        text-align: left;
+        padding: 8px 0;
+        border: none;
+    }
+
+    .table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--negro);
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Skip links para navegación rápida */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Estados de carga */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste para mejor legibilidad */
+@media (prefers-contrast: high) {
+    .table tbody tr:hover,
+    .table tbody tr:focus-within {
+        background: var(--rojo-claro);
+        border: 3px solid var(--negro);
+    }
+
+    .btn:focus {
+        outline-width: 4px;
+    }
+}

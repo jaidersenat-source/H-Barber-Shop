@@ -1,0 +1,1358 @@
+/* ============================================================================
+   AGENDAR CITA - H BARBER SHOP SAS
+   Paleta: Rojo, Negro, Blanco con toques Dorados
+   Estructura CSS organizada y modular
+   ============================================================================ */
+
+/* ============================================================================
+   📋 TABLA DE CONTENIDOS
+   ----------------------------------------------------------------------------
+   1.  Variables y Tokens de Diseño
+   2.  Reset y Estilos Base
+   3.  Sistema de Layout
+   4.  Componente: Navegación
+   5.  Componente: Progress Steps
+   6.  Componente: Selección de Barbero
+   7.  Componente: Selección de Servicio
+   8.  Componente: Calendario y Horarios
+   9.  Componente: Formulario Cliente
+   10. Componente: Resumen de Cita
+   11. Componente: Pantalla de Éxito
+   12. Componente: Navegación de Pasos
+   13. Componente: Footer
+   14. Animaciones y Transiciones
+   15. Media Queries (Responsive)
+   ============================================================================ */
+
+
+/* ============================================================================
+   1. VARIABLES Y TOKENS DE DISEÑO
+   ============================================================================ */
+
+:root {
+    /* === Paleta de Colores === */
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+
+    --dorado: #D4AF37;
+    --dorado-oscuro: #B8960B;
+
+    /* === Familias Tipográficas === */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-mono: 'Courier New', monospace;
+
+    /* === Tamaños de Fuente === */
+    --text-xs: 0.7rem;
+    --text-sm: 0.85rem;
+    --text-base: 1rem;
+    --text-lg: 1.2rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 1.8rem;
+    --text-3xl: 2.2rem;
+
+    /* === Espaciado === */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 2.5rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+
+    /* === Bordes === */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 50%;
+
+    /* === Sombras === */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(220, 38, 38, 0.4);
+    --shadow-lg: 0 10px 30px rgba(220, 38, 38, 0.5);
+    --shadow-xl: 0 20px 50px rgba(220, 38, 38, 0.3);
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 10px 30px rgba(212, 175, 55, 0.4);
+    --shadow-rojo: 0 4px 12px rgba(220, 38, 38, 0.4);
+    --shadow-rojo-lg: 0 10px 30px rgba(220, 38, 38, 0.5);
+    --shadow-dorado: 0 4px 16px rgba(212, 175, 55, 0.35);
+
+    /* === Transiciones === */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* === Z-Index === */
+    --z-fixed: 1000;
+}
+
+
+/* ============================================================================
+   2. RESET Y ESTILOS BASE
+   ============================================================================ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--negro);
+    color: var(--blanco);
+    overflow-x: hidden;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--negro);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rojo-principal);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rojo-oscuro);
+}
+
+
+/* ============================================================================
+   3. SISTEMA DE LAYOUT
+   ============================================================================ */
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.booking-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg) var(--space-3xl);
+}
+
+
+/* ============================================================================
+   4. COMPONENTE: NAVEGACIÓN
+   ============================================================================ */
+
+/* === Contenedor === */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-fixed);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-lg);
+}
+
+/* === Logo === */
+.nav-logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: opacity var(--transition-base);
+}
+
+.nav-logo a:hover {
+    opacity: 0.8;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--blanco);
+    letter-spacing: 2px;
+}
+
+/* === Links === */
+.nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--blanco);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-base);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--rojo-principal);
+    transition: width var(--transition-base);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--rojo-principal);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* === Botones === */
+.nav-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+}
+
+.btn-primary {
+    padding: 10px 24px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-rojo);
+}
+
+.nav-login {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--rojo-principal);
+    border-radius: var(--radius-full);
+    color: var(--rojo-principal);
+    transition: all var(--transition-base);
+}
+
+.nav-login:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: rotate(15deg);
+}
+
+/* === Toggle Mobile === */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 2px;
+    background: var(--blanco);
+    transition: all var(--transition-base);
+}
+
+
+/* ============================================================================
+   5. COMPONENTE: PROGRESS STEPS
+   ============================================================================ */
+
+.progress-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-2xl);
+    padding-top: var(--space-sm);
+    gap: 0;
+}
+
+/* === Paso Individual === */
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    position: relative;
+    z-index: 1;
+}
+
+.step-number {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-base);
+    font-family: var(--font-heading);
+    background: var(--gris-oscuro);
+    color: var(--gris-medio);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    transition: all var(--transition-base);
+}
+
+.step-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--gris-medio);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color var(--transition-base);
+}
+
+/* === Estado Activo === */
+.step.active .step-number {
+    background: var(--rojo-principal);
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+    box-shadow: var(--shadow-rojo);
+}
+
+.step.active .step-label {
+    color: var(--rojo-principal);
+}
+
+/* === Estado Completado === */
+.step.completed .step-number {
+    background: var(--dorado);
+    border-color: var(--dorado);
+    color: var(--negro);
+    box-shadow: var(--shadow-dorado);
+}
+
+.step.completed .step-label {
+    color: var(--dorado);
+}
+
+/* === Líneas Conectoras === */
+.step-line {
+    width: 80px;
+    height: 3px;
+    background: rgba(220, 38, 38, 0.15);
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.step-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--dorado), var(--rojo-principal));
+    border-radius: 2px;
+    transition: width var(--transition-slow);
+}
+
+.step-line.active::after {
+    width: 100%;
+}
+
+
+/* ============================================================================
+   6. COMPONENTE: SELECCIÓN DE BARBERO
+   ============================================================================ */
+
+/* === Titles de cada paso === */
+.booking-step {
+    display: none;
+}
+
+.booking-step.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+.step-title {
+    font-size: var(--text-2xl);
+    color: var(--blanco);
+    margin-bottom: var(--space-xs);
+    text-align: center;
+}
+
+.step-subtitle {
+    font-size: var(--text-sm);
+    color: var(--gris-medio);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+/* === Grid de Selección === */
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+/* === Carta de Selección === */
+.selection-card {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(220, 38, 38, 0.15);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.selection-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rojo-principal), var(--dorado));
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.selection-card:hover {
+    border-color: rgba(220, 38, 38, 0.5);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+}
+
+.selection-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* === Estado Seleccionado === */
+.selection-card.selected {
+    border-color: var(--rojo-principal);
+    background: linear-gradient(135deg, var(--gris-oscuro) 0%, rgba(220, 38, 38, 0.1) 100%);
+    box-shadow: var(--shadow-rojo);
+}
+
+.selection-card.selected::before {
+    transform: scaleX(1);
+}
+
+/* === Avatar del Barbero === */
+.barber-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-full);
+    background: rgba(212, 175, 55, 0.1);
+    border: 2px solid var(--dorado);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-md);
+    transition: all var(--transition-base);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--dorado);
+    font-family: var(--font-heading);
+}
+
+.selection-card:hover .barber-avatar {
+    border-color: var(--rojo-principal);
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.selection-card.selected .barber-avatar {
+    border-color: var(--rojo-principal);
+    background: rgba(220, 38, 38, 0.15);
+    box-shadow: var(--shadow-rojo);
+}
+
+/* === Info del Barbero === */
+.barber-name {
+    font-size: var(--text-base);
+    color: var(--blanco);
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.barber-role {
+    font-size: var(--text-xs);
+    color: var(--dorado);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-xs);
+}
+
+.barber-specialty {
+    font-size: var(--text-xs);
+    color: var(--gris-medio);
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+}
+
+/* === Rating === */
+.barber-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.barber-rating span:first-child {
+    color: var(--dorado);
+    font-size: var(--text-sm);
+}
+
+.barber-rating span:last-child {
+    color: var(--gris-medio);
+    font-size: var(--text-xs);
+}
+
+/* === Opción "Cualquier Barbero" === */
+.any-barber-option .barber-avatar {
+    background: rgba(220, 38, 38, 0.08);
+    border-color: rgba(220, 38, 38, 0.3);
+    color: var(--rojo-principal);
+}
+
+.any-barber-option:hover .barber-avatar,
+.any-barber-option.selected .barber-avatar {
+    background: rgba(220, 38, 38, 0.15);
+    border-color: var(--rojo-principal);
+}
+
+
+/* ============================================================================
+   7. COMPONENTE: SELECCIÓN DE SERVICIO
+   ============================================================================ */
+
+/* === Filtros de Categoría === */
+.category-filter {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--gris-medio);
+    background: var(--gris-oscuro);
+    border: 1px solid rgba(220, 38, 38, 0.15);
+    transition: all var(--transition-base);
+}
+
+.category-btn:hover {
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.category-btn.active {
+    background: var(--rojo-principal);
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+    box-shadow: var(--shadow-rojo);
+}
+
+/* === Icono del Servicio === */
+.service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-md);
+    transition: all var(--transition-base);
+}
+
+.selection-card:hover .service-icon {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--dorado);
+}
+
+.selection-card.selected .service-icon {
+    background: rgba(220, 38, 38, 0.15);
+    border-color: var(--rojo-principal);
+}
+
+/* === Info del Servicio === */
+.service-name {
+    font-size: var(--text-base);
+    color: var(--blanco);
+    margin-bottom: var(--space-xs);
+    font-weight: 600;
+}
+
+.service-description {
+    font-size: var(--text-xs);
+    color: var(--gris-medio);
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+}
+
+/* === Detalles: Precio y Duración === */
+.service-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.service-price {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--dorado);
+}
+
+.service-duration {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--text-xs);
+    color: var(--gris-medio);
+}
+
+
+/* ============================================================================
+   8. COMPONENTE: CALENDARIO Y HORARIOS
+   ============================================================================ */
+
+/* === Contenedor Fecha/Hora === */
+.datetime-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.datetime-section {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(220, 38, 38, 0.15);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+}
+
+.datetime-section h3 {
+    font-size: var(--text-base);
+    color: var(--blanco);
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-weight: 600;
+}
+
+/* === Cabecera del Calendario === */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+}
+
+.calendar-month {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--blanco);
+}
+
+.calendar-nav {
+    display: flex;
+    gap: 4px;
+}
+
+.calendar-nav button {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--gris-claro);
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.calendar-nav button:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+/* === Días de la Semana === */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: var(--space-xs);
+}
+
+.weekday {
+    font-size: var(--text-xs);
+    color: var(--gris-medio);
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: var(--space-xs) 0;
+}
+
+/* === Grid de Días === */
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--gris-claro);
+    background: transparent;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-day:hover:not(.disabled):not(.empty) {
+    background: rgba(220, 38, 38, 0.15);
+    color: var(--blanco);
+}
+
+/* === Estado: Hoy === */
+.calendar-day.today {
+    border: 2px solid var(--dorado);
+    color: var(--dorado);
+    font-weight: 700;
+}
+
+/* === Estado: Seleccionado === */
+.calendar-day.selected {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    box-shadow: var(--shadow-rojo);
+    font-weight: 700;
+}
+
+/* === Estado: Deshablitado === */
+.calendar-day.disabled {
+    color: rgba(255, 255, 255, 0.15);
+    cursor: not-allowed;
+}
+
+/* === Estado: Vacío === */
+.calendar-day.empty {
+    cursor: default;
+}
+
+/* === Time Slots === */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.time-slot {
+    padding: 10px 6px;
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--gris-claro);
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(220, 38, 38, 0.15);
+    transition: all var(--transition-fast);
+    text-align: center;
+}
+
+.time-slot:hover:not(.disabled) {
+    border-color: var(--rojo-principal);
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--blanco);
+}
+
+/* === Estado: Seleccionado === */
+.time-slot.selected {
+    background: var(--rojo-principal);
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+    box-shadow: var(--shadow-rojo);
+}
+
+/* === Estado: Deshabilita === */
+.time-slot.disabled {
+    color: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.15);
+    border-color: transparent;
+    text-decoration: line-through;
+}
+
+
+/* ============================================================================
+   9. COMPONENTE: FORMULARIO CLIENTE
+   ============================================================================ */
+
+.client-form {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(220, 38, 38, 0.15);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+/* === Filas del Formulario === */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+/* === Grupo de Input === */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.form-group label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--blanco);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--blanco);
+    font-size: var(--text-sm);
+    transition: all var(--transition-base);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--rojo-principal);
+    background: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--gris-medio);
+}
+
+/* === Textarea === */
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+
+/* ============================================================================
+   10. COMPONENTE: RESUMEN DE CITA
+   ============================================================================ */
+
+.summary-card {
+    background: linear-gradient(135deg, var(--gris-oscuro) 0%, rgba(220, 38, 38, 0.08) 100%);
+    border: 2px solid var(--dorado);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+/* === Título === */
+.summary-title {
+    font-size: var(--text-xl);
+    color: var(--dorado);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* === Item del Resumen === */
+.summary-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.summary-item:last-of-type {
+    border-bottom: none;
+}
+
+.summary-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--gris-medio);
+    font-weight: 500;
+}
+
+.summary-value {
+    font-size: var(--text-sm);
+    color: var(--blanco);
+    font-weight: 600;
+}
+
+/* === Total === */
+.summary-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background: rgba(220, 38, 38, 0.1);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.summary-total .summary-label {
+    color: var(--blanco);
+    font-weight: 600;
+    font-size: var(--text-base);
+}
+
+.summary-total .summary-value {
+    font-size: var(--text-xl);
+    color: var(--dorado);
+    font-weight: 700;
+}
+
+
+/* ============================================================================
+   11. COMPONENTE: PANTALLA DE ÉXITO
+   ============================================================================ */
+
+.success-message {
+    text-align: center;
+    padding: var(--space-3xl) var(--space-lg);
+}
+
+/* === Icono === */
+.success-icon {
+    width: 110px;
+    height: 110px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-lg);
+    box-shadow: var(--shadow-dorado);
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* === Textos === */
+.success-title {
+    font-size: var(--text-3xl);
+    color: var(--blanco);
+    margin-bottom: var(--space-sm);
+}
+
+.success-text {
+    font-size: var(--text-sm);
+    color: var(--gris-medio);
+    max-width: 520px;
+    margin: 0 auto var(--space-lg);
+    line-height: 1.7;
+}
+
+/* === Código de Confirmación === */
+.confirmation-code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-xl);
+    margin: 0 auto var(--space-lg);
+    width: fit-content;
+}
+
+.confirmation-code span {
+    font-size: var(--text-xs);
+    color: var(--gris-medio);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.confirmation-code strong {
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+    color: var(--dorado);
+    letter-spacing: 2px;
+}
+
+
+/* ============================================================================
+   12. COMPONENTE: NAVEGACIÓN DE PASOS
+   ============================================================================ */
+
+.booking-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--space-lg);
+}
+
+/* === Botón Siguiente === */
+.btn-next {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-base);
+}
+
+.btn-next:hover:not(:disabled) {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-rojo-lg);
+}
+
+.btn-next:disabled {
+    background: var(--gris-oscuro);
+    color: var(--gris-medio);
+    cursor: not-allowed;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+/* === Botón Atrás === */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    color: var(--gris-medio);
+    background: transparent;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    transition: all var(--transition-base);
+}
+
+.btn-back:hover {
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+    background: rgba(220, 38, 38, 0.08);
+}
+
+/* === Botón Confirmar === */
+.btn-confirm {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--rojo-principal), var(--rojo-oscuro));
+    color: var(--blanco);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-rojo);
+}
+
+.btn-confirm:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-rojo-lg);
+}
+
+.btn-confirm:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================================================
+   13. COMPONENTE: FOOTER
+   ============================================================================ */
+
+.footer {
+    background: var(--negro);
+    border-top: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: var(--space-lg);
+}
+
+.footer-bottom p {
+    color: var(--gris-medio);
+    font-size: var(--text-sm);
+}
+
+
+/* ============================================================================
+   14. ANIMACIONES Y TRANSICIONES
+   ============================================================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* ============================================================================
+   15. MEDIA QUERIES (RESPONSIVE)
+   ============================================================================ */
+
+/* === Tablets (1024px) === */
+@media (max-width: 1024px) {
+    .datetime-container {
+        grid-template-columns: 1fr;
+    }
+
+    .selection-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+/* === Tablets Pequeñas (768px) === */
+@media (max-width: 768px) {
+    /* Navegación */
+    .nav-links,
+    .nav-login {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Progress Steps */
+    .step-line {
+        width: 40px;
+    }
+
+    .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: var(--text-sm);
+    }
+
+    .step-label {
+        font-size: 0.6rem;
+    }
+
+    /* Booking Container */
+    .booking-container {
+        padding: 0 var(--space-sm) var(--space-2xl);
+    }
+
+    /* Grids */
+    .selection-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
+    }
+
+    /* Formulario */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .client-form {
+        padding: var(--space-lg);
+    }
+
+    /* Calendario */
+    .time-slots {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* === Móviles (480px) === */
+@media (max-width: 480px) {
+    /* Progress Steps */
+    .progress-steps {
+        gap: 0;
+    }
+
+    .step-line {
+        width: 24px;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: var(--text-sm);
+    }
+
+    .step-label {
+        display: none;
+    }
+
+    /* Titles */
+    .step-title {
+        font-size: var(--text-xl);
+    }
+
+    /* Grid de Selección */
+    .selection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .selection-card {
+        padding: var(--space-md);
+    }
+
+    /* Calendario */
+    .datetime-section {
+        padding: var(--space-md);
+    }
+
+    .time-slots {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .time-slot {
+        padding: 8px 4px;
+        font-size: 0.65rem;
+    }
+
+    /* Formulario */
+    .client-form {
+        padding: var(--space-md);
+    }
+
+    /* Resumen */
+    .summary-card {
+        padding: var(--space-md);
+    }
+
+    /* Éxito */
+    .success-message {
+        padding: var(--space-2xl) var(--space-sm);
+    }
+
+    .success-icon {
+        width: 90px;
+        height: 90px;
+    }
+
+    .confirmation-code {
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    /* Botones */
+    .btn-next,
+    .btn-back {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .booking-navigation {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}
+
+
+/* ============================================================================
+   FIN DEL ARCHIVO CSS - AGENDAR CITA
+   ============================================================================ */

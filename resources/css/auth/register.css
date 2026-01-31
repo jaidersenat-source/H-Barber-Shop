@@ -1,0 +1,377 @@
+/* Reset y base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #8b2635 0%, #6b2020 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Contenedor principal */
+.register-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1200px;
+  width: 100%;
+  background: #1a1a1a;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  min-height: 600px;
+  
+}
+
+/* Sección de branding (izquierda) */
+.branding-section {
+  position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Patrón de fondo para la sección de branding */
+.branding-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75); /* ajusta la oscuridad */
+  z-index: 1;
+}
+
+.branding-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+.logo-text {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+  font-size: 1.125rem;
+  margin-bottom: 3rem;
+  opacity: 0.95;
+  font-weight: 300;
+}
+
+.feature-list {
+  list-style: none;
+  text-align: left;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Sección del formulario (derecha) */
+.form-section {
+  background: #2d2d2d;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 4000px;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  font-size: 0.95rem;
+  color: #a0a0a0;
+}
+
+/* Mensajes de error */
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 0.875rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.error-message strong {
+  font-weight: 600;
+}
+
+/* Grupos de formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: #c84b31;
+  margin-left: 0.25rem;
+}
+
+/* Inputs */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  background: #ffffff;
+  border: 2px solid #4a4a4a;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #c84b31;
+  box-shadow: 0 0 0 3px rgba(200, 75, 49, 0.1);
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+/* Select específico */
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a1a1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 3rem;
+}
+
+/* Display de rol */
+.role-display {
+  padding: 0.875rem 1rem;
+  background: rgba(200, 75, 49, 0.1);
+  border: 2px solid rgba(200, 75, 49, 0.3);
+  border-radius: 8px;
+  color: #e0e0e0;
+}
+
+.role-display strong {
+  color: #c84b31;
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+/* Botón de envío */
+.submit-button {
+  width: 100%;
+  padding: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #8b2635 0%, #c84b31 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(200, 75, 49, 0.4);
+}
+
+.submit-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Footer del formulario */
+.form-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.form-footer-text {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+}
+
+.form-footer-link {
+  color: #c84b31;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.form-footer-link:hover {
+  color: #d65a31;
+  text-decoration: underline;
+}
+
+/* Requisitos de contraseña - sobrescribir estilos inline */
+.password-requirements {
+  margin-top: 0.75rem !important;
+  padding: 0.75rem !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.875rem !important;
+}
+
+.password-requirements strong {
+  color: #e0e0e0;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.password-requirements ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.password-requirements li {
+  display: flex !important;
+  gap: 0.5rem !important;
+  align-items: center !important;
+  padding: 0.25rem 0 !important;
+  font-size: 0.85rem;
+  color: #a0a0a0;
+}
+
+.password-requirements .icon {
+  width: 1.2rem !important;
+  text-align: center !important;
+  display: inline-block !important;
+  font-weight: 600;
+}
+
+.password-requirements .met {
+  color: #4ade80 !important;
+}
+
+.password-requirements .met .icon {
+  color: #4ade80;
+}
+
+.password-requirements .unmet {
+  color: #f87171 !important;
+}
+
+.password-requirements .unmet .icon {
+  color: #f87171;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .register-container {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .branding-section {
+    padding: 2rem;
+    min-height: 300px;
+  }
+
+  .logo-text {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    max-width: 100%;
+  }
+
+  .form-section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 1rem;
+  }
+
+  .branding-section,
+  .form-section {
+    padding: 1.5rem;
+  }
+
+  .logo-text {
+    font-size: 2rem;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+}

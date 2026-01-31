@@ -1,0 +1,605 @@
+/* ============================================
+   FIDELIZACIÓN DE CLIENTES - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    --fid-success: #DC2626;
+}
+
+/* Contenedor principal */
+.fidelizacion-container {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Header con título y botón configurar */
+.fidelizacion-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 2rem !important;
+    gap: 1.5rem !important;
+    flex-wrap: wrap !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 3px solid var(--rojo-principal) !important;
+}
+
+.fidelizacion-header h2 {
+    margin: 0 !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: var(--negro) !important;
+}
+
+.fidelizacion-header h2:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* Botón configurar fidelización */
+.configurar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    font-size: 1rem;
+    justify-content: center;
+}
+
+.configurar-btn:hover {
+    background: var(--rojo-oscuro);
+    border-color: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.configurar-btn:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Mensaje de éxito */
+.fidelizacion-container p[role="status"] {
+    color: var(--rojo-principal) !important;
+    background: var(--rojo-claro) !important;
+    padding: 12px 16px !important;
+    border-radius: 6px !important;
+    border-left: 4px solid var(--rojo-principal) !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Lista accesible para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Tabla de fidelización */
+.fidelizacion-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--blanco);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.fidelizacion-table thead {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.fidelizacion-table thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.fidelizacion-table tbody tr {
+    border-bottom: 1px solid var(--gris-claro);
+    transition: background 0.2s ease;
+}
+
+.fidelizacion-table tbody tr:hover {
+    background: var(--rojo-claro);
+}
+
+.fidelizacion-table tbody tr:focus {
+    background: var(--rojo-claro);
+    outline: 2px solid var(--rojo-principal);
+    outline-offset: -2px;
+}
+
+.fidelizacion-table tbody td {
+    padding: 12px;
+    color: var(--gris-oscuro);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.fidelizacion-table tbody td[colspan] {
+    text-align: center;
+    color: var(--gris-medio);
+    font-style: italic;
+}
+
+/* Columnas especiales */
+.fidelizacion-table tbody td[data-label="Visitas"],
+.fidelizacion-table tbody td[data-label="Cortes Gratis"] {
+    font-weight: 700;
+    color: var(--rojo-principal);
+    font-size: 1.1rem;
+}
+
+/* Botón ver detalles */
+.btn-ver {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-ver:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-ver:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Navegación de paginación */
+nav[aria-label="Paginación de fidelización"] {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos de paginación Laravel */
+nav[aria-label="Paginación de fidelización"] ul {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav[aria-label="Paginación de fidelización"] li {
+    display: inline-block;
+}
+
+nav[aria-label="Paginación de fidelización"] a,
+nav[aria-label="Paginación de fidelización"] span {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 2px solid var(--gris-claro);
+    border-radius: 4px;
+    color: var(--gris-oscuro);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+nav[aria-label="Paginación de fidelización"] a:hover {
+    background: var(--rojo-claro);
+    border-color: var(--rojo-principal);
+    color: var(--rojo-principal);
+}
+
+nav[aria-label="Paginación de fidelización"] a:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+nav[aria-label="Paginación de fidelización"] .active span {
+    background: var(--rojo-principal);
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+nav[aria-label="Paginación de fidelización"] .disabled span {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fidelizacion-container {
+        padding: 1rem;
+    }
+
+    .fidelizacion-header {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+
+    .configurar-btn {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .fidelizacion-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .fidelizacion-table thead {
+        display: none;
+    }
+
+    .fidelizacion-table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--gris-claro);
+        border-radius: 6px;
+        padding: 1rem;
+    }
+
+    .fidelizacion-table tbody td {
+        display: block;
+        text-align: left;
+        padding: 8px 0;
+        border: none;
+    }
+
+    .fidelizacion-table tbody td::before {
+        content: attr(data-label) ": ";
+        font-weight: 700;
+        color: var(--negro);
+        display: inline-block;
+        margin-right: 8px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    .fidelizacion-table tbody td[data-label="Acciones"] {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--gris-claro);
+    }
+
+    .fidelizacion-table tbody td[data-label="Acciones"]::before {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .btn-ver {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav[aria-label="Paginación de fidelización"] ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .fidelizacion-table tbody tr:hover,
+    .fidelizacion-table tbody tr:focus {
+        background: var(--rojo-claro);
+        border: 3px solid var(--negro);
+    }
+
+    .configurar-btn:focus,
+    .btn-ver:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Accesibilidad para elementos interactivos */
+[tabindex] {
+    cursor: pointer;
+}
+
+/* Caption oculto pero accesible */
+.fidelizacion-table caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Destacar filas con muchos cortes gratis */
+.fidelizacion-table tbody tr:has(td[data-label="Cortes Gratis"]:not(:empty)) {
+    position: relative;
+}
+
+/* Animación de entrada */
+.fidelizacion-container {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mejora visual para fechas */
+.fidelizacion-table tbody td[data-label="Última actualización"] {
+    font-size: 0.9rem;
+    color: var(--gris-medio);
+}
+
+/* Estado de filas interactivas */
+.fidelizacion-table tbody tr[tabindex]:focus-within {
+    background: var(--rojo-claro);
+    outline: 2px solid var(--rojo-principal);
+    outline-offset: -2px;
+}
+
+/* Estilos para filas vacías */
+.fidelizacion-table tbody tr:only-child td[colspan] {
+    padding: 2rem;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   CONFIGURACIÓN DE FIDELIZACIÓN
+   ============================================ */
+
+/* Contenedor de configuración */
+#modulo-fidelizacion-config {
+    max-width: 600px !important;
+    margin: 0 auto !important;
+}
+
+/* Formulario de configuración */
+#modulo-fidelizacion-config form {
+    background: var(--blanco) !important;
+    padding: 2rem !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border-left: 4px solid var(--rojo-principal) !important;
+}
+
+#modulo-fidelizacion-config form:focus-within {
+    box-shadow: 0 0 0 4px var(--rojo-claro) !important;
+}
+
+/* Grupos de formulario */
+#modulo-fidelizacion-config .form-grupo {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Labels de configuración */
+#modulo-fidelizacion-config .form-grupo label {
+    font-weight: 700 !important;
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+    color: var(--negro) !important;
+    font-size: 1rem !important;
+}
+
+#modulo-fidelizacion-config .form-grupo label:hover {
+    color: var(--rojo-principal);
+    cursor: pointer;
+}
+
+/* Inputs y selects de configuración */
+#modulo-fidelizacion-config .form-grupo input,
+#modulo-fidelizacion-config .form-grupo select {
+    width: 100% !important;
+    max-width: 400px !important;
+    padding: 12px 14px !important;
+    font-size: 1rem !important;
+    border: 2px solid var(--gris-medio) !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+}
+
+#modulo-fidelizacion-config .form-grupo input:focus,
+#modulo-fidelizacion-config .form-grupo select:focus {
+    outline: 3px solid var(--rojo-principal) !important;
+    outline-offset: 2px !important;
+    border-color: var(--rojo-principal) !important;
+    box-shadow: 0 0 0 4px var(--rojo-claro) !important;
+}
+
+/* Input numérico especial */
+#modulo-fidelizacion-config input[type="number"] {
+    color: var(--rojo-principal) !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+}
+
+/* Select personalizado */
+#modulo-fidelizacion-config select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23DC2626' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px !important;
+}
+
+/* Contenedor de botones */
+#modulo-fidelizacion-config form > div[style*="display:flex"] {
+    display: flex !important;
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+    flex-wrap: wrap !important;
+}
+
+/* Botón guardar (reutiliza .btn-ver) */
+#modulo-fidelizacion-config .btn-ver {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px 20px !important;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Botón volver config */
+.btn-config {
+    flex: 1;
+    min-width: 150px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background: var(--blanco);
+    color: var(--rojo-principal);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-config:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-config:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Mensaje de éxito en configuración */
+#modulo-fidelizacion-config > p[style*="color"] {
+    color: var(--rojo-principal) !important;
+    background: var(--rojo-claro) !important;
+    padding: 12px 16px !important;
+    border-radius: 6px !important;
+    border-left: 4px solid var(--rojo-principal) !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Responsive para configuración */
+@media (max-width: 768px) {
+    #modulo-fidelizacion-config {
+        max-width: 100% !important;
+        padding: 1rem !important;
+    }
+
+    #modulo-fidelizacion-config form {
+        padding: 1.5rem !important;
+    }
+
+    #modulo-fidelizacion-config .form-grupo input,
+    #modulo-fidelizacion-config .form-grupo select {
+        max-width: 100% !important;
+    }
+
+    #modulo-fidelizacion-config form > div[style*="display:flex"] {
+        flex-direction: column;
+    }
+
+    #modulo-fidelizacion-config .btn-ver,
+    .btn-config {
+        width: 100%;
+        min-width: 100%;
+    }
+}

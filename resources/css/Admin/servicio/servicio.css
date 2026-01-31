@@ -1,0 +1,522 @@
+/* ============================================
+   SERVICIOS - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+}
+
+/* Contenedor principal de servicios */
+.servicios-container {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Header con título y botón crear */
+#modulo-servicios > div[style*="display:flex"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 2rem !important;
+    gap: 1.5rem !important;
+    flex-wrap: wrap !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 3px solid var(--rojo-principal) !important;
+}
+
+#modulo-servicios h2 {
+    margin: 0 !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: var(--negro) !important;
+}
+
+#modulo-servicios h2:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* Botón crear servicio */
+.crear-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    font-size: 1rem;
+}
+
+.crear-btn:hover {
+    background: var(--rojo-oscuro);
+    border-color: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.crear-btn:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Alerta de éxito */
+#modulo-servicios p[style*="color:green"] {
+    color: var(--rojo-principal) !important;
+    background: var(--rojo-claro) !important;
+    padding: 12px 16px !important;
+    border-radius: 6px !important;
+    border-left: 4px solid var(--rojo-principal) !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Lista accesible para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Tabla de servicios */
+.servicios-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--blanco);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.servicios-container table thead {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.servicios-container table thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.servicios-container table tbody tr {
+    border-bottom: 1px solid var(--gris-claro);
+    transition: background 0.2s ease;
+}
+
+.servicios-container table tbody tr:hover {
+    background: var(--rojo-claro);
+}
+
+.servicios-container table tbody tr:focus-within {
+    background: var(--rojo-claro);
+    outline: 2px solid var(--rojo-principal);
+    outline-offset: -2px;
+}
+
+.servicios-container table tbody td {
+    padding: 12px;
+    color: var(--gris-oscuro);
+    font-size: 0.95rem;
+}
+
+/* Botón editar */
+.btn-editar {
+    color: var(--rojo-principal);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-editar:hover {
+    background: var(--rojo-claro);
+    color: var(--rojo-oscuro);
+}
+
+.btn-editar:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Formulario de eliminación inline */
+.servicios-container form {
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* Botón eliminar */
+.btn-eliminar {
+    background: transparent;
+    color: var(--rojo-principal);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    margin: 0 !important;
+    margin-left: 8px !important;
+}
+
+.btn-eliminar:hover {
+    background: var(--rojo-claro);
+    color: var(--rojo-oscuro);
+}
+
+.btn-eliminar:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Modal de eliminación */
+.modal-eliminar-servicio {
+    position: fixed !important;
+    z-index: 9999 !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.modal-eliminar-servicio > div {
+    background: var(--blanco) !important;
+    padding: 2.5rem 2rem 2rem 2rem !important;
+    border-radius: 12px !important;
+    max-width: 90vw !important;
+    width: 450px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    outline: 0 !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    border: 3px solid var(--rojo-principal) !important;
+}
+
+/* Botón cerrar modal (X) */
+#cerrar-modal-eliminar-servicio {
+    position: absolute !important;
+    top: 18px !important;
+    right: 18px !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 2rem !important;
+    color: var(--gris-oscuro) !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+}
+
+#cerrar-modal-eliminar-servicio:hover {
+    background: var(--rojo-claro) !important;
+    color: var(--rojo-principal) !important;
+}
+
+#cerrar-modal-eliminar-servicio:focus {
+    outline: 3px solid var(--rojo-principal) !important;
+    outline-offset: 2px !important;
+}
+
+/* Título del modal */
+#modal-eliminar-servicio-titulo {
+    margin: 0 0 0.5rem 0 !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    color: var(--negro) !important;
+    text-align: center !important;
+}
+
+/* Texto del modal */
+.modal-eliminar-servicio p {
+    margin: 0 0 2rem 0 !important;
+    font-size: 1.1rem !important;
+    color: var(--gris-oscuro) !important;
+    text-align: center !important;
+}
+
+/* Contenedor de botones del modal */
+.modal-eliminar-servicio > div > div {
+    display: flex !important;
+    gap: 1rem !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+/* Botón cancelar */
+#cancelar-eliminar-servicio {
+    background: var(--blanco) !important;
+    color: var(--negro) !important;
+    border: 2px solid var(--negro) !important;
+    border-radius: 6px !important;
+    padding: 0.8rem 2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+#cancelar-eliminar-servicio:hover {
+    background: var(--gris-oscuro) !important;
+    color: var(--blanco) !important;
+    transform: translateY(-2px) !important;
+}
+
+#cancelar-eliminar-servicio:focus {
+    outline: 3px solid var(--rojo-principal) !important;
+    outline-offset: 3px !important;
+}
+
+/* Botón confirmar eliminación */
+#confirmar-eliminar-servicio {
+    background: var(--rojo-principal) !important;
+    color: var(--blanco) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.8rem 2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+#confirmar-eliminar-servicio:hover {
+    background: var(--rojo-oscuro) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;
+}
+
+#confirmar-eliminar-servicio:focus {
+    outline: 3px solid var(--rojo-principal) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 5px var(--rojo-claro) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .servicios-container {
+        padding: 1rem;
+    }
+
+    #modulo-servicios > div[style*="display:flex"] {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+
+    .crear-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .servicios-container table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .servicios-container table thead {
+        display: none;
+    }
+
+    .servicios-container table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--gris-claro);
+        border-radius: 6px;
+        padding: 1rem;
+    }
+
+    .servicios-container table tbody td {
+        display: block;
+        text-align: left;
+        padding: 8px 0;
+        border: none;
+    }
+
+    .servicios-container table tbody td::before {
+        content: attr(aria-label) ": ";
+        font-weight: 700;
+        color: var(--negro);
+        display: inline-block;
+        margin-right: 8px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    .servicios-container table tbody td[aria-label="Acciones"] {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--gris-claro);
+    }
+
+    .servicios-container table tbody td[aria-label="Acciones"]::before {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .btn-editar,
+    .btn-eliminar {
+        flex: 1;
+        text-align: center;
+        margin: 0 !important;
+    }
+
+    .modal-eliminar-servicio > div {
+        width: 95vw !important;
+        padding: 2rem 1.5rem 1.5rem 1.5rem !important;
+    }
+
+    .modal-eliminar-servicio > div > div {
+        flex-direction: column;
+        gap: 0.75rem !important;
+    }
+
+    #cancelar-eliminar-servicio,
+    #confirmar-eliminar-servicio {
+        width: 100%;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .servicios-container table tbody tr:hover,
+    .servicios-container table tbody tr:focus-within {
+        background: var(--rojo-claro);
+        border: 3px solid var(--negro);
+    }
+
+    .crear-btn:focus,
+    .btn-editar:focus,
+    .btn-eliminar:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Accesibilidad para elementos interactivos */
+[role="dialog"] {
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+[tabindex] {
+    cursor: pointer;
+}
+
+/* Estilos adicionales para columnas específicas */
+.servicios-container table tbody td[aria-label="Precio"],
+.servicios-container table tbody td[aria-label="Precio final"] {
+    font-weight: 600;
+    color: var(--rojo-principal);
+}
+
+.servicios-container table tbody td[aria-label="Descuento"] {
+    color: var(--rojo-oscuro);
+    font-weight: 600;
+}
+
+.servicios-container table tbody td[aria-label="Estado"] {
+    text-transform: capitalize;
+    font-weight: 600;
+}

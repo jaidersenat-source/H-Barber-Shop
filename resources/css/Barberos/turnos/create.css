@@ -1,0 +1,864 @@
+/* ============================================
+   CSS CREAR TURNO - CALENDARIO ACCESIBLE
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color (si no están ya definidas) */
+:root {
+    --color-primary: #2563EB;
+    --color-primary-dark: #1E40AF;
+    --color-primary-light: #fef2f2;
+    --color-secondary: #000000;
+    --color-text: #1a1a1a;
+    --color-text-light: #4a4a4a;
+    --color-white: #ffffff;
+    --color-border: #e5e5e5;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f8f8f8;
+    --color-success: #16a34a;
+    --color-error: #b91c1c;
+    --color-danger: #b91c1c;
+    --color-focus: #dc2626;
+    --min-touch: 44px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius: 10px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.3rem;
+}
+
+/* =====================================================
+   VISTA CREAR TURNO - CALENDARIO
+   ===================================================== */
+
+/* Contenedor principal del módulo crear turno */
+#modulo-turnos-create {
+    background: var(--color-white);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 2px solid var(--color-border);
+}
+
+#modulo-turnos-create:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Botón volver */
+.volver-btn {
+    background: var(--color-white);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: var(--min-touch);
+}
+
+.volver-btn:hover,
+.volver-btn:focus {
+    background: var(--color-secondary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    outline: 3px solid rgba(0, 0, 0, 0.3);
+    outline-offset: 2px;
+}
+
+/* Formulario de selección fecha/servicio */
+.card > label,
+#modulo-turnos-create label {
+    display: block;
+    font-weight: 700;
+    color: var(--color-secondary);
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-xs);
+    margin-top: var(--spacing-lg);
+}
+
+.card > label:first-of-type,
+#modulo-turnos-create label:first-of-type {
+    margin-top: 0;
+}
+
+/* Input date y select */
+.card > input[type="date"],
+.card > select,
+#modulo-turnos-create input[type="date"],
+#modulo-turnos-create select {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    min-height: var(--min-touch);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.card > input[type="date"]:hover,
+.card > select:hover,
+#modulo-turnos-create input[type="date"]:hover,
+#modulo-turnos-create select:hover {
+    border-color: var(--color-primary);
+}
+
+.card > input[type="date"]:focus,
+.card > select:focus,
+#modulo-turnos-create input[type="date"]:focus,
+#modulo-turnos-create select:focus {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    border-color: var(--color-focus);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+    background: var(--color-primary-light);
+}
+
+.card > select,
+#modulo-turnos-create select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 3rem;
+}
+
+/* Contenedor de resultados (slots) */
+#result {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 3px solid var(--color-border);
+}
+
+#result > p {
+    color: var(--color-text-light);
+    font-style: italic;
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius);
+    text-align: center;
+    border: 2px solid var(--color-border);
+    font-size: var(--font-size-base);
+}
+
+/* Mensaje cuando no hay turnos disponibles */
+#result .no-turnos-msg {
+    background: var(--color-primary-light);
+    color: var(--color-error);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius);
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border: 2px solid #fecaca;
+}
+
+/* Tarjetas de barberos */
+#result > div,
+#result .barbero-card {
+    border: 2px solid var(--color-border) !important;
+    border-radius: var(--radius) !important;
+    padding: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-lg) !important;
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+#result > div:hover,
+#result > div:focus-within,
+#result .barbero-card:hover,
+#result .barbero-card:focus-within {
+    border-color: var(--color-primary) !important;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+#result > div h3,
+#result .barbero-card h3 {
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin: 0 0 var(--spacing-sm) 0;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+#result > div p,
+#result .barbero-card p {
+    color: var(--color-text-light);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: var(--font-size-base);
+}
+
+/* Contenedor de slots */
+#result .slots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+}
+
+/* Botones de slots de tiempo */
+.slotBtn,
+#result .slot-btn {
+    min-width: 90px;
+    min-height: var(--min-touch);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-xs) !important;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius);
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.slotBtn::before,
+#result .slot-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.slotBtn:hover:not(:disabled)::before,
+#result .slot-btn:hover::before {
+    left: 100%;
+}
+
+.slotBtn:hover:not(:disabled),
+#result .slot-btn:hover,
+#result .slot-btn:focus {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+}
+
+.slotBtn:focus,
+#result .slot-btn:focus {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(220, 38, 38, 0.2);
+}
+
+.slotBtn:active,
+#result .slot-btn:active {
+    transform: scale(0.98);
+}
+
+/* Slot seleccionado */
+.slotBtn.selected,
+#result .slot-btn.selected {
+    background: var(--color-secondary);
+    color: var(--color-white);
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Slots ocupados/deshabilitados */
+.slotBtn:disabled {
+    background-color: #e2e8f0;
+    border-color: #a0aec0;
+    color: #718096;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.slotBtn:disabled::after {
+    content: " ●";
+    color: var(--color-danger);
+}
+
+.slotBtn:disabled::before {
+    display: none;
+}
+
+/* Formulario de confirmación de turno */
+#result .turno-form {
+    background: var(--color-primary-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-xl);
+    border: 2px solid var(--color-primary);
+}
+
+#result .turno-form h4 {
+    color: var(--color-secondary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-lg) 0;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 3px solid var(--color-primary);
+}
+
+#result .turno-form label {
+    display: block;
+    font-weight: 600;
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+}
+
+#result .turno-form input[type="text"],
+#result .turno-form input[type="tel"],
+#result .turno-form input[type="email"],
+#result .turno-form textarea {
+    width: 100%;
+    min-height: var(--min-touch);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: var(--font-size-base);
+    background: var(--color-white);
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+#result .turno-form input:focus,
+#result .turno-form textarea:focus {
+    border-color: var(--color-primary);
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+#result .turno-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#result .turno-form .form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    justify-content: flex-end;
+}
+
+#result .turno-form button[type="submit"],
+#result .turno-form .btn-submit {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: 2px solid var(--color-primary);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: var(--min-touch);
+}
+
+#result .turno-form button[type="submit"]:hover,
+#result .turno-form button[type="submit"]:focus {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.3);
+    outline: 3px solid rgba(220, 38, 38, 0.3);
+    outline-offset: 2px;
+}
+
+/* ================================
+   MODAL REGISTRAR TURNO
+================================ */
+
+#modal-turno {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 10000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background 0.2s ease;
+}
+
+#modal-turno[style*="display: flex"] {
+  display: flex !important;
+}
+
+/* ================================
+   CONTENIDO DEL MODAL
+================================ */
+
+#modal-turno .modal-content {
+  background: #ffffff;
+  width: 100%;
+  max-width: 360px;           /* 🔥 tamaño ideal en desktop */
+  max-height: 90vh;           /* 🔥 nunca se sale de pantalla */
+  overflow-y: auto;           /* 🔥 scroll interno */
+
+  padding: 1.5rem 1.4rem;
+  border-radius: 14px;
+
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  position: relative;
+
+  animation: modalIn 0.25s cubic-bezier(.4,1.7,.7,1) both;
+}
+
+/* Animación */
+@keyframes modalIn {
+  0% {
+    transform: translateY(30px) scale(0.98);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ================================
+   TÍTULO
+================================ */
+
+#modal-turno h3 {
+  margin-bottom: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #17345c;
+  text-align: center;
+}
+
+/* ================================
+   FORMULARIO
+================================ */
+
+#modal-turno .form-group {
+  margin-bottom: 0.9rem;
+}
+
+#modal-turno label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #17345c;
+}
+
+/* Inputs */
+#modal-turno input[type="text"],
+#modal-turno input[type="date"],
+#modal-turno input[type="number"],
+#modal-turno input[type="email"],
+#modal-turno input[type="password"] {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.95rem;
+
+  border: 2px solid #bfc9d1;
+  border-radius: 8px;
+
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+#modal-turno input:focus {
+  border-color: #17345c;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(23, 52, 92, 0.2);
+}
+
+/* ================================
+   BOTÓN CERRAR
+================================ */
+
+#cerrar-modal-turno {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+
+  color: #000000;
+  transition: color 0.2s ease;
+}
+
+#cerrar-modal-turno:hover,
+#cerrar-modal-turno:focus {
+  color: #b91c1c;
+}
+
+/* ================================
+   BOTÓN PRINCIPAL
+================================ */
+
+#modal-turno .btn-primary {
+  width: 100%;
+  margin-top: 1.2rem;
+
+  background: #b91c1c;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#modal-turno .btn-primary:hover,
+#modal-turno .btn-primary:focus {
+  background: #080808;
+}
+
+/* ================================
+   TABLETS Y MOBILE
+================================ */
+
+@media (max-width: 768px) {
+  #modal-turno {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  #modal-turno .modal-content {
+    margin-top: 2vh;
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  #modal-turno h3 {
+    font-size: 1.15rem;
+  }
+}
+
+/* ================================
+   CELULARES CHICOS
+================================ */
+
+@media (max-width: 420px) {
+  #modal-turno .modal-content {
+    padding: 1rem 0.9rem;
+    max-height: 88vh;
+  }
+
+  #modal-turno label {
+    font-size: 0.9rem;
+  }
+
+  #modal-turno input {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  #modal-turno .btn-primary {
+    font-size: 0.95rem;
+    padding: 0.7rem 0;
+  }
+}
+
+/* ================================
+   REDUCCIÓN DE MOVIMIENTO
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  #modal-turno .modal-content {
+    animation: none;
+  }
+}
+
+
+/* Modal de éxito */
+.modal-turno-exito {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-turno-exito-content {
+    background: var(--color-white);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    max-width: 90vw;
+    width: 450px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    animation: slideUp 0.3s ease;
+    border: 3px solid var(--color-success);
+}
+
+.modal-turno-exito-content h3 {
+    color: var(--color-success);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.modal-turno-exito-content p {
+    color: var(--color-text);
+    font-size: 1.1rem;
+    margin: 0 0 2rem 0;
+    text-align: center;
+}
+
+.modal-turno-exito-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-turno-exito-close:hover,
+.modal-turno-exito-close:focus {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--color-secondary);
+    outline: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+.modal-turno-exito-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.modal-turno-exito-accept {
+    background: var(--color-success);
+    color: var(--color-white);
+    border: 2px solid var(--color-success);
+    padding: var(--spacing-md) 2.5rem;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: var(--min-touch);
+}
+
+.modal-turno-exito-accept:hover,
+.modal-turno-exito-accept:focus {
+    background: #15803d;
+    border-color: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3);
+    outline: 3px solid rgba(22, 163, 74, 0.3);
+    outline-offset: 2px;
+}
+
+/* Modal de error */
+.modal-turno-error {
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-turno-error > div {
+    animation: slideUp 0.3s ease;
+    border: 3px solid var(--color-error);
+}
+
+.modal-turno-error-close:hover,
+.modal-turno-error-close:focus {
+    color: var(--color-error);
+    transform: rotate(90deg);
+    background: rgba(185, 28, 28, 0.1);
+    border-radius: 50%;
+    outline: 3px solid rgba(185, 28, 28, 0.2);
+}
+
+.modal-turno-error-accept:hover,
+.modal-turno-error-accept:focus {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    outline: 3px solid rgba(0, 0, 0, 0.3);
+    outline-offset: 2px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Indicador de carga */
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: var(--spacing-xl) auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    #modulo-turnos-create {
+        padding: var(--spacing-lg);
+    }
+
+    #modulo-turnos-create h2 {
+        font-size: 1.5rem !important;
+    }
+
+    .card > input[type="date"],
+    .card > select,
+    #modulo-turnos-create input[type="date"],
+    #modulo-turnos-create select {
+        max-width: 100%;
+    }
+
+    #result .barberos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #result .slots-container {
+        gap: var(--spacing-xs);
+    }
+
+    .slotBtn,
+    #result .slot-btn {
+        min-width: 80px;
+        font-size: 0.9rem;
+    }
+
+    #result .turno-form {
+        padding: var(--spacing-lg);
+    }
+
+    #result .turno-form .form-actions {
+        flex-direction: column;
+    }
+
+    #result .turno-form button[type="submit"] {
+        width: 100%;
+    }
+
+    .modal-turno-exito-content,
+    .modal-turno-error > div {
+        width: 90vw;
+        padding: var(--spacing-xl) var(--spacing-lg);
+    }
+}
+
+/* Mejoras de contraste para accesibilidad */
+@media (prefers-contrast: high) {
+    #modulo-turnos-create,
+    #result .barbero-card,
+    #result .turno-form,
+    #result > div {
+        border-width: 3px !important;
+    }
+
+    .slotBtn,
+    #result .slot-btn {
+        border-width: 3px;
+    }
+
+    .slotBtn:hover:not(:disabled),
+    .slotBtn:focus,
+    #result .slot-btn:hover,
+    #result .slot-btn:focus {
+        border-width: 4px;
+    }
+}
+
+/* Soporte para modo de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .slotBtn::before,
+    #result .slot-btn::before {
+        display: none;
+    }
+}

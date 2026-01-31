@@ -1,0 +1,421 @@
+/* ============================================
+   MI HORARIO SEMANAL - DISEÑO PROFESIONAL
+   Paleta: Azul, Negro y Blanco (Barbero)
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color - Paleta Barbero (Azul) */
+:root {
+    --azul-principal: #2563EB;
+    --azul-oscuro: #1E40AF;
+    --azul-claro: #DBEAFE;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    --success: #059669;
+    --success-light: #D1FAE5;
+    --warning: #F59E0B;
+    --warning-light: #FEF3C7;
+}
+
+/* Contenedor principal (card) */
+.card {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título principal */
+.card h2 {
+    margin: 0 0 2rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--azul-principal);
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-oscuro));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card h2:focus {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 4px;
+    -webkit-text-fill-color: var(--azul-principal);
+}
+
+/* Mensaje cuando no hay horario */
+.card > p {
+    text-align: center;
+    color: var(--gris-medio);
+    font-size: 1.1rem;
+    padding: 3rem 2rem;
+    background: var(--gris-claro);
+    border-radius: 8px;
+    border-left: 4px solid var(--azul-principal);
+    font-style: italic;
+}
+
+/* Tabla de horarios */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--blanco);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-oscuro));
+    color: var(--blanco);
+}
+
+.table thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--azul-oscuro);
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--gris-claro);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.table tbody tr::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--azul-principal);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: var(--azul-claro);
+    transform: translateX(4px);
+}
+
+.table tbody tr:hover::before {
+    transform: scaleY(1);
+}
+
+.table tbody tr:focus-within {
+    background: var(--azul-claro);
+    outline: 2px solid var(--azul-principal);
+    outline-offset: -2px;
+}
+
+.table tbody td {
+    padding: 14px 12px;
+    color: var(--gris-oscuro);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Columna Día */
+.table tbody td:first-child {
+    font-weight: 700;
+    color: var(--azul-principal);
+    font-size: 1.05rem;
+    text-transform: capitalize;
+}
+
+/* Columna Fecha */
+.table tbody td:nth-child(2) {
+    font-weight: 600;
+    color: var(--negro);
+}
+
+/* Columnas de Hora */
+.table tbody td:nth-child(3),
+.table tbody td:nth-child(4) {
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    font-family: 'Courier New', monospace;
+}
+
+/* Columna Estado */
+.table tbody td:last-child {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+/* Estados con badges */
+.table tbody td:last-child::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Estado: disponible */
+.table tbody tr:has(td:last-child:contains("disponible")) td:last-child {
+    color: var(--success);
+}
+
+.table tbody tr:has(td:last-child:contains("disponible")) td:last-child::before {
+    background: var(--success);
+    box-shadow: 0 0 6px var(--success);
+}
+
+/* Estado: ocupado */
+.table tbody tr:has(td:last-child:contains("ocupado")) td:last-child {
+    color: var(--warning);
+}
+
+.table tbody tr:has(td:last-child:contains("ocupado")) td:last-child::before {
+    background: var(--warning);
+    box-shadow: 0 0 6px var(--warning);
+}
+
+/* Estado: inactivo */
+.table tbody tr:has(td:last-child:contains("inactivo")) td:last-child {
+    color: var(--gris-medio);
+}
+
+.table tbody tr:has(td:last-child:contains("inactivo")) td:last-child::before {
+    background: var(--gris-medio);
+}
+
+/* Animación de entrada de filas */
+.table tbody tr {
+    animation: slideInRow 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+.table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.table tbody tr:nth-child(2) { animation-delay: 0.15s; }
+.table tbody tr:nth-child(3) { animation-delay: 0.2s; }
+.table tbody tr:nth-child(4) { animation-delay: 0.25s; }
+.table tbody tr:nth-child(5) { animation-delay: 0.3s; }
+.table tbody tr:nth-child(6) { animation-delay: 0.35s; }
+.table tbody tr:nth-child(7) { animation-delay: 0.4s; }
+
+@keyframes slideInRow {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        padding: 1rem;
+    }
+
+    .card h2 {
+        font-size: 1.8rem;
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--azul-claro);
+        border-left: 4px solid var(--azul-principal);
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+    }
+
+    .table tbody tr::before {
+        display: none;
+    }
+
+    .table tbody tr:hover {
+        transform: none;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+
+    .table tbody td {
+        display: block;
+        text-align: left;
+        padding: 8px 0;
+        border: none;
+    }
+
+    .table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--negro);
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--azul-principal);
+    }
+
+    /* Labels para móviles */
+    .table tbody td:nth-child(1)::before { content: "Día: "; }
+    .table tbody td:nth-child(2)::before { content: "Fecha: "; }
+    .table tbody td:nth-child(3)::before { content: "Hora Inicio: "; }
+    .table tbody td:nth-child(4)::before { content: "Hora Fin: "; }
+    .table tbody td:nth-child(5)::before { content: "Estado: "; }
+
+    /* Estilos especiales en móvil */
+    .table tbody td:first-child {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--azul-claro);
+    }
+
+    .table tbody td:last-child {
+        margin-top: 12px;
+        padding: 8px 12px;
+        background: var(--gris-claro);
+        border-radius: 6px;
+        display: inline-block;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+/* Texto oculto para lectores de pantalla */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .table tbody tr:hover {
+        border: 3px solid var(--azul-principal);
+    }
+
+    .table tbody tr::before {
+        width: 6px;
+    }
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--azul-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Mejora visual para filas del día actual */
+.table tbody tr.today {
+    background: var(--azul-claro);
+    border-left: 4px solid var(--azul-principal);
+}
+
+.table tbody tr.today td:first-child::after {
+    content: " 📅";
+    margin-left: 8px;
+}
+
+/* Estilos para días pasados (opcional) */
+.table tbody tr.past {
+    opacity: 0.6;
+}
+
+.table tbody tr.past:hover {
+    opacity: 0.8;
+}
+
+/* Caption para accesibilidad (si se añade) */
+.table caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Mejora para impresión */
+@media print {
+    .card {
+        box-shadow: none;
+        border: 1px solid var(--negro);
+    }
+
+    .table thead {
+        background: var(--negro) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .table tbody tr:hover {
+        background: transparent !important;
+    }
+}

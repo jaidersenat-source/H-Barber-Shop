@@ -1,0 +1,452 @@
+/* ============================================
+   DASHBOARD BARBERO - DISEÑO PROFESIONAL
+   Paleta: Azul, Negro y Blanco (diferenciado del admin)
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color - Paleta Barbero (Azul) */
+:root {
+    --azul-principal: #2563EB;
+    --azul-oscuro: #1E40AF;
+    --azul-claro: #DBEAFE;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    --success: #059669;
+    --success-light: #D1FAE5;
+}
+
+/* Contenedor principal del dashboard */
+.barbero-dashboard {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header del dashboard */
+.dashboard-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--azul-principal);
+}
+
+.dashboard-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--negro);
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-oscuro));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dashboard-title:focus {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 4px;
+    -webkit-text-fill-color: var(--azul-principal);
+}
+
+.welcome-text {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--gris-medio);
+}
+
+.welcome-text strong {
+    color: var(--azul-principal);
+    font-weight: 700;
+}
+
+/* Sección de rendimiento */
+.performance-section {
+    margin-top: 2rem;
+}
+
+.section-title {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--azul-principal);
+}
+
+/* Grid de estadísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Tarjetas de estadísticas */
+.stat-card {
+    background: var(--gris-claro);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    opacity: 0.1;
+    transform: translate(30%, -30%);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+.stat-card:hover::before {
+    transform: translate(20%, -20%) scale(1.2);
+}
+
+/* Variantes de tarjetas */
+.stat-primary {
+    border-left-color: var(--azul-principal);
+}
+
+.stat-primary::before {
+    background: var(--azul-principal);
+}
+
+.stat-secondary {
+    border-left-color: var(--azul-oscuro);
+}
+
+.stat-secondary::before {
+    background: var(--azul-oscuro);
+}
+
+.stat-success {
+    border-left-color: var(--success);
+}
+
+.stat-success::before {
+    background: var(--success);
+}
+
+/* Icono de estadística */
+.stat-icon {
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-primary .stat-icon {
+    background: var(--azul-claro);
+}
+
+.stat-secondary .stat-icon {
+    background: linear-gradient(135deg, var(--azul-claro), var(--azul-principal));
+    background-size: 200% 200%;
+}
+
+.stat-success .stat-icon {
+    background: var(--success-light);
+}
+
+/* Contenido de estadística */
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gris-oscuro);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-primary .stat-value {
+    color: var(--azul-principal);
+}
+
+.stat-secondary .stat-value {
+    color: var(--azul-oscuro);
+}
+
+.stat-success .stat-value {
+    color: var(--success);
+}
+
+/* Desglose de servicios */
+.services-breakdown {
+    background: var(--blanco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid var(--gris-claro);
+    border-left: 4px solid var(--azul-principal);
+}
+
+.breakdown-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--azul-principal);
+}
+
+/* Lista de servicios */
+.services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--gris-claro);
+    border-radius: 6px;
+    border-left: 3px solid var(--azul-principal);
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background: var(--azul-claro);
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+.service-name {
+    font-weight: 600;
+    color: var(--negro);
+    font-size: 1rem;
+}
+
+.service-count {
+    font-weight: 700;
+    color: var(--azul-principal);
+    font-size: 1.3rem;
+    padding: 4px 12px;
+    background: var(--azul-claro);
+    border-radius: 20px;
+    min-width: 45px;
+    text-align: center;
+}
+
+/* Texto oculto para lectores de pantalla */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .barbero-dashboard {
+        padding: 1rem;
+    }
+
+    .dashboard-title {
+        font-size: 1.8rem;
+    }
+
+    .welcome-text {
+        font-size: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+    }
+
+    .services-breakdown {
+        padding: 1rem;
+    }
+
+    .breakdown-title {
+        font-size: 1.1rem;
+    }
+
+    .service-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .service-count {
+        align-self: flex-end;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .stat-card:hover {
+        border-left-width: 6px;
+    }
+
+    .service-item:hover {
+        border-left-width: 5px;
+    }
+}
+
+/* Animación de tarjetas */
+.stat-card {
+    animation: slideIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animación de lista de servicios */
+.service-item {
+    animation: fadeInList 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+.service-item:nth-child(1) { animation-delay: 0.4s; }
+.service-item:nth-child(2) { animation-delay: 0.45s; }
+.service-item:nth-child(3) { animation-delay: 0.5s; }
+.service-item:nth-child(4) { animation-delay: 0.55s; }
+.service-item:nth-child(5) { animation-delay: 0.6s; }
+
+@keyframes fadeInList {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--azul-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Role regions */
+[role="main"] {
+    scroll-margin-top: 2rem;
+}
+
+/* Estados especiales */
+.stat-card:focus-within {
+    outline: 3px solid var(--azul-principal);
+    outline-offset: 2px;
+}
+
+/* Mejora para valores grandes */
+.stat-value {
+    word-break: break-word;
+}
