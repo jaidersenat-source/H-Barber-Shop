@@ -1,0 +1,606 @@
+/* ============================================
+   GESTIÓN DE QR PARA PAGOS
+   Paleta: Rojo #dc0000 · Negro · Blanco
+   Marcas: Nequi #6d28d9 · DaviPlata #ea580c · Bancolombia #FFCD00
+   ============================================ */
+
+/* === VARIABLES === */
+:root {
+    --nequi:        #7c3aed;
+    --nequi-light:  #f5f3ff;
+    --nequi-border: #ddd6fe;
+
+    --daviplata:        #ea580c;
+    --daviplata-light:  #fff7ed;
+    --daviplata-border: #fed7aa;
+
+    --bancolombia:        #d97706;
+    --bancolombia-light:  #fffbeb;
+    --bancolombia-border: #fde68a;
+
+    --red:   #dc0000;
+    --red-dark: #b80000;
+    --black: #000000;
+    --white: #ffffff;
+
+    --gray-50:  #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+
+    --radius-sm: 8px;
+    --radius:    12px;
+    --radius-lg: 16px;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+    --shadow:    0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+}
+
+/* === PÁGINA === */
+.qr-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* === HEADER DE PÁGINA === */
+.qr-page-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--gray-100);
+}
+
+.qr-page-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    background: var(--black);
+    border-radius: var(--radius);
+    color: var(--white);
+}
+
+.qr-page-header-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--white);
+}
+
+.qr-page-header h1 {
+    margin: 0 0 0.2rem 0;
+    font-size: clamp(1.4rem, 3vw, 1.75rem);
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.qr-page-header p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--gray-500);
+}
+
+/* === ALERTA DE ÉXITO === */
+.qr-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.qr-alert svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.qr-alert-success {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+.qr-alert-success svg {
+    stroke: #15803d;
+}
+
+/* === GRID PRINCIPAL === */
+.qr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* === TARJETA QR === */
+.qr-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1.5px solid var(--gray-200);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.qr-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+/* === HEADER DE TARJETA === */
+.qr-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1.5px solid var(--gray-100);
+    background: var(--gray-50);
+}
+
+/* === BADGE DE MARCA === */
+.qr-brand-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--gray-900);
+}
+
+.qr-brand-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.qr-brand-badge.nequi .qr-brand-dot       { background: var(--nequi); }
+.qr-brand-badge.daviplata .qr-brand-dot    { background: var(--daviplata); }
+.qr-brand-badge.bancolombia .qr-brand-dot  { background: var(--bancolombia); }
+
+/* === PILL DE ESTADO === */
+.qr-status-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+}
+
+.qr-status-pill.active {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.qr-status-pill.inactive {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* === CUERPO DE TARJETA === */
+.qr-card-body {
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex: 1;
+}
+
+/* === ÁREA DE PREVISUALIZACIÓN === */
+.qr-preview-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.qr-preview-area.nequi       { background: var(--nequi-light);       border: 1.5px dashed var(--nequi-border); }
+.qr-preview-area.daviplata    { background: var(--daviplata-light);    border: 1.5px dashed var(--daviplata-border); }
+.qr-preview-area.bancolombia  { background: var(--bancolombia-light);  border: 1.5px dashed var(--bancolombia-border); }
+
+.qr-preview-img {
+    max-width: 140px;
+    max-height: 140px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    object-fit: contain;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.qr-updated-at {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--gray-500);
+}
+
+/* === ESTADO VACÍO === */
+.qr-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--gray-400);
+}
+
+.qr-empty-state svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+}
+
+.qr-empty-state.nequi svg       { stroke: var(--nequi); opacity: 0.5; }
+.qr-empty-state.daviplata svg    { stroke: var(--daviplata); opacity: 0.5; }
+.qr-empty-state.bancolombia svg  { stroke: var(--bancolombia); opacity: 0.5; }
+
+.qr-empty-state span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gray-400);
+}
+
+/* === FORMULARIO === */
+.qr-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.qr-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.qr-form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.qr-file-input {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    color: var(--gray-700);
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+.qr-file-input:focus {
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.qr-form-hint {
+    font-size: 0.78rem;
+    color: var(--gray-400);
+    font-style: italic;
+}
+
+/* === PREVIEW DE IMAGEN NUEVA === */
+.qr-file-preview {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 0;
+}
+
+.qr-file-preview img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1.5px solid var(--gray-200);
+}
+
+.qr-file-preview span {
+    font-size: 0.8rem;
+    color: #15803d;
+    font-weight: 500;
+}
+
+/* === BOTONES DE SUBIDA === */
+.qr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    letter-spacing: 0.2px;
+}
+
+.qr-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.qr-btn:hover {
+    filter: brightness(0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.18);
+}
+
+.qr-btn:focus {
+    outline: 3px solid var(--black);
+    outline-offset: 2px;
+}
+
+.qr-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.qr-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.qr-btn.nequi {
+    background: var(--nequi);
+    color: var(--white);
+}
+.qr-btn.nequi:focus { outline-color: var(--nequi); }
+
+.qr-btn.daviplata {
+    background: var(--daviplata);
+    color: var(--white);
+}
+.qr-btn.daviplata:focus { outline-color: var(--daviplata); }
+
+.qr-btn.bancolombia {
+    background: var(--bancolombia);
+    color: var(--black);
+}
+.qr-btn.bancolombia svg { stroke: var(--black); }
+.qr-btn.bancolombia:focus { outline-color: var(--bancolombia); }
+
+/* === ESTADO LOADING === */
+.qr-btn.loading {
+    color: transparent !important;
+    pointer-events: none;
+    position: relative;
+}
+
+.qr-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin: -8px 0 0 -8px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.qr-btn.bancolombia.loading::after {
+    border-color: rgba(0,0,0,0.2);
+    border-top-color: var(--black);
+}
+
+/* === INSTRUCCIONES (details/summary) === */
+.qr-instructions {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1.5px solid var(--gray-200);
+}
+
+.qr-instructions summary {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    cursor: pointer;
+    background: var(--gray-50);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.qr-instructions summary::-webkit-details-marker { display: none; }
+
+.qr-instructions summary::after {
+    content: '›';
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+    color: var(--gray-400);
+    line-height: 1;
+}
+
+.qr-instructions[open] summary::after {
+    transform: rotate(90deg);
+}
+
+.qr-instructions summary:hover {
+    background: var(--gray-100);
+}
+
+.qr-instructions ol {
+    margin: 0;
+    padding: 1rem 1rem 1rem 2rem;
+    font-size: 0.85rem;
+    color: var(--gray-700);
+    line-height: 2;
+    background: var(--white);
+}
+
+.qr-instructions ol li strong {
+    color: var(--black);
+}
+
+/* === INFO BOX === */
+.qr-info-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #eff6ff;
+    border: 1.5px solid #bfdbfe;
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.qr-info-box-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: #dbeafe;
+    border-radius: 50%;
+}
+
+.qr-info-box-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: #1d4ed8;
+}
+
+.qr-info-box-content strong {
+    display: block;
+    font-size: 0.9rem;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+}
+
+.qr-info-box-content ul {
+    margin: 0;
+    padding: 0 0 0 1.2rem;
+    font-size: 0.85rem;
+    color: #1e40af;
+    line-height: 1.9;
+}
+
+.qr-info-box-content ul li strong {
+    color: #1e3a8a;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* === MODO REDUCIDO DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* === CONTRASTE ALTO === */
+@media (prefers-contrast: high) {
+    .qr-card { border: 2px solid var(--black); }
+    .qr-form-hint { color: var(--black); font-style: normal; font-weight: 600; }
+    .qr-instructions { border: 2px solid var(--black); }
+}
+
+/* === TABLET (2 columnas) === */
+@media (max-width: 1024px) {
+    .qr-page {
+        padding: 1.5rem;
+    }
+
+    .qr-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Bancolombia centrado en tablet */
+    .qr-grid .qr-card[data-brand="bancolombia"] {
+        grid-column: 1 / -1;
+        max-width: 520px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* === MÓVIL (1 columna) === */
+@media (max-width: 640px) {
+    .qr-page {
+        padding: 1rem;
+    }
+
+    .qr-page-header {
+        gap: 1rem;
+    }
+
+    .qr-page-header-icon {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+    }
+
+    .qr-page-header-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .qr-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .qr-grid .qr-card[data-brand="bancolombia"] {
+        grid-column: auto;
+        max-width: 100%;
+    }
+
+    .qr-card-body {
+        padding: 1.25rem 1rem;
+    }
+
+    .qr-preview-area {
+        min-height: 150px;
+    }
+
+    .qr-info-box {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

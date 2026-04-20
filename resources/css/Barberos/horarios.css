@@ -1,0 +1,430 @@
+/* Variables de color - Paleta Barbero (Azul) */
+:root {
+    --azul-principal: #2563EB;
+    --azul-oscuro: #1E40AF;
+    --azul-claro: #DBEAFE;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    --success: #059669;
+    --success-light: #D1FAE5;
+    --warning: #F59E0B;
+    --warning-light: #FEF3C7;
+    --danger: #DC2626;
+    --danger-light: #FEE2E2;
+    --info: #0EA5E9;
+    --info-light: #E0F2FE;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+.horario-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* ============================================
+   ENCABEZADO
+   ============================================ */
+.horario-header {
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.horario-header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.horario-header h2 {
+    color: var(--blanco);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   ESTADO VACÍO
+   ============================================ */
+.horario-empty {
+    background-color: var(--azul-claro);
+    border: 2px dashed var(--azul-principal);
+    border-radius: 12px;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: var(--azul-oscuro);
+    margin-top: 2rem;
+}
+
+.horario-empty svg {
+    color: var(--azul-principal);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.horario-empty p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ============================================
+   BADGES DE ESTADO
+   ============================================ */
+.badge-estado {
+    display: inline-block;
+    padding: 0.4rem 0.875rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.badge-disponible {
+    background-color: var(--success-light);
+    color: var(--success);
+}
+
+.badge-ocupado {
+    background-color: var(--danger-light);
+    color: var(--danger);
+}
+
+.badge-descanso {
+    background-color: var(--warning-light);
+    color: var(--warning);
+}
+
+.badge-activo {
+    background-color: var(--success-light);
+    color: var(--success);
+}
+
+.badge-inactivo {
+    background-color: var(--gris-claro);
+    color: var(--gris-medio);
+}
+
+/* ============================================
+   TARJETAS MÓVIL (Vista por defecto)
+   ============================================ */
+.tarjetas-movil {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tarjeta-horario {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--gris-claro);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tarjeta-horario:active {
+    transform: scale(0.98);
+}
+
+/* Tarjeta del día actual */
+.tarjeta-hoy {
+    border-color: var(--azul-principal);
+    background: linear-gradient(to bottom, rgba(37, 99, 235, 0.03) 0%, var(--blanco) 100%);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+/* Top de la tarjeta */
+.tarjeta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.tarjeta-dia {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+    text-transform: capitalize;
+}
+
+/* Fecha de la tarjeta */
+.tarjeta-fecha {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--gris-claro);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    color: var(--gris-medio);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.tarjeta-fecha svg {
+    color: var(--azul-principal);
+    flex-shrink: 0;
+}
+
+/* Horas de la tarjeta */
+.tarjeta-horas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--azul-claro) 0%, rgba(219, 234, 254, 0.4) 100%);
+    border-radius: 10px;
+}
+
+.tarjeta-hora {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.hora-label {
+    font-size: 0.75rem;
+    color: var(--gris-medio);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.hora-valor {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+}
+
+.tarjeta-separador {
+    color: var(--azul-principal);
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+/* Badge "Hoy" en la esquina */
+.tarjeta-badge-hoy {
+    position: absolute;
+    top: -8px;
+    right: 1rem;
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    color: var(--blanco);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* ============================================
+   TABLA DESKTOP (Oculta por defecto)
+   ============================================ */
+.tabla-desktop {
+    display: none;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   TABLET (640px+)
+   ============================================ */
+@media (min-width: 640px) {
+    .horario-container {
+        padding: 1.5rem;
+    }
+
+    .horario-header {
+        padding: 2rem;
+    }
+
+    .horario-header h2 {
+        font-size: 2rem;
+    }
+
+    .tarjetas-movil {
+        gap: 1.25rem;
+    }
+
+    .tarjeta-horario {
+        padding: 1.5rem;
+    }
+
+    .tarjeta-dia {
+        font-size: 1.5rem;
+    }
+
+    .hora-valor {
+        font-size: 1.75rem;
+    }
+
+    .tarjeta-fecha {
+        font-size: 1rem;
+        padding: 0.875rem 1.25rem;
+    }
+}
+
+/* ============================================
+   DESKTOP (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+    .horario-container {
+        padding: 2rem;
+    }
+
+    .horario-header {
+        padding: 2rem 2.5rem;
+    }
+
+    .horario-header h2 {
+        font-size: 2.25rem;
+    }
+
+    /* Ocultar tarjetas en desktop */
+    .tarjetas-movil {
+        display: none;
+    }
+
+    /* Mostrar tabla en desktop */
+    .tabla-desktop {
+        display: block;
+        background: var(--blanco);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table thead {
+        background-color: var(--azul-principal);
+    }
+
+    .table th {
+        padding: 1.25rem 1.5rem;
+        text-align: left;
+        font-weight: 700;
+        color: var(--blanco);
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        letter-spacing: 0.5px;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid var(--gris-claro);
+        transition: background-color 0.2s ease;
+    }
+
+    .table tbody tr:hover {
+        background-color: var(--azul-claro);
+    }
+
+    .table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    /* Fila del día actual */
+    .fila-hoy {
+        background-color: rgba(37, 99, 235, 0.05);
+        border-left: 4px solid var(--azul-principal);
+    }
+
+    .fila-hoy:hover {
+        background-color: var(--azul-claro);
+    }
+
+    .fila-hoy td:first-child {
+        font-weight: 700;
+        color: var(--azul-principal);
+    }
+
+    .table td {
+        padding: 1.25rem 1.5rem;
+        color: var(--gris-oscuro);
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================
+   DESKTOP GRANDE (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+    .horario-container {
+        padding: 2.5rem;
+    }
+
+    .horario-header {
+        padding: 2.5rem 3rem;
+    }
+
+    .horario-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .table th {
+        padding: 1.5rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .table td {
+        padding: 1.5rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   MEJORAS DE ACCESIBILIDAD
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Modo oscuro (opcional para futuro) */
+@media (prefers-color-scheme: dark) {
+    /* Aquí podrías agregar estilos para modo oscuro si lo deseas */
+}

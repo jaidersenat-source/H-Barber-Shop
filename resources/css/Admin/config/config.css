@@ -1,0 +1,733 @@
+/* ============================================
+   CONFIGURACIÓN DE PERFIL - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    --success: #059669;
+    --success-bg: #D1FAE5;
+}
+
+/* Contenedor principal */
+.configuracion-container {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Header de página */
+.page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.page-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--negro);
+}
+
+.page-description {
+    margin: 0;
+    color: var(--gris-medio);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Texto oculto para lectores de pantalla */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Alertas */
+.alert {
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background: var(--success-bg);
+    border-left-color: var(--success);
+    color: var(--success);
+}
+
+.alert-error {
+    background: var(--rojo-claro);
+    border-left-color: var(--rojo-principal);
+    color: var(--rojo-oscuro);
+}
+
+.alert-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.alert strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.error-list {
+    margin: 0.5rem 0 0 1.5rem;
+    padding: 0;
+}
+
+.error-list li {
+    margin-bottom: 0.25rem;
+}
+
+/* Formulario */
+.configuracion-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Fieldset / Sección */
+.form-section {
+    border: 2px solid var(--gris-claro);
+    border-left: 4px solid var(--rojo-principal);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: var(--gris-claro);
+    transition: all 0.3s ease;
+}
+
+.form-section:focus-within {
+    background: var(--blanco);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+    border-color: var(--rojo-principal);
+}
+
+/* Legend */
+.form-section legend {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-icon {
+    font-size: 1.6rem;
+}
+
+/* Descripción de sección */
+.section-description {
+    margin: 0 0 1rem 0;
+    padding: 0.75rem;
+    background: var(--blanco);
+    border-radius: 4px;
+    color: var(--gris-medio);
+    font-size: 0.95rem;
+    border-left: 3px solid var(--rojo-principal);
+}
+
+/* Grupo de formulario */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Label */
+.form-label {
+    display: block;
+    font-weight: 700;
+    color: var(--negro);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-label:hover {
+    color: var(--rojo-principal);
+    cursor: pointer;
+}
+
+.required {
+    color: var(--rojo-principal);
+    margin-left: 4px;
+}
+
+/* Input control */
+.form-control {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--gris-medio);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: var(--blanco);
+    color: var(--negro);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+.form-control.is-invalid {
+    border-color: var(--rojo-principal);
+    background: var(--rojo-claro);
+}
+
+.form-control.is-invalid:focus {
+    outline-color: var(--rojo-oscuro);
+}
+
+/* Password wrapper */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper .form-control {
+    padding-right: 50px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--gris-medio);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.toggle-password:hover {
+    color: var(--rojo-principal);
+    background: var(--rojo-claro);
+}
+
+.toggle-password:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    color: var(--rojo-principal);
+}
+
+.eye-icon {
+    font-size: 1.2rem;
+}
+
+/* Hint text */
+.form-hint {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gris-medio);
+    line-height: 1.4;
+}
+
+/* Requirements list */
+.requirements-list {
+    margin: 0.5rem 0 0 1.5rem;
+    padding: 0;
+    list-style: disc;
+}
+
+.requirements-list li {
+    margin-bottom: 0.25rem;
+    color: var(--gris-oscuro);
+}
+
+/* Error message */
+.form-error {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--rojo-principal);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    background: var(--rojo-claro);
+    border-radius: 4px;
+    border-left: 3px solid var(--rojo-principal);
+}
+
+/* Form actions */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--gris-claro);
+}
+
+/* Botones */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.btn-primary {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.btn-primary:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+}
+
+.btn-primary:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--blanco);
+    color: var(--rojo-principal);
+    border: 2px solid var(--rojo-principal);
+}
+
+.btn-secondary:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-secondary:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* SR Announcer */
+#sr-announcer {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* ============================================
+   SECCIÓN DE CONFIGURACIÓN DEL SISTEMA
+   ============================================ */
+
+.system-config-section {
+    margin: 40px 0;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    border-left: 5px solid var(--rojo-principal);
+}
+
+.system-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.system-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--rojo-principal) 0%, var(--rojo-oscuro) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.system-icon {
+    font-size: 24px;
+    color: var(--blanco);
+}
+
+.system-header-content h2 {
+    margin: 0;
+    color: var(--negro);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.system-header-content p {
+    margin: 5px 0 0 0;
+    color: var(--gris-medio);
+    font-size: 14px;
+}
+
+/* Grid de configuración */
+.config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjetas de configuración */
+.config-card {
+    background: var(--blanco);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.config-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.config-card:hover .config-nav-arrow {
+    transform: translateX(5px);
+}
+
+.config-card.disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.config-card.disabled:hover {
+    transform: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.config-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.config-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.config-icon-wrapper.qr {
+    background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
+}
+
+.config-icon-wrapper.social {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+
+.config-icon-wrapper.profile {
+    background: linear-gradient(135deg, var(--rojo-principal) 0%, var(--rojo-oscuro) 100%);
+}
+
+.config-icon-wrapper.future {
+    background: linear-gradient(135deg, var(--gris-medio) 0%, #adb5bd 100%);
+}
+
+.config-icon {
+    font-size: 20px;
+    color: var(--blanco);
+}
+
+.config-card-header h3 {
+    margin: 0;
+    color: var(--negro);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.config-card-description {
+    color: var(--gris-medio);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+}
+
+.config-card.disabled .config-card-description {
+    color: #adb5bd;
+}
+
+/* Badges de estado */
+.config-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    border: 1px solid;
+}
+
+.badge.active {
+    color: var(--success);
+    background: var(--success-bg);
+    border-color: #c3e6cb;
+    animation: pulse 2s infinite;
+}
+
+.badge.inactive {
+    color: var(--gris-medio);
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    border-style: dashed;
+}
+
+.badge.feature {
+    background: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.badge.feature.password {
+    color: #17a2b8;
+}
+
+.badge.feature.profile {
+    color: #20c997;
+    background: var(--success-bg);
+    border-color: #c3e6cb;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Footer de la tarjeta */
+.config-card-footer {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.config-nav-arrow {
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.config-nav-arrow.qr {
+    color: #6d28d9;
+}
+
+.config-nav-arrow.social {
+    color: #25D366;
+}
+
+.config-nav-arrow.profile {
+    color: var(--rojo-principal);
+}
+
+.config-nav-arrow.future {
+    color: var(--gris-medio);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .configuracion-container {
+        padding: 1.5rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-section {
+        padding: 1rem;
+    }
+
+    .form-section legend {
+        font-size: 1.2rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .config-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .system-config-section {
+        margin: 20px 0;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .configuracion-container {
+        padding: 1rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-control,
+    .form-label {
+        font-size: 16px;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+.form-control:disabled,
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .form-section:focus-within {
+        border-width: 3px;
+    }
+
+    .btn:focus {
+        outline-width: 4px;
+    }
+
+    .form-control:focus {
+        outline-width: 4px;
+    }
+}
+
+.form-control:valid:not(:placeholder-shown):not(:focus) {
+    border-left-color: var(--success);
+}
+
+.configuracion-form.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.configuracion-form.loading .btn-primary::after {
+    content: "...";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}
+
+.form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--blanco) inset;
+    -webkit-text-fill-color: var(--negro);
+}
+
+.form-section:has(.form-control:focus) legend {
+    color: var(--rojo-principal);
+}
+
+.form-label:hover + .form-control,
+.form-label:hover + .password-wrapper .form-control {
+    border-color: var(--rojo-principal);
+}

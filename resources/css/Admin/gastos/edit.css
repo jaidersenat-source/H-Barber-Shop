@@ -1,0 +1,395 @@
+/* ============================================
+   ESTILOS EDITAR GASTO
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+/* === CONTENEDOR PRINCIPAL === */
+.reportes-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    border: 2px solid #e5e5e5;
+}
+
+/* === HEADER === */
+.modulo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 3px solid #dc0000;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.modulo-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: #000000;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* === BOTONES === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: #dc0000;
+    color: #ffffff;
+    border-color: #dc0000;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #b80000;
+    border-color: #b80000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 0, 0, 0.3);
+}
+
+.btn-secundario {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.btn-secundario:hover,
+.btn-secundario:focus {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* === ALERTAS === */
+.alerta {
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alerta-error {
+    background: #fff5f5;
+    color: #991b1b;
+    border-left: 4px solid #dc0000;
+}
+
+.alerta-error ul {
+    margin: 0.5rem 0 0 1.25rem;
+    padding: 0;
+    font-weight: 400;
+}
+
+.alerta-error ul li {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* === SECCIÓN DEL FORMULARIO === */
+.reporte-seccion {
+    background: #fafafa;
+    border-radius: 8px;
+    border: 2px solid #e5e5e5;
+    padding: 2rem;
+}
+
+/* === GRID DEL FORMULARIO === */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* === GRUPOS DE CAMPOS === */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group--full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.requerido {
+    color: #dc0000;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.hint {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #6b7280;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* === INPUTS Y SELECTS === */
+.form-group input,
+.form-group select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #000000;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #9ca3af;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #dc0000;
+    box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+/* === SELECT ESTILIZADO === */
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+    padding-right: 3rem;
+    cursor: pointer;
+}
+
+/* === INPUT FILE === */
+.form-group input[type="file"] {
+    padding: 0.65rem 1rem;
+    background: #ffffff;
+    border: 2px dashed #d1d5db;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: #dc0000;
+    background: #fff5f5;
+}
+
+.form-group input[type="file"]:focus {
+    border-color: #dc0000;
+    box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
+}
+
+/* === COMPROBANTE ACTUAL === */
+.comprobante-actual {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.comprobante-actual a {
+    color: #0369a1;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.comprobante-actual a:hover {
+    color: #dc0000;
+    text-decoration: underline;
+}
+
+/* === MENSAJES DE ERROR === */
+.error-msg {
+    font-size: 0.82rem;
+    color: #dc0000;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    animation: fadeIn 0.2s ease;
+}
+
+.error-msg::before {
+    content: '⚠';
+    font-size: 0.85rem;
+}
+
+/* Borde rojo en inputs con error */
+.form-group:has(.error-msg) input,
+.form-group:has(.error-msg) select {
+    border-color: #dc0000;
+    background: #fff5f5;
+}
+
+/* === GRUPO DE BOTONES === */
+.btn-group {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e5e5e5;
+    margin-top: 1.5rem;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.reporte-seccion {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* === ACCESIBILIDAD === */
+*:focus-visible {
+    outline: 3px solid #dc0000;
+    outline-offset: 3px;
+}
+
+.reportes-container:focus-within {
+    box-shadow: 0 6px 24px rgba(220, 0, 0, 0.12);
+}
+
+/* === CONTRASTE ALTO === */
+@media (prefers-contrast: high) {
+    .reportes-container {
+        border: 3px solid #000000;
+    }
+    .reporte-seccion {
+        border: 3px solid #000000;
+    }
+    .form-group input,
+    .form-group select {
+        border: 3px solid #000000;
+    }
+}
+
+/* === MODO REDUCIDO DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* === RESPONSIVIDAD TABLET === */
+@media (max-width: 1024px) {
+    .reportes-container {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 768px) {
+    .reportes-container {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    .modulo-header {
+        flex-direction: column;
+        align-items: stretch;
+        padding-bottom: 1.5rem;
+    }
+
+    .btn-secundario {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .reporte-seccion {
+        padding: 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group--full {
+        grid-column: auto;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn-group .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL PEQUEÑO === */
+@media (max-width: 480px) {
+    .reportes-container {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .modulo-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .reporte-seccion {
+        padding: 1rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.9rem;
+        padding: 0.65rem 0.85rem;
+    }
+}

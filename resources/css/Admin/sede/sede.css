@@ -1,0 +1,598 @@
+/* ============================================
+   ESTILOS LISTADO DE SEDES
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+/* === CONTENEDOR PRINCIPAL === */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 1400px;
+    border: 2px solid #e5e5e5;
+}
+
+/* === ENCABEZADO === */
+.card h1 {
+    color: #000000;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.5px;
+}
+
+/* === BOTÓN CREAR === */
+.crear-btn {
+    background: #dc0000;
+    color: #ffffff;
+    border: 2px solid #dc0000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    margin-bottom: 1.5rem;
+}
+
+.crear-btn:hover,
+.crear-btn:focus {
+    background: #b80000;
+    border-color: #b80000;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+    outline: 3px solid rgba(220, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+/* === MENSAJES DE ESTADO === */
+.card p[role="alert"] {
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.card p[style*="color: green"] {
+    background: #f0fff4;
+    color: #166534;
+    border-left: 4px solid #10b981;
+}
+
+.card p[style*="color: red"] {
+    background: #fff5f5;
+    color: #dc0000;
+    border-left: 4px solid #dc0000;
+}
+
+/* === TABLA === */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* === ENCABEZADOS DE TABLA === */
+table thead {
+    background: #000000;
+    color: #ffffff;
+}
+
+table thead th {
+    padding: 1.25rem 1rem;
+    font-weight: 600;
+    text-align: left;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #dc0000;
+}
+
+/* === FILAS DE TABLA === */
+table tbody tr {
+    border-bottom: 1px solid #e5e5e5;
+    transition: background-color 0.2s ease;
+}
+
+table tbody tr:hover {
+    background: #f8f8f8;
+}
+
+table tbody tr:focus-within {
+    background: #fff5f5;
+    outline: 2px solid #dc0000;
+    outline-offset: -2px;
+}
+
+table tbody td {
+    padding: 1rem;
+    color: #333333;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* === ACCIONES === */
+table tbody td a,
+table tbody td button {
+    text-decoration: none;
+    color: #dc0000;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 2px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+table tbody td a:hover,
+table tbody td a:focus {
+    background: #fff5f5;
+    border-color: #dc0000;
+    outline: 2px solid rgba(220, 0, 0, 0.2);
+    outline-offset: 2px;
+    transform: translateY(-1px);
+}
+
+.delete-btn {
+    color: #000000 !important;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+    background: #f3f4f6 !important;
+    border-color: #000000 !important;
+    outline: 2px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* === MODAL === */
+.modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 90vw;
+    width: 450px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid #e5e5e5;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+#modal-message {
+    color: #000000;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* === BOTONES DEL MODAL === */
+.modal-content button {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    margin: 0.5rem;
+}
+
+#modal-cancel {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+#modal-cancel:hover,
+#modal-cancel:focus {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    outline: 3px solid rgba(0, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+#modal-confirm {
+    background: #dc0000;
+    color: #ffffff;
+    border-color: #dc0000;
+}
+
+#modal-confirm:hover,
+#modal-confirm:focus {
+    background: #b80000;
+    border-color: #b80000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+    outline: 3px solid rgba(220, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+/* === FORMULARIOS INLINE === */
+.delete-form {
+    display: inline-block;
+}
+
+/* === ACCESIBILIDAD === */
+*:focus-visible {
+    outline: 3px solid #dc0000;
+    outline-offset: 3px;
+}
+
+/* === FOCUS DE CARD === */
+.card:focus-within {
+    box-shadow: 0 6px 24px rgba(220, 0, 0, 0.15);
+}
+
+/* === RESPONSIVIDAD TABLET === */
+@media (max-width: 1024px) {
+    .card {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+
+    table thead th {
+        padding: 1rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    table tbody td {
+        padding: 0.85rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 768px) {
+    .card {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    .card h1 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .crear-btn {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Tabla como tarjetas */
+    table {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 0;
+        background: #ffffff;
+    }
+
+    table tbody tr:hover {
+        background: #ffffff;
+        border-color: #dc0000;
+    }
+
+    table tbody td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 1rem;
+        text-align: left;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid #f0f0f0;
+        align-items: center;
+    }
+
+    table tbody td:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background: #f8f8f8;
+    }
+
+    table tbody td:last-child {
+        border-bottom: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #000000;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Ajuste para columna de acciones */
+    table tbody td:last-child {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    table tbody td:last-child::before {
+        margin-bottom: 0.5rem;
+    }
+
+    table tbody td:last-child > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    table tbody td a,
+    table tbody td button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .delete-form {
+        display: block;
+        width: 100%;
+    }
+
+    /* Modal en móvil */
+    .modal-content {
+        width: calc(100% - 2rem);
+        padding: 1.5rem;
+    }
+
+    #modal-message {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-content button {
+        width: 100%;
+        margin: 0.25rem 0;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL PEQUEÑO === */
+@media (max-width: 480px) {
+    .card {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .card h1 {
+        font-size: 1.25rem;
+    }
+
+    .crear-btn {
+        font-size: 0.95rem;
+        padding: 0.9rem 1.25rem;
+    }
+
+    table tbody td {
+        grid-template-columns: 100px 1fr;
+        gap: 0.75rem;
+        padding: 0.85rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    table tbody td::before {
+        font-size: 0.75rem;
+    }
+
+    table tbody td a,
+    table tbody td button {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .modal-content {
+        padding: 1.25rem;
+    }
+
+    .modal-content button {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+/* === CONTRASTE ALTO === */
+@media (prefers-contrast: high) {
+    .card {
+        border: 3px solid #000000;
+    }
+
+    table thead {
+        border-bottom: 4px solid #dc0000;
+    }
+
+    table tbody tr {
+        border: 2px solid #000000;
+    }
+
+    .modal-content {
+        border: 3px solid #000000;
+    }
+}
+
+/* === MODO REDUCIDO DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* === LANDSCAPE EN MÓVILES === */
+@media (max-width: 768px) and (orientation: landscape) {
+    .card {
+        padding: 1rem 1.5rem;
+    }
+
+    .card h1 {
+        font-size: 1.5rem;
+    }
+
+    .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* === MEJORAS DE LECTURA === */
+table tbody td span,
+table tbody td a,
+table tbody td button {
+    line-height: 1.6;
+}
+
+/* === OVERLAY DEL MODAL === */
+.modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(220, 0, 0, 0.1), transparent);
+}
+
+/* === MEJORA VISUAL PARA TABLAS LARGAS === */
+table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+table tbody tr:nth-child(even):hover {
+    background: #f8f8f8;
+}
+
+/* === INDICADOR DE SEDE ID === */
+table tbody td[data-label="ID"] {
+    font-weight: 700;
+    color: #dc0000;
+}
+
+/* === MEJORA PARA DIRECCIÓN Y SLOGAN === */
+table tbody td[data-label="Dirección"],
+table tbody td[data-label="Slogan"] {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+@media (max-width: 768px) {
+    table tbody td[data-label="Dirección"],
+    table tbody td[data-label="Slogan"] {
+        font-size: 0.85rem;
+    }
+}
+
+/* === ESPACIADO PARA ACCIONES === */
+table tbody td[data-label="Acciones"] > div {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* === MENSAJE DE TABLA VACÍA === */
+table tbody tr:only-child td:only-child {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #666666;
+    font-style: italic;
+}
+
+/* === ANIMACIÓN DE CARGA === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+table tbody tr {
+    animation: fadeIn 0.3s ease-out;
+    animation-fill-mode: both;
+}
+
+table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+table tbody tr:nth-child(5) { animation-delay: 0.25s; }

@@ -1,0 +1,354 @@
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+  --primary-red: #8b2c2c;
+  --dark-red: #6b2020;
+  --light-red: #a03a3a;
+  --bg-dark: #1a1a1a;
+  --bg-darker: #0f0f0f;
+  --bg-card: #2a2a2a;
+  --text-light: #ffffff;
+  --text-gray: #b0b0b0;
+  --text-dark: #333333;
+  --border-color: #3a3a3a;
+  --success-green: #4ade80;
+  --error-red: #ef4444;
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.3);
+  --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== ESTILOS BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #8b2c2c 0%, #6b2020 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.recovery-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
+  width: 100%;
+  background: var(--bg-darker);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-strong);
+  min-height: 600px;
+}
+
+/* ===== SECCIÓN DE BRANDING (LADO IZQUIERDO) ===== */
+.brand-section {
+  background: linear-gradient(135deg, rgba(139, 44, 44, 0.95) 0%, rgba(107, 32, 32, 0.95) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  overflow: hidden;
+}
+
+/* Patrón de fondo decorativo */
+.brand-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.03) 10px,
+      rgba(255, 255, 255, 0.03) 20px
+    ),
+    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0, 0, 0, 0.05) 10px, rgba(0, 0, 0, 0.05) 20px);
+  opacity: 0.6;
+}
+
+.brand-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.brand-logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.brand-logo svg {
+  width: 50px;
+  height: 50px;
+  fill: var(--text-light);
+}
+
+.brand-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.brand-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* ===== SECCIÓN DEL FORMULARIO (LADO DERECHO) ===== */
+.form-section {
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+.recovery-box {
+  width: 100%;
+  max-width: 420px;
+}
+
+.recovery-header {
+  margin-bottom: 40px;
+}
+
+.recovery-header h2 {
+  color: var(--text-light);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.recovery-header p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ===== ALERTAS ===== */
+.alert-success {
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid var(--success-green);
+  color: var(--success-green);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.alert-success::before {
+  content: "✓";
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* ===== FORMULARIO ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-light);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: #666666;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-red);
+  background: var(--bg-darker);
+  box-shadow: 0 0 0 4px rgba(139, 44, 44, 0.1);
+}
+
+.form-group input:hover {
+  border-color: #4a4a4a;
+}
+
+/* Estados de error */
+.form-group input.is-invalid {
+  border-color: var(--error-red);
+}
+
+.error-message {
+  color: var(--error-red);
+  font-size: 0.875rem;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.error-message::before {
+  content: "⚠";
+  font-size: 0.95rem;
+}
+
+/* ===== BOTÓN PRINCIPAL ===== */
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+  color: var(--text-light);
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(139, 44, 44, 0.3);
+  margin-top: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(139, 44, 44, 0.4);
+  background: linear-gradient(135deg, var(--light-red) 0%, var(--primary-red) 100%);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 12px rgba(139, 44, 44, 0.3);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(139, 44, 44, 0.2);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 968px) {
+  .recovery-container {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .brand-section {
+    padding: 40px 30px;
+    min-height: auto;
+  }
+
+  .brand-content h1 {
+    font-size: 2rem;
+  }
+
+  .brand-content p {
+    font-size: 1rem;
+  }
+
+  .form-section {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 10px;
+  }
+
+  .recovery-container {
+    border-radius: 16px;
+  }
+
+  .brand-section {
+    padding: 30px 20px;
+  }
+
+  .brand-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .brand-logo svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .brand-content p {
+    font-size: 0.95rem;
+  }
+
+  .form-section {
+    padding: 30px 20px;
+  }
+
+  .recovery-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .btn-primary {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.recovery-container {
+  animation: fadeIn 0.5s ease-out;
+}

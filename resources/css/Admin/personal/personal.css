@@ -1,0 +1,615 @@
+/* ============================================
+   ESTILOS PANEL DE BARBEROS REGISTRADOS
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   RESPONSIVE MEJORADO
+   ============================================ */
+
+/* === CONTENEDOR PRINCIPAL === */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 1400px;
+    border: 2px solid #e5e5e5;
+}
+
+/* === HEADER FLEXIBLE === */
+.card > div:first-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* === ENCABEZADO === */
+.card h1 {
+    color: #000000;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+    flex: 1 1 auto;
+    min-width: 200px;
+}
+
+/* === BOTÓN CREAR === */
+.crear-btn {
+    background: #dc0000;
+    color: #ffffff;
+    border: 2px solid #dc0000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.crear-btn:hover,
+.crear-btn:focus {
+    background: #b80000;
+    border-color: #b80000;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+    outline: 3px solid rgba(220, 0, 0, 0.2);
+    outline-offset: 2px;
+}
+
+/* === TABLA === */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* === ENCABEZADOS DE TABLA === */
+.table thead {
+    background: #000000;
+    color: #ffffff;
+}
+
+.table thead th {
+    padding: 1.25rem 1rem;
+    font-weight: 600;
+    text-align: left;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #dc0000;
+}
+
+/* === FILAS DE TABLA === */
+.table tbody tr {
+    border-bottom: 1px solid #e5e5e5;
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #f8f8f8;
+}
+
+.table tbody tr:focus-within {
+    background: #fff5f5;
+    outline: 2px solid #dc0000;
+    outline-offset: -2px;
+}
+
+.table tbody td {
+    padding: 1rem;
+    color: #333333;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* === ESTADOS === */
+.text-success {
+    color: #dc0000 !important;
+    font-weight: 600;
+}
+
+/* === BOTONES DE ACCIÓN === */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+}
+
+.btn-primary {
+    background: #dc0000;
+    color: #ffffff;
+    border-color: #dc0000;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #b80000;
+    border-color: #b80000;
+    box-shadow: 0 2px 8px rgba(220, 0, 0, 0.3);
+    outline: 2px solid rgba(220, 0, 0, 0.3);
+    outline-offset: 2px;
+}
+
+.btn-danger {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background: #333333;
+    border-color: #333333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    outline: 2px solid rgba(0, 0, 0, 0.3);
+    outline-offset: 2px;
+}
+
+.btn-outline-primary {
+    background: transparent;
+    color: #dc0000;
+    border-color: #dc0000;
+}
+
+/* === ACCESIBILIDAD === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* === FOCUS VISIBLE === */
+*:focus-visible {
+    outline: 3px solid #dc0000;
+    outline-offset: 3px;
+}
+
+/* === ESTADOS DE USUARIO === */
+.table tbody td em {
+    color: #666666;
+    font-style: italic;
+}
+
+/* === FORMULARIOS INLINE === */
+form[style*="inline"] {
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+/* === RESPONSIVIDAD TABLET === */
+@media (max-width: 1024px) {
+    .card {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+
+    .table thead th {
+        padding: 1rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .table tbody td {
+        padding: 0.85rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* =============================================
+   RESPONSIVE CSS - Modulo Personal (Admin)
+   H Barber Shop SAS
+   ============================================= */
+
+/* -----------------------------------------------
+   BREAKPOINT: Laptop / Tablet grande (1024px)
+   ----------------------------------------------- */
+@media (max-width: 1024px) {
+
+  #modulo-personal {
+    padding: 20px;
+  }
+
+  #modulo-personal h1 {
+    font-size: 1.6rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .crear-btn {
+    font-size: 0.85rem;
+    padding: 8px 18px;
+  }
+}
+
+/* -----------------------------------------------
+   BREAKPOINT: Tablet (768px)
+   ----------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* ---------- Card Container ---------- */
+  #modulo-personal {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  /* ---------- Header ---------- */
+  #modulo-personal > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px;
+    margin-bottom: 1.5rem !important;
+  }
+
+  #modulo-personal h1 {
+    font-size: 1.4rem !important;
+    text-align: left;
+    width: 100%;
+  }
+
+  .crear-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    min-height: 44px;
+    border-radius: 8px;
+  }
+
+  /* ---------- Tabla -> Cards ---------- */
+  .table,
+  .table thead,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table thead {
+    display: none; /* Ocultar encabezados de tabla */
+  }
+
+  .table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .table tr {
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.2s ease;
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    gap: 12px;
+  }
+
+  .table td:last-child {
+    border-bottom: none;
+    padding-top: 10px;
+    justify-content: flex-start;
+  }
+
+  /* Labels visibles desde data-label */
+  .table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #a0aec0;
+    flex-shrink: 0;
+    min-width: 100px;
+  }
+
+  /* Acciones: boton full width */
+  .table td[data-label="Acciones"] {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .table td[data-label="Acciones"]::before {
+    text-align: center;
+    min-width: auto;
+    margin-bottom: 4px;
+  }
+
+  .table td[data-label="Acciones"] form {
+    display: block !important;
+    width: 100%;
+  }
+
+  .table td[data-label="Acciones"] .btn {
+    width: 100%;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    border-radius: 6px;
+  }
+
+  .table td[data-label="Acciones"] .text-success {
+    display: block;
+    text-align: center;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+
+  /* Estado badge estilo */
+  .table td[data-label="Estado"] {
+    font-weight: 600;
+  }
+
+  /* Usuario */
+  .table td[data-label="Usuario"] em {
+    font-style: italic;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+}
+
+/* -----------------------------------------------
+   BREAKPOINT: Mobile (576px)
+   ----------------------------------------------- */
+@media (max-width: 576px) {
+
+  #modulo-personal {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  /* Header */
+  #modulo-personal > div:first-child {
+    gap: 12px;
+    margin-bottom: 1.2rem !important;
+    flex-wrap: wrap;
+  }
+
+  #modulo-personal h1 {
+    font-size: 1.2rem !important;
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .crear-btn {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    min-height: 44px;
+    white-space: normal;
+    text-align: center;
+    flex: 1 1 auto;
+    min-width: 140px;
+  }
+
+  .crear-btn span[aria-hidden="true"] {
+    font-size: 1.1em !important;
+  }
+
+  /* Card rows */
+  .table tr {
+    padding: 14px 12px;
+    gap: 8px;
+    border-radius: 8px;
+  }
+
+  .table td {
+    font-size: 0.85rem;
+    padding: 5px 0;
+    gap: 8px;
+  }
+
+  .table td::before {
+    font-size: 0.7rem;
+    min-width: 80px;
+    letter-spacing: 0.4px;
+  }
+
+  /* Acciones */
+  .table td[data-label="Acciones"] .btn {
+    min-height: 40px;
+    font-size: 0.8rem;
+    padding: 8px 14px;
+  }
+
+  .table td[data-label="Acciones"] .btn.btn-sm {
+    font-size: 0.8rem;
+  }
+
+  .table td[data-label="Acciones"] .text-success {
+    font-size: 0.8rem;
+  }
+
+  /* Nombre largo que no desborde */
+  .table td[data-label="Nombre"],
+  .table td[data-label="Usuario"] {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* -----------------------------------------------
+   BREAKPOINT: Mobile pequeno (400px)
+   ----------------------------------------------- */
+@media (max-width: 400px) {
+
+  #modulo-personal {
+    padding: 10px;
+  }
+
+  #modulo-personal h1 {
+    font-size: 1.05rem !important;
+  }
+
+  .crear-btn {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    white-space: normal;
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  /* Cards mas compactas */
+  .table tbody {
+    gap: 10px;
+  }
+
+  .table tr {
+    padding: 12px 10px;
+    gap: 6px;
+  }
+
+  .table td {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 6px 0;
+    font-size: 0.8rem;
+  }
+
+  .table td::before {
+    font-size: 0.65rem;
+    min-width: auto;
+    margin-bottom: 1px;
+  }
+
+  .table td:last-child {
+    padding-top: 8px;
+  }
+
+  .table td[data-label="Acciones"] .btn {
+    min-height: 38px;
+    font-size: 0.75rem;
+    padding: 7px 12px;
+  }
+}
+
+/* -----------------------------------------------
+   MEJORAS GENERALES PARA MOVIL - ADMIN PERSONAL
+   ----------------------------------------------- */
+
+/* Touch targets minimo 44px */
+.crear-btn,
+.table td[data-label="Acciones"] .btn,
+.table td[data-label="Acciones"] a {
+  min-height: 44px;
+}
+
+/* Evitar scroll horizontal */
+#modulo-personal {
+  overflow-x: hidden;
+}
+
+/* Feedback tactil en cards */
+@media (hover: none) and (pointer: coarse) {
+  .table tr:active {
+    background: rgba(255, 255, 255, 0.06);
+    transition: background 0.15s ease;
+  }
+
+  .crear-btn:active {
+    transform: scale(0.97);
+    transition: transform 0.15s ease;
+  }
+
+  .table td[data-label="Acciones"] .btn:active {
+    transform: scale(0.96);
+    transition: transform 0.15s ease;
+  }
+}
+
+/* Scroll margin para navbar fija del admin */
+#modulo-personal {
+  scroll-margin-top: 70px;
+}
+
+@media (max-width: 768px) {
+  #modulo-personal {
+    scroll-margin-top: 60px;
+  }
+}
+
+/* Animacion suave al cargar cards */
+@media (max-width: 768px) {
+  .table tbody tr {
+    animation: fadeInCard 0.3s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInCard {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+  .table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+  .table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+  .table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+  .table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+  .table tbody tr:nth-child(6) { animation-delay: 0.3s; }
+  .table tbody tr:nth-child(7) { animation-delay: 0.35s; }
+  .table tbody tr:nth-child(8) { animation-delay: 0.4s; }
+  .table tbody tr:nth-child(9) { animation-delay: 0.45s; }
+  .table tbody tr:nth-child(10) { animation-delay: 0.5s; }
+}

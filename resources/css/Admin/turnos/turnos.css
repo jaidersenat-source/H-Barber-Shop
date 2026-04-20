@@ -1,0 +1,956 @@
+/* ============================================
+   CSS TURNOS - DISEÑO PROFESIONAL ACCESIBLE
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+:root {
+    --color-primary: #dc2626;
+    --color-primary-dark: #991b1b;
+    --color-primary-light: #fef2f2;
+    --color-secondary: #000000;
+    --color-text: #1a1a1a;
+    --color-text-light: #4a4a4a;
+    --color-white: #ffffff;
+    --color-border: #e5e5e5;
+    --color-success: #16a34a;
+    --color-warning: #ea580c;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+}
+
+/* === SR-ONLY === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+body { overflow-x: hidden; }
+
+/* === CONTENEDOR PRINCIPAL === */
+#modulo-turnos {
+    overflow-x: hidden;
+    scroll-margin-top: 70px;
+}
+
+#modulo-turnos .card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* === CABECERA: título izquierda, botón derecha === */
+#modulo-turnos .card-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-bottom: 1.75rem;
+    gap: 1.5rem;
+}
+
+#modulo-turnos .card-header > .crear-btn {
+    margin-left: auto;
+}
+
+
+#modulo-turnos h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    white-space: nowrap;
+}
+
+/* === BOTÓN CREAR — rojo, esquina superior derecha === */
+#modulo-turnos .crear-btn {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: 2px solid var(--color-primary);
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+#modulo-turnos .crear-btn:hover {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+#modulo-turnos .crear-btn:focus {
+    outline: 3px solid rgba(220, 38, 38, 0.5);
+    outline-offset: 3px;
+}
+
+/* === MENSAJES DE SESIÓN === */
+#modulo-turnos .mensaje-ok {
+    padding: 0.875rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    border-left: 4px solid var(--color-success);
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+#modulo-turnos .mensaje-error {
+    padding: 0.875rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    border-left: 4px solid var(--color-primary);
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+
+/* === FILTROS — fondo rosado claro, una sola fila === */
+#modulo-turnos .form-filtros {
+    background: var(--color-primary-light);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid #f5c6c6;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+    flex-direction: row;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: #fff;
+}
+.btn-whatsapp:hover {
+    background-color: #1ebe57;
+}
+
+
+#modulo-turnos .filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1 1 0;
+    min-width: 180px;
+}
+
+#modulo-turnos .filtro-grupo label {
+    font-weight: 600;
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+
+#modulo-turnos .filtro-grupo select,
+#modulo-turnos .filtro-grupo input[type="date"],
+#modulo-turnos .filtro-grupo input[type="text"],
+#modulo-turnos .filtro-grupo input[type="search"],
+#modulo-turnos .filtro-grupo .filtro-auto {
+    padding: 0.6rem 1rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    background: var(--color-white);
+    color: var(--color-text);
+    transition: border-color 0.2s ease;
+    min-width: 160px;
+    min-height: 44px;
+}
+
+#modulo-turnos .filtro-grupo select:focus,
+#modulo-turnos .filtro-grupo input[type="date"]:focus,
+#modulo-turnos .filtro-grupo input[type="text"]:focus,
+#modulo-turnos .filtro-grupo input[type="search"]:focus,
+#modulo-turnos .filtro-grupo .filtro-auto:focus {
+    border-color: var(--color-primary);
+    outline: 3px solid rgba(220, 38, 38, 0.2);
+    outline-offset: 2px;
+}
+
+#modulo-turnos .btn-filtrar {
+    background: var(--color-secondary);
+    color: var(--color-white);
+    border: 2px solid var(--color-secondary);
+    padding: 0.6rem 2rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.95rem;
+    min-height: 44px;
+    transition: background 0.2s ease;
+    align-self: flex-end;
+    width: auto;
+    min-width: unset;
+    max-width: unset;
+    box-sizing: border-box;
+    margin-left: 1.5rem;
+    flex: none;
+}
+
+#modulo-turnos .btn-filtrar:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+#modulo-turnos .btn-filtrar:focus {
+    outline: 3px solid rgba(220, 38, 38, 0.4);
+    outline-offset: 3px;
+}
+
+/* === TABLA === */
+#modulo-turnos .tabla-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+#modulo-turnos .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--color-white);
+}
+
+/* Encabezado negro con línea roja inferior */
+#modulo-turnos .table thead {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+#modulo-turnos .table thead th {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+/* Filas con separador suave */
+#modulo-turnos .table tbody tr {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.15s ease;
+}
+
+#modulo-turnos .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#modulo-turnos .table tbody tr:hover {
+    background: #fafafa;
+}
+
+#modulo-turnos .table tbody td {
+    padding: 1rem 1.25rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-border);
+}
+
+#modulo-turnos .table tbody td:first-child {
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+#modulo-turnos .tabla-vacia {
+    text-align: center;
+    padding: 2.5rem;
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+/* === BADGES ESTADO PAGO === */
+#modulo-turnos .badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+#modulo-turnos .badge-pendiente { background: #fef3c7; color: #92400e; }
+#modulo-turnos .badge-confirmado { background: #d1fae5; color: #065f46; }
+#modulo-turnos .badge-sin { background: #f3f4f6; color: #4b5563; }
+
+#modulo-turnos .pago-detalle {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.15rem;
+}
+
+/* === ACCIONES — compactas, en columna === */
+#modulo-turnos .acciones-turno {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+}
+
+#modulo-turnos .acciones-turno form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* === BOTONES DE ACCIÓN — pequeños y compactos === */
+#modulo-turnos .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.78rem;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 30px;
+    transition: background 0.15s ease, transform 0.1s ease;
+    width: 100%;
+}
+
+#modulo-turnos .btn:focus {
+    outline: 3px solid rgba(0, 0, 0, 0.3);
+    outline-offset: 2px;
+}
+
+#modulo-turnos .btn:active { transform: translateY(1px); }
+
+/* Variantes */
+#modulo-turnos .btn-realizado {
+    background: #dcfce7;
+    color: #15803d;
+    border-color: #86efac;
+}
+#modulo-turnos .btn-realizado:hover { background: #bbf7d0; }
+#modulo-turnos .btn-realizado:focus { outline-color: rgba(22, 163, 74, 0.4); }
+
+#modulo-turnos .btn-cancelar {
+    background: #fee2e2;
+    color: var(--color-primary-dark);
+    border-color: #fca5a5;
+}
+#modulo-turnos .btn-cancelar:hover { background: #fecaca; }
+#modulo-turnos .btn-cancelar:focus { outline-color: rgba(220, 38, 38, 0.4); }
+
+#modulo-turnos .btn-reprogramar-turno,
+#modulo-turnos .btn-reprogramar-visual {
+    background: #fef9c3;
+    color: #854d0e;
+    border-color: #fde047;
+}
+#modulo-turnos .btn-reprogramar-turno:hover { background: #fef08a; }
+#modulo-turnos .btn-reprogramar-turno:focus { outline-color: rgba(245, 158, 11, 0.4); }
+
+#modulo-turnos .btn-confirmar {
+    background: #dcfce7;
+    color: #15803d;
+    border-color: #86efac;
+}
+#modulo-turnos .btn-confirmar:hover { background: #bbf7d0; }
+#modulo-turnos .btn-confirmar:focus { outline-color: rgba(16, 185, 129, 0.4); }
+
+#modulo-turnos .btn-rechazar {
+    background: #ffedd5;
+    color: #9a3412;
+    border-color: #fdba74;
+}
+#modulo-turnos .btn-rechazar:hover { background: #fed7aa; }
+#modulo-turnos .btn-rechazar:focus { outline-color: rgba(234, 88, 12, 0.4); }
+
+#modulo-turnos .btn-facturar {
+    background: #f1f5f9;
+    color: #1e293b;
+    border-color: #cbd5e1;
+}
+#modulo-turnos .btn-facturar:hover { background: #e2e8f0; }
+#modulo-turnos .btn-facturar:focus { outline-color: rgba(0, 0, 0, 0.3); }
+
+/* === ETIQUETAS DE ESTADO EN TABLA === */
+#modulo-turnos .estado-label {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+#modulo-turnos .estado-realizado { color: #15803d; }
+#modulo-turnos .estado-cancelado { color: var(--color-primary-dark); }
+
+/* === MODAL === */
+#modal-reprogramar-turno {
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-reprogramar-turno .modal-dialog {
+    background: var(--color-white);
+    padding: 2rem 2.5rem;
+    border-radius: var(--radius-lg);
+    max-width: 420px;
+    width: 90vw;
+    box-shadow: var(--shadow-lg);
+    animation: modalFadeIn 0.25s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95) translateY(-16px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+#modal-reprogramar-turno h2 {
+    color: var(--color-secondary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+#modal-reprogramar-turno .form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+#modal-reprogramar-turno label {
+    display: block;
+    font-weight: 600;
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+}
+
+#modal-reprogramar-turno input[type="date"],
+#modal-reprogramar-turno input[type="time"] {
+    width: 100%;
+    padding: 0.85rem 2.2rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1.15rem;
+    min-height: 52px;
+    min-height: 44px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+#modal-reprogramar-turno input:focus {
+    border-color: var(--color-primary);
+    outline: 3px solid rgba(220, 38, 38, 0.2);
+    outline-offset: 2px;
+}
+
+#modal-reprogramar-turno .modal-botones {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+#modal-reprogramar-turno .btn-cancelar-modal {
+    background: #6b7280;
+    color: var(--color-white);
+    border: 2px solid #6b7280;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+#modal-reprogramar-turno .btn-cancelar-modal:hover { background: #4b5563; border-color: #4b5563; }
+#modal-reprogramar-turno .btn-cancelar-modal:focus { outline: 3px solid rgba(107,114,128,0.5); outline-offset: 3px; }
+
+#modal-reprogramar-turno .btn-guardar-modal {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: 2px solid var(--color-primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+#modal-reprogramar-turno .btn-guardar-modal:hover { background: var(--color-primary-dark); border-color: var(--color-primary-dark); }
+#modal-reprogramar-turno .btn-guardar-modal:focus { outline: 3px solid rgba(220,38,38,0.5); outline-offset: 3px; }
+
+/* === PAGINACIÓN === */
+#modulo-turnos nav,
+#modulo-turnos .pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+}
+
+/* === CONTRASTE ALTO === */
+@media (prefers-contrast: high) {
+    #modulo-turnos .card { border: 3px solid #000; }
+    #modulo-turnos .table thead th { background: #000; }
+    #modulo-turnos .btn { border-width: 2px; font-size: 0.85rem; }
+}
+
+/* === REDUCIR MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Evitar zoom iOS */
+input[type="date"], input[type="time"], select, input, textarea { font-size: 16px; }
+@media (min-width: 481px) {
+    input[type="date"], input[type="time"], select, input, textarea { font-size: inherit; }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MÓDULO TURNOS
+   Breakpoints: 1024px · 768px · 640px · 480px
+   ============================================================ */
+
+/* ── TABLET GRANDE (1024px) ─────────────────────────────── */
+@media (max-width: 1024px) {
+
+    #modulo-turnos .card {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    /* Filtros en 2 columnas */
+    #modulo-turnos .filtros-row {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        align-items: end !important;
+    }
+
+    /* Tabla: reducir padding de celdas */
+    #modulo-turnos .table th,
+    #modulo-turnos .table td {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    /* Acciones: wrap en 2 columnas */
+    #modulo-turnos .acciones-turno {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    #modulo-turnos .acciones-turno .btn {
+        font-size: 0.78rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+    /* Ocultar columnas menos prioritarias */
+    #modulo-turnos .table th:nth-child(6),
+    #modulo-turnos .table td:nth-child(6) {
+        min-width: 140px;
+    }
+}
+
+/* ── TABLET (768px) — TABLA → CARDS ─────────────────────── */
+@media (max-width: 768px) {
+
+    #modulo-turnos .card {
+        padding: 1.25rem;
+        margin: 0.75rem;
+        border-radius: 10px;
+    }
+
+    /* Header: apila título y botón */
+    #modulo-turnos .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    #modulo-turnos .card-header h1 {
+        font-size: 1.4rem;
+    }
+
+    #modulo-turnos .crear-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Filtros: 1 columna */
+    #modulo-turnos .filtros-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.875rem !important;
+    }
+
+    #modulo-turnos .filtro-grupo {
+        width: 100%;
+    }
+
+    #modulo-turnos .filtro-grupo select,
+    #modulo-turnos .filtro-grupo input[type="date"] {
+        width: 100%;
+        min-height: 44px;
+        font-size: 1rem;
+    }
+
+    /* ── Tabla → Cards accesibles ── */
+    #modulo-turnos .table {
+        display: block;
+        border: none;
+        box-shadow: none;
+    }
+
+    #modulo-turnos .table thead {
+        display: none; /* ocultamos cabecera visual */
+    }
+
+    #modulo-turnos .table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #modulo-turnos .table tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem 1rem;
+        background: #ffffff;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,.06);
+        position: relative;
+    }
+
+    /* Fila vacía */
+    #modulo-turnos .table tr:has(.tabla-vacia) {
+        grid-template-columns: 1fr;
+    }
+
+    /* Celda: muestra etiqueta antes del valor */
+    #modulo-turnos .table td {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        border: none;
+        padding: 0;
+        font-size: 0.875rem;
+    }
+
+    #modulo-turnos .table td::before {
+        content: attr(data-label);
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #6b7280;
+    }
+
+    /* Acciones: ancho completo, última celda */
+    #modulo-turnos .table td[data-label="Acciones"] {
+        grid-column: 1 / -1;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 0.75rem;
+        margin-top: 0.25rem;
+    }
+
+    #modulo-turnos .acciones-turno {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    #modulo-turnos .acciones-turno .btn {
+        flex: 1 1 auto;
+        min-width: 100px;
+        text-align: center;
+        justify-content: center;
+        font-size: 0.82rem;
+        padding: 0.55rem 0.75rem;
+        min-height: 40px;
+    }
+
+    /* Badges de pago */
+    #modulo-turnos .pago-detalle {
+        display: block;
+        font-size: 0.75rem;
+        color: #6b7280;
+        margin-top: 2px;
+    }
+
+    /* Paginación */
+    #modulo-turnos .paginacion-wrapper {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+    }
+}
+
+/* ── MÓVIL (640px) ─────────────────────────────────────── */
+@media (max-width: 640px) {
+
+    #modulo-turnos .card {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    #modulo-turnos .card-header h1 {
+        font-size: 1.2rem;
+    }
+
+    /* Cards: 1 columna */
+    #modulo-turnos .table tr {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+
+    /* Botones de acción: columna completa */
+    #modulo-turnos .acciones-turno .btn {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    /* Badges */
+    #modulo-turnos .badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+    }
+
+    /* Estados sin acción */
+    #modulo-turnos .estado-label {
+        display: inline-block;
+        font-size: 0.82rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+    }
+
+    /* Modal reprogramar */
+    #modal-reprogramar-turno .modal-dialog {
+        padding: 1.25rem;
+        border-radius: 10px;
+        width: 95% !important;
+    }
+
+    #modal-reprogramar-turno h2 {
+        font-size: 1.2rem !important;
+        margin-bottom: 1.25rem !important;
+    }
+
+    #modal-reprogramar-turno .modal-botones {
+        flex-direction: column-reverse !important;
+        gap: 0.75rem !important;
+    }
+
+    #modal-reprogramar-turno .modal-botones button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        min-height: 46px;
+    }
+
+    #modal-reprogramar-turno input[type="date"],
+    #modal-reprogramar-turno input[type="time"] {
+        min-height: 46px;
+        font-size: 1rem !important;
+    }
+}
+
+/* ── MÓVIL PEQUEÑO (480px) ──────────────────────────────── */
+@media (max-width: 480px) {
+
+    #modulo-turnos .card {
+        padding: 0.875rem;
+        margin: 0.25rem;
+    }
+
+    #modulo-turnos .card-header h1 {
+        font-size: 1.05rem;
+    }
+
+    #modulo-turnos .table tr {
+        padding: 0.875rem;
+        border-radius: 8px;
+    }
+
+    #modulo-turnos .table td {
+        font-size: 0.82rem;
+    }
+
+    #modulo-turnos .table td::before {
+        font-size: 0.65rem;
+    }
+
+    #modulo-turnos .acciones-turno .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.6rem;
+        min-height: 42px;
+    }
+
+    /* Paginación compacta */
+    #modulo-turnos .paginacion-wrapper p {
+        font-size: 0.8rem !important;
+    }
+
+    /* Modal */
+    #modal-reprogramar-turno .modal-dialog {
+        padding: 1rem;
+        width: 98% !important;
+    }
+
+    #modal-reprogramar-turno h2 {
+        font-size: 1.05rem !important;
+    }
+}
+
+/* ── LANDSCAPE MÓVIL ──────────────────────────────────────  */
+@media (max-width: 768px) and (orientation: landscape) {
+
+    #modulo-turnos .filtros-row {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+    }
+
+    #modulo-turnos .filtro-grupo {
+        flex: 1 1 calc(33% - 1rem);
+        min-width: 140px;
+    }
+
+    #modulo-turnos .table tr {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #modulo-turnos .acciones-turno .btn {
+        flex: 1 1 auto;
+        width: auto;
+    }
+}
+
+/* ── MODO REDUCIDO DE MOVIMIENTO ──────────────────────────  */
+@media (prefers-reduced-motion: reduce) {
+    #modulo-turnos *,
+    #modal-reprogramar-turno * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ── CONTRASTE ALTO ───────────────────────────────────────  */
+@media (prefers-contrast: high) {
+
+    #modulo-turnos .table tr {
+        border: 2px solid #000000;
+    }
+
+    #modulo-turnos .table td::before {
+        color: #000000;
+    }
+
+    #modulo-turnos .badge {
+        border: 1px solid currentColor;
+    }
+}
+/* ============================================================
+   FIX BOTONES ACCIONES EN MÓVIL
+   Reemplaza los bloques de .acciones-turno en el responsive
+   ============================================================ */
+
+/* ── TABLET (768px) ── */
+@media (max-width: 768px) {
+
+    #modulo-turnos .acciones-turno {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    #modulo-turnos .acciones-turno form {
+        flex: 0 1 auto;
+        width: auto;
+    }
+
+    #modulo-turnos .acciones-turno .btn {
+        flex: 0 1 auto;           /* NO crece, solo se ajusta al contenido */
+        width: auto;
+        min-width: unset;
+        padding: 0.45rem 0.9rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+}
+
+/* ── MÓVIL (640px) ── */
+@media (max-width: 640px) {
+
+    #modulo-turnos .acciones-turno {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    #modulo-turnos .acciones-turno form {
+        flex: 0 1 auto;
+        width: auto;
+    }
+
+    #modulo-turnos .acciones-turno .btn {
+        flex: 0 1 auto;           /* NO ocupa el 100% */
+        width: auto;
+        min-width: unset;
+        padding: 0.45rem 0.9rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+}
+
+/* ── MÓVIL PEQUEÑO (480px) ── */
+@media (max-width: 480px) {
+
+    #modulo-turnos .acciones-turno .btn {
+        flex: 0 1 auto;
+        width: auto;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.78rem;
+        min-height: 34px;
+    }
+}

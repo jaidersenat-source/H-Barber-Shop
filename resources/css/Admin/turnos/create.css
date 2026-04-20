@@ -1,0 +1,875 @@
+/* ============================================
+   CSS CREAR TURNO - CALENDARIO
+   Paleta: Rojo · Negro · Blanco
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ── Variables ── */
+:root {
+    --red:            #dc2626;
+    --red-dark:       #991b1b;
+    --red-light:      #fef2f2;
+    --black:          #000000;
+    --black-soft:     #1a1a1a;
+    --gray-dark:      #4a4a4a;
+    --gray:           #6b6b6b;
+    --gray-light:     #f5f5f5;
+    --gray-border:    #e5e5e5;
+    --white:          #ffffff;
+    --focus:          #dc2626;
+    --min-touch:      44px;
+    --shadow-sm:      0 2px 8px rgba(0,0,0,.08);
+    --shadow-md:      0 4px 16px rgba(0,0,0,.12);
+    --shadow-lg:      0 8px 32px rgba(0,0,0,.20);
+    --radius-sm:      6px;
+    --radius:         10px;
+    --radius-lg:      14px;
+    --transition:     .25s ease;
+    --font-heading:   'Bebas Neue', sans-serif;
+    --font-body:      'Outfit', sans-serif;
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ══════════════════════════════════════
+   MÓDULO PRINCIPAL
+══════════════════════════════════════ */
+
+#modulo-turnos-create {
+    font-family: var(--font-body);
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 2px solid var(--gray-border);
+    border-top: 5px solid var(--red);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalle decorativo */
+#modulo-turnos-create::after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(220,38,38,.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+#modulo-turnos-create:focus-within {
+    border-color: var(--red);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ── Header ── */
+#modulo-turnos-create > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--gray-border);
+}
+
+#modulo-turnos-create h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+    color: var(--black-soft);
+    line-height: 1;
+}
+
+#modulo-turnos-create h2::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: var(--red);
+    border-radius: 2px;
+    margin-top: 6px;
+}
+
+/* ── Botón Volver ── */
+.volver-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .65rem 1.35rem;
+    min-height: var(--min-touch);
+    background: var(--white);
+    color: var(--black);
+    border: 2px solid var(--black);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: .92rem;
+    font-weight: 600;
+    letter-spacing: .4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.volver-btn:hover,
+.volver-btn:focus {
+    background: var(--black);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    outline: 3px solid rgba(0,0,0,.25);
+    outline-offset: 2px;
+}
+
+/* ── Labels ── */
+#modulo-turnos-create > label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    color: var(--gray-dark);
+    margin-bottom: .45rem;
+    margin-top: 1.5rem;
+}
+
+/* ── Input date ── */
+#modulo-turnos-create input[type="date"],
+#modulo-turnos-create select {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    min-height: var(--min-touch);
+    padding: .72rem 1.1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--black-soft);
+    background: var(--white);
+    border: 2px solid var(--gray-border);
+    border-radius: var(--radius);
+    margin-bottom: .5rem;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    appearance: none;
+}
+
+#modulo-turnos-create input[type="date"]:hover,
+#modulo-turnos-create select:hover {
+    border-color: #bdbdbd;
+}
+
+#modulo-turnos-create input[type="date"]:focus,
+#modulo-turnos-create select:focus {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-color: var(--red);
+    box-shadow: 0 0 0 4px rgba(220,38,38,.12);
+    background: var(--red-light);
+}
+
+#modulo-turnos-create select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.8rem;
+}
+
+/* ── Accesibilidad ── */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ── Resultado / Slots ── */
+#result {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 3px solid var(--gray-border);
+}
+
+#result > p {
+    color: var(--gray);
+    font-style: italic;
+    padding: 1.25rem;
+    background: var(--gray-light);
+    border-radius: var(--radius);
+    text-align: center;
+    border: 2px solid var(--gray-border);
+}
+
+#result .no-turnos-msg {
+    background: var(--red-light);
+    color: var(--red-dark);
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    text-align: center;
+    font-weight: 600;
+    border: 2px solid #fecaca;
+}
+
+/* Tarjetas de barberos/profesionales */
+#result > div,
+#result .barbero-card {
+    border: 2px solid var(--gray-border) !important;
+    border-radius: var(--radius) !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+#result > div:hover,
+#result > div:focus-within,
+#result .barbero-card:hover,
+#result .barbero-card:focus-within {
+    border-color: var(--red) !important;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+#result > div h3,
+#result .barbero-card h3 {
+    font-family: var(--font-heading);
+    color: var(--red);
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin: 0 0 .6rem 0;
+    padding-bottom: .6rem;
+    border-bottom: 2px solid var(--red);
+}
+
+#result > div p,
+#result .barbero-card p {
+    color: var(--gray);
+    margin: 0 0 1rem 0;
+    font-size: .97rem;
+}
+
+/* Contenedor de slots */
+#result .slots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+/* ── Botones de slot ── */
+.slotBtn,
+#result .slot-btn {
+    min-width: 90px;
+    min-height: var(--min-touch);
+    padding: .6rem 1rem;
+    font-family: var(--font-body);
+    font-size: .95rem;
+    font-weight: 600;
+    border: 2px solid var(--red);
+    border-radius: var(--radius);
+    background: var(--white);
+    color: var(--red);
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.slotBtn::before,
+#result .slot-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(220,38,38,.08), transparent);
+    transform: translateX(-100%);
+    transition: transform .5s ease;
+}
+
+.slotBtn:hover:not(:disabled)::before,
+#result .slot-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.slotBtn:hover:not(:disabled),
+#result .slot-btn:hover,
+#result .slot-btn:focus {
+    background: var(--red);
+    color: var(--white);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(220,38,38,.28);
+}
+
+.slotBtn:focus,
+#result .slot-btn:focus {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(220,38,38,.18);
+}
+
+.slotBtn:active,
+#result .slot-btn:active {
+    transform: scale(.98);
+}
+
+.slotBtn.selected,
+#result .slot-btn.selected {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+    box-shadow: 0 0 0 4px rgba(0,0,0,.15);
+}
+
+.slotBtn:disabled {
+    background: #e5e5e5;
+    border-color: #bdbdbd;
+    color: #9a9a9a;
+    cursor: not-allowed;
+    opacity: .7;
+}
+
+.slotBtn:disabled::before { display: none; }
+
+/* ── Formulario de confirmación ── */
+#result .turno-form {
+    background: var(--red-light);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-top: 2rem;
+    border: 2px solid var(--red);
+}
+
+#result .turno-form h4 {
+    font-family: var(--font-heading);
+    color: var(--black-soft);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: .6rem;
+    border-bottom: 3px solid var(--red);
+}
+
+#result .turno-form label {
+    display: block;
+    font-weight: 600;
+    font-size: .88rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--black-soft);
+    margin-bottom: .35rem;
+    margin-top: 1rem;
+}
+
+#result .turno-form input[type="text"],
+#result .turno-form input[type="tel"],
+#result .turno-form input[type="email"],
+#result .turno-form textarea {
+    width: 100%;
+    min-height: var(--min-touch);
+    padding: .72rem 1.1rem;
+    border: 2px solid var(--gray-border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: var(--white);
+    color: var(--black-soft);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+#result .turno-form input:focus,
+#result .turno-form textarea:focus {
+    border-color: var(--red);
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(220,38,38,.12);
+}
+
+#result .turno-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#result .turno-form .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-end;
+}
+
+#result .turno-form button[type="submit"],
+#result .turno-form .btn-submit {
+    background: var(--red);
+    color: var(--white);
+    border: 2px solid var(--red);
+    padding: .75rem 2rem;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    min-height: var(--min-touch);
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+#result .turno-form button[type="submit"]:hover,
+#result .turno-form button[type="submit"]:focus {
+    background: var(--red-dark);
+    border-color: var(--red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220,38,38,.3);
+    outline: 3px solid rgba(220,38,38,.3);
+    outline-offset: 2px;
+}
+
+/* ══════════════════════════════════════
+   MODAL DE ÉXITO
+══════════════════════════════════════ */
+
+.modal-turno-exito {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn .25s ease;
+}
+
+.modal-turno-exito-content {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    max-width: 90vw;
+    width: 450px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    border-top: 5px solid var(--black);
+    text-align: center;
+    animation: slideUp .3s cubic-bezier(.34,1.56,.64,1);
+}
+
+.modal-turno-exito-content::before {
+    content: '✓';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--white);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 auto 1.25rem;
+}
+
+.modal-turno-exito-content h3 {
+    font-family: var(--font-heading);
+    color: var(--black-soft);
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+    margin: 0 0 .6rem 0;
+}
+
+.modal-turno-exito-content p {
+    color: var(--gray);
+    font-size: 1.05rem;
+    margin: 0 0 2rem 0;
+}
+
+.modal-turno-exito-close {
+    position: absolute;
+    top: .9rem;
+    right: .9rem;
+    width: 34px;
+    height: 34px;
+    background: var(--gray-light);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition), color var(--transition);
+}
+
+.modal-turno-exito-close:hover,
+.modal-turno-exito-close:focus {
+    background: var(--black);
+    color: var(--white);
+    outline: 3px solid rgba(0,0,0,.2);
+}
+
+.modal-turno-exito-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-turno-exito-accept {
+    background: var(--black);
+    color: var(--white);
+    border: 2px solid var(--black);
+    padding: .75rem 2.5rem;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: var(--min-touch);
+    transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.modal-turno-exito-accept:hover,
+.modal-turno-exito-accept:focus {
+    background: var(--white);
+    color: var(--black);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    outline: 3px solid rgba(0,0,0,.2);
+    outline-offset: 2px;
+}
+
+/* ══════════════════════════════════════
+   MODAL DE ERROR
+══════════════════════════════════════ */
+
+.modal-turno-error {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn .25s ease;
+}
+
+.modal-turno-error-content {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    max-width: 90vw;
+    width: 450px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    border-top: 5px solid var(--red);
+    text-align: center;
+    animation: slideUp .3s cubic-bezier(.34,1.56,.64,1);
+}
+
+.modal-turno-error-content::before {
+    content: '!';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin: 0 auto 1.25rem;
+}
+
+.modal-turno-error-content h2 {
+    font-family: var(--font-heading);
+    color: var(--red-dark);
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+    margin: 0 0 .6rem 0;
+}
+
+#modal-turno-error-msg {
+    color: var(--gray);
+    font-size: 1.05rem;
+    margin: 0 0 2rem 0;
+    min-height: 1.4rem;
+}
+
+.modal-turno-error-close {
+    position: absolute;
+    top: .9rem;
+    right: .9rem;
+    width: 34px;
+    height: 34px;
+    background: var(--gray-light);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.modal-turno-error-close:hover,
+.modal-turno-error-close:focus {
+    background: var(--red);
+    color: var(--white);
+    transform: rotate(90deg);
+    outline: 3px solid rgba(220,38,38,.2);
+}
+
+.modal-turno-error-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-turno-error-accept {
+    background: var(--red);
+    color: var(--white);
+    border: 2px solid var(--red);
+    padding: .75rem 2.5rem;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: var(--min-touch);
+    transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.modal-turno-error-accept:hover,
+.modal-turno-error-accept:focus {
+    background: var(--black);
+    border-color: var(--black);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    outline: 3px solid rgba(0,0,0,.25);
+    outline-offset: 2px;
+}
+
+/* Fondo del modal */
+#modal-turno {
+    display: flex;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del modal */
+.modal-turno-content {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    max-width: 420px;
+    width: 95vw;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    position: relative;
+    animation: fadeIn .25s ease;
+}
+
+/* Botón cerrar */
+#cerrar-modal-turno {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #991b1b;
+    transition: color 0.2s;
+}
+#cerrar-modal-turno:hover,
+#cerrar-modal-turno:focus {
+    color: #dc2626;
+    outline: 2px solid #dc2626;
+}
+
+/* Título */
+.modal-turno-content h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    color: #991b1b;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Formulario */
+#form-turno-modal .form-group {
+    margin-bottom: 1rem;
+}
+#form-turno-modal label {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+#form-turno-modal input[type='text'],
+#form-turno-modal input[type='email'] {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fafafa;
+    color: #222;
+    transition: border-color 0.2s;
+}
+#form-turno-modal input:focus {
+    border-color: #dc2626;
+    outline: 2px solid #fef2f2;
+}
+
+/* Botón guardar */
+#form-turno-modal .btn-primary {
+    width: 100%;
+    margin-top: 1.5rem;
+    background: #dc2626;
+    color: #fff;
+    border: 2px solid #dc2626;
+    padding: 0.85rem 0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+#form-turno-modal .btn-primary:hover,
+#form-turno-modal .btn-primary:focus {
+    background: #991b1b;
+    border-color: #991b1b;
+    outline: 2px solid #991b1b;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97);}
+    to   { opacity: 1; transform: scale(1);}
+}
+/* ══════════════════════════════════════
+   SPINNER DE CARGA
+══════════════════════════════════════ */
+
+.loading-spinner {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--gray-border);
+    border-top-color: var(--red);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin: 2rem auto;
+}
+
+/* ══════════════════════════════════════
+   ANIMACIONES
+══════════════════════════════════════ */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px) scale(.95); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVO
+══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    #modulo-turnos-create {
+        padding: 1.5rem;
+    }
+
+    #modulo-turnos-create h2 {
+        font-size: 1.6rem !important;
+    }
+
+    #modulo-turnos-create input[type="date"],
+    #modulo-turnos-create select {
+        max-width: 100%;
+    }
+
+    #result .slots-container {
+        gap: .4rem;
+    }
+
+    .slotBtn,
+    #result .slot-btn {
+        min-width: 80px;
+        font-size: .88rem;
+    }
+
+    #result .turno-form {
+        padding: 1.25rem;
+    }
+
+    #result .turno-form .form-actions {
+        flex-direction: column;
+    }
+
+    #result .turno-form button[type="submit"] {
+        width: 100%;
+    }
+
+    .modal-turno-exito-content,
+    .modal-turno-error-content {
+        width: 92vw;
+        padding: 2rem 1.25rem;
+    }
+}
+
+/* ══════════════════════════════════════
+   ACCESIBILIDAD
+══════════════════════════════════════ */
+
+@media (prefers-contrast: high) {
+    #modulo-turnos-create,
+    #result > div,
+    #result .barbero-card,
+    #result .turno-form {
+        border-width: 3px !important;
+    }
+
+    .slotBtn,
+    #result .slot-btn {
+        border-width: 3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    .slotBtn::before,
+    #result .slot-btn::before {
+        display: none;
+    }
+}

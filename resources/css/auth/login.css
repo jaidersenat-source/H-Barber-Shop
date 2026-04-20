@@ -1,0 +1,697 @@
+/* ============================================
+   H BARBER SHOP — LOGIN PREMIUM
+   ============================================ */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    background: #0d0d0d;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+}
+
+/* ============================================
+   LAYOUT PRINCIPAL — SPLIT SCREEN
+   ============================================ */
+
+.login-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* ============================================
+   PANEL IZQUIERDO — VIDEO
+   ============================================ */
+
+.video-panel {
+    position: relative;
+    /* Ocupa la mitad de la pantalla en escritorio manteniendo el objeto cover */
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Overlay oscuro base */
+.video-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 3, 8, 0.42);
+    z-index: 2;
+}
+
+/* Gradiente que se desvanece hacia la derecha — efecto de fusión */
+.video-fade-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 50%,
+        rgba(10, 4, 8, 0.6) 70%,
+        rgba(10, 4, 8, 0.92) 85%,
+        #0f0509 100%
+    );
+    z-index: 3;
+}
+
+/* Branding flotante */
+.video-brand {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    z-index: 4;
+    animation: fadeInUp 0.9s ease forwards;
+}
+
+.brand-badge {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.brand-badge svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+.brand-name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.brand-tagline {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+}
+
+/* ============================================
+   PUENTE GLASS — CONEXIÓN VISUAL
+   ============================================ */
+
+.glass-bridge {
+    position: absolute;
+    left: -60px;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(139, 21, 56, 0.0) 0%,
+        rgba(139, 21, 56, 0.08) 40%,
+        rgba(139, 21, 56, 0.04) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+}
+
+/* ============================================
+   PANEL DERECHO — FORMULARIO
+   ============================================ */
+
+.form-panel {
+    flex: 1;
+    background: #0f0509;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 3rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Textura sutil de fondo */
+.form-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 80% 20%, rgba(139, 21, 56, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(80, 10, 30, 0.1) 0%, transparent 40%);
+    z-index: 0;
+}
+
+.form-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 360px;
+    animation: fadeInRight 0.8s ease 0.2s both;
+}
+
+/* ============================================
+   CABECERA DEL FORMULARIO
+   ============================================ */
+
+.form-header {
+    margin-bottom: 2.25rem;
+}
+
+.mobile-logo {
+    display: none;
+    width: 52px;
+    height: 52px;
+    background: rgba(139, 21, 56, 0.3);
+    border: 1px solid rgba(139, 21, 56, 0.4);
+    border-radius: 14px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.mobile-logo svg {
+    width: 26px;
+    height: 26px;
+    fill: #e8637c;
+}
+
+.form-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.form-header p {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+}
+
+/* ============================================
+   ALERT DE ERROR GLOBAL
+   ============================================ */
+
+.alert-error {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    background: rgba(231, 76, 60, 0.12);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    color: #ff8080;
+    font-size: 0.8125rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ============================================
+   GRUPOS DE INPUTS
+   ============================================ */
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.required-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8b1538;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 0.875rem;
+    width: 17px;
+    height: 17px;
+    fill: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    z-index: 1;
+    transition: fill 0.2s ease;
+    flex-shrink: 0;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.75rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 0.9375rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.form-group input:hover:not(:focus) {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group input:focus {
+    border-color: rgba(139, 21, 56, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.2);
+}
+
+/* Icono cambia de color al enfocar */
+.form-group:focus-within .input-icon {
+    fill: rgba(232, 99, 124, 0.8);
+}
+
+.form-group input.input-error {
+    border-color: rgba(231, 76, 60, 0.6);
+    background: rgba(231, 76, 60, 0.06);
+}
+
+.form-group input.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+}
+
+/* Botón mostrar/ocultar contraseña */
+.toggle-password {
+    position: absolute;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: color 0.2s ease;
+    z-index: 1;
+}
+
+.toggle-password:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.toggle-password:focus {
+    outline: 2px solid rgba(139, 21, 56, 0.5);
+    outline-offset: 2px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mensaje de error de campo */
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #ff6b6b;
+    font-size: 0.775rem;
+    margin-top: 0.375rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 500;
+}
+
+/* ============================================
+   BOTÓN SUBMIT
+   ============================================ */
+
+.btn-submit {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: linear-gradient(135deg, #8b1538 0%, #b02048 60%, #8b1538 100%);
+    background-size: 200% auto;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    margin-top: 1.75rem;
+    transition: background-position 0.4s ease, transform 0.15s ease, box-shadow 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    letter-spacing: 0.02em;
+}
+
+.btn-submit:hover {
+    background-position: right center;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(139, 21, 56, 0.45);
+}
+
+.btn-submit:active {
+    transform: translateY(0) scale(0.99);
+    box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
+}
+
+.btn-submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.4), 0 6px 24px rgba(139, 21, 56, 0.3);
+}
+
+/* ============================================
+   FOOTER DEL FORMULARIO
+   ============================================ */
+
+.form-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.forgot-link {
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 0.8125rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.forgot-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.forgot-link:focus {
+    outline: 2px solid rgba(139, 21, 56, 0.5);
+    outline-offset: 2px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================
+   ACCESIBILIDAD — SCREEN READER ONLY
+   ============================================ */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (769px - 1200px)
+   ============================================ */
+
+@media (max-width: 1200px) {
+    /* En pantallas medianas mantener la mitad para evitar cambios bruscos */
+    .video-panel {
+        width: 50%;
+    }
+
+    .form-panel {
+        padding: 2rem 2.5rem 2rem 3rem;
+    }
+
+    .brand-name {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .video-panel {
+        width: 50%;
+    }
+
+    .form-panel {
+        padding: 2rem;
+    }
+}
+
+/* ============================================
+   RESPONSIVE — MÓVIL (< 768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .login-wrapper {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .video-panel {
+        width: 100%;
+        height: 40vh;
+        min-height: 240px;
+        flex-shrink: 0;
+    }
+
+    /* En mobile el fade va hacia abajo */
+    .video-fade-overlay {
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(10, 4, 8, 0.5) 60%,
+            #0f0509 100%
+        );
+    }
+
+    .glass-bridge {
+        display: none;
+    }
+
+    .video-brand {
+        bottom: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .brand-badge {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 0.875rem;
+    }
+
+    .brand-badge svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .brand-name {
+        font-size: 1.6rem;
+    }
+
+    .brand-tagline {
+        font-size: 0.8rem;
+    }
+
+    .form-panel {
+        flex: 1;
+        padding: 2rem 1.5rem 2.5rem;
+        overflow-y: auto;
+    }
+
+    .mobile-logo {
+        display: none; /* El video ya muestra el branding */
+    }
+
+    .form-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .form-container {
+        max-width: 100%;
+        animation: none;
+    }
+}
+
+/* ============================================
+   RESPONSIVE — MÓVIL PEQUEÑO (< 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+    .video-panel {
+        height: 35vh;
+        min-height: 200px;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+    }
+
+    .video-brand {
+        left: 1.25rem;
+        bottom: 1.25rem;
+    }
+
+    .form-panel {
+        padding: 1.75rem 1.25rem 2.5rem;
+    }
+
+    .form-header {
+        margin-bottom: 1.75rem;
+    }
+
+    .form-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .form-group input {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   RESPONSIVE — MÓVIL MUY PEQUEÑO (< 360px)
+   ============================================ */
+
+@media (max-width: 360px) {
+    .video-panel {
+        height: 30vh;
+        min-height: 180px;
+    }
+
+    .form-panel {
+        padding: 1.5rem 1rem 2rem;
+    }
+
+    .brand-name {
+        font-size: 1.25rem;
+    }
+
+    .form-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .brand-tagline {
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================
+   REDUCCIÓN DE MOVIMIENTO (ACCESIBILIDAD)
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE (ACCESIBILIDAD)
+   ============================================ */
+
+@media (forced-colors: active) {
+    .form-group input {
+        border: 2px solid ButtonText;
+    }
+
+    .btn-submit {
+        border: 2px solid ButtonText;
+    }
+
+    .brand-badge {
+        border: 2px solid ButtonText;
+    }
+}

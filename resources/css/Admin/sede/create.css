@@ -1,0 +1,499 @@
+/* ============================================
+   ESTILOS CREAR SEDE
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+/* === CONTENEDOR PRINCIPAL === */
+#modulo-sedes-create .card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    border: 2px solid #e5e5e5;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* === TÍTULO PRINCIPAL === */
+#modulo-sedes-create h1 {
+    color: #000000;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    letter-spacing: -0.5px;
+    border-bottom: 3px solid #dc0000;
+    padding-bottom: 1rem;
+}
+
+/* === FORMULARIO === */
+#modulo-sedes-create form {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* === FIELDSET === */
+#modulo-sedes-create fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+#modulo-sedes-create legend {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    width: 100%;
+}
+
+/* === FORM GROUP === */
+#modulo-sedes-create .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+/* === LABELS === */
+#modulo-sedes-create label {
+    display: block;
+    color: #000000;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
+/* === INDICADOR DE OBLIGATORIO === */
+#modulo-sedes-create .required {
+    color: #dc0000;
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+/* === INPUTS Y TEXTAREA === */
+#modulo-sedes-create input[type="text"],
+#modulo-sedes-create textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #000000;
+    background: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+#modulo-sedes-create input[type="text"]:hover,
+#modulo-sedes-create textarea:hover {
+    border-color: #9ca3af;
+}
+
+#modulo-sedes-create input[type="text"]:focus,
+#modulo-sedes-create textarea:focus {
+    outline: 3px solid #dc0000;
+    outline-offset: 2px;
+    border-color: #dc0000;
+    box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
+    background: #ffffff;
+}
+
+/* === INPUT FILE PERSONALIZADO === */
+#modulo-sedes-create .file-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#modulo-sedes-create .file-input-hidden {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#modulo-sedes-create .file-input-label {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+#modulo-sedes-create .file-input-label:hover {
+    border-color: #9ca3af;
+}
+
+#modulo-sedes-create .file-input-wrapper:focus-within .file-input-label {
+    outline: 3px solid #dc0000;
+    outline-offset: 2px;
+    border-color: #dc0000;
+    box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
+}
+
+#modulo-sedes-create .file-input-btn {
+    background: #000000;
+    color: #ffffff;
+    padding: 0.875rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+#modulo-sedes-create .file-input-name {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+    color: #6b7280;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+}
+
+/* === TEXTAREA ESPECÍFICO === */
+#modulo-sedes-create textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* === HINT - descripción debajo del input === */
+#modulo-sedes-create .hint {
+    display: block;
+    color: #555555;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* === MENSAJE DE ERROR === */
+#modulo-sedes-create .error-message {
+    display: block;
+    color: #dc0000;
+    font-size: 0.875rem;
+    margin-top: 0.4rem;
+    font-weight: 600;
+    min-height: 1.2em;
+}
+
+/* === VISTA PREVIA LOGO === */
+#modulo-sedes-create #preview-container {
+    margin-top: 1rem;
+}
+
+#modulo-sedes-create #logo-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    object-fit: contain;
+    display: block;
+}
+
+/* === VALIDACIÓN === */
+#modulo-sedes-create input:invalid:not(:placeholder-shown):not(:focus),
+#modulo-sedes-create textarea:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: #dc0000;
+    background: #fff5f5;
+}
+
+#modulo-sedes-create input:valid:not(:placeholder-shown):not(:focus),
+#modulo-sedes-create textarea:valid:not(:placeholder-shown):not(:focus) {
+    border-color: #10b981;
+    background: #f0fff4;
+}
+
+/* === BOTONES CONTENEDOR === */
+#modulo-sedes-create .botones-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* === BOTÓN GUARDAR === */
+#modulo-sedes-create .guardar-btn {
+    width: 100%;
+    padding: 0.875rem 2rem;
+    background: #dc0000;
+    color: #ffffff;
+    border: 2px solid #dc0000;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#modulo-sedes-create .guardar-btn:hover {
+    background: #b80000;
+    border-color: #b80000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+}
+
+#modulo-sedes-create .guardar-btn:focus {
+    outline: 3px solid #dc0000;
+    outline-offset: 3px;
+    background: #b80000;
+    border-color: #b80000;
+}
+
+#modulo-sedes-create .guardar-btn:active {
+    transform: translateY(0);
+}
+
+/* === BOTÓN CANCELAR / VOLVER === */
+#modulo-sedes-create .volver-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.875rem 2rem;
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#modulo-sedes-create .volver-btn:hover {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#modulo-sedes-create .volver-btn:focus {
+    outline: 3px solid #000000;
+    outline-offset: 3px;
+    background: #333333;
+    border-color: #333333;
+}
+
+#modulo-sedes-create .volver-btn:active {
+    transform: translateY(0);
+}
+
+/* === SR-ONLY === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* === PLACEHOLDER === */
+#modulo-sedes-create input::placeholder,
+#modulo-sedes-create textarea::placeholder {
+    color: #9ca3af;
+    opacity: 0.7;
+}
+
+/* === AUTOCOMPLETE === */
+#modulo-sedes-create input:-webkit-autofill,
+#modulo-sedes-create input:-webkit-autofill:hover,
+#modulo-sedes-create input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+    -webkit-text-fill-color: #000000;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* === ESTADO DE CARGA === */
+#modulo-sedes-create button.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+#modulo-sedes-create button.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.6s linear infinite;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* === CONTRASTE ALTO === */
+@media (prefers-contrast: high) {
+    #modulo-sedes-create .card {
+        border: 3px solid #000000;
+    }
+
+    #modulo-sedes-create input[type="text"],
+    #modulo-sedes-create textarea {
+        border: 3px solid #000000;
+    }
+
+    #modulo-sedes-create h1 {
+        border-bottom: 4px solid #dc0000;
+    }
+
+    #modulo-sedes-create .hint {
+        color: #000000;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    #modulo-sedes-create .error-message {
+        font-size: 1rem;
+    }
+}
+
+/* === MODO REDUCIDO DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* === RESPONSIVIDAD TABLET === */
+@media (max-width: 1024px) {
+    #modulo-sedes-create .card {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 768px) {
+    #modulo-sedes-create .card {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    #modulo-sedes-create h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+    }
+
+    #modulo-sedes-create label {
+        font-size: 0.9rem;
+    }
+
+    #modulo-sedes-create input[type="text"],
+    #modulo-sedes-create textarea {
+        padding: 0.75rem 0.875rem;
+        font-size: 0.95rem;
+    }
+
+    #modulo-sedes-create textarea {
+        min-height: 100px;
+    }
+
+    #modulo-sedes-create .guardar-btn,
+    #modulo-sedes-create .volver-btn {
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL PEQUEÑO === */
+@media (max-width: 480px) {
+    #modulo-sedes-create .card {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    #modulo-sedes-create h1 {
+        font-size: 1.25rem;
+        padding-bottom: 0.6rem;
+    }
+
+    #modulo-sedes-create label {
+        font-size: 0.85rem;
+    }
+
+    #modulo-sedes-create input[type="text"],
+    #modulo-sedes-create textarea {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    #modulo-sedes-create textarea {
+        min-height: 90px;
+    }
+
+    #modulo-sedes-create .guardar-btn,
+    #modulo-sedes-create .volver-btn {
+        padding: 0.9rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* === LANDSCAPE EN MÓVILES === */
+@media (max-width: 768px) and (orientation: landscape) {
+    #modulo-sedes-create .card {
+        padding: 1rem 1.5rem;
+    }
+
+    #modulo-sedes-create h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    #modulo-sedes-create textarea {
+        min-height: 80px;
+    }
+}

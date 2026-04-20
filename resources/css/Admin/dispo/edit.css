@@ -1,0 +1,370 @@
+/* ============================================
+   EDITAR DISPONIBILIDAD - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+}
+
+/* Contenedor principal del formulario */
+.card {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Título */
+.card h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.card h2:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* Mensajes de error */
+.card > p[style*="color:red"] {
+    color: var(--rojo-principal) !important;
+    background: var(--rojo-claro) !important;
+    padding: 12px 16px !important;
+    border-radius: 6px !important;
+    border-left: 4px solid var(--rojo-principal) !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background: var(--gris-claro);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--rojo-principal);
+}
+
+form:focus-within {
+    background: var(--blanco);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--negro);
+    font-size: 1rem;
+}
+
+/* Inputs, selects y textareas */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--gris-medio);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: var(--blanco);
+    color: var(--negro);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Select específico */
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23DC2626' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+}
+
+select option {
+    padding: 8px;
+}
+
+/* Texto de ayuda para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Campos requeridos */
+input[required],
+select[required] {
+    border-left: 4px solid var(--rojo-principal);
+}
+
+/* Contenedor de botones */
+form > button,
+form > a {
+    margin-top: 0.5rem;
+}
+
+/* Botón submit */
+button[type="submit"] {
+    padding: 14px 24px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button[type="submit"]:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+}
+
+button[type="submit"]:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Link de cancelar */
+form > a {
+    display: block;
+    text-align: center;
+    padding: 12px 24px;
+    background: var(--blanco);
+    color: var(--rojo-principal);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+form > a:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+form > a:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Separación visual entre elementos del formulario */
+form > label:not(:first-of-type) {
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        padding: 1.5rem;
+    }
+
+    .card h2 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    button[type="submit"],
+    form > a {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 1rem;
+    }
+
+    .card h2 {
+        font-size: 1.3rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Estados disabled */
+input:disabled,
+select:disabled,
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--gris-claro);
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    form:focus-within {
+        border-width: 3px;
+    }
+
+    button[type="submit"]:focus,
+    form > a:focus {
+        outline-width: 4px;
+    }
+
+    input:focus,
+    select:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Mejora visual para campos con error */
+input.error,
+select.error {
+    border-color: var(--rojo-principal);
+    background: var(--rojo-claro);
+}
+
+/* Indicadores de validación */
+input:invalid:not(:focus),
+select:invalid:not(:focus) {
+    border-color: var(--rojo-principal);
+}
+
+input:valid:not(:placeholder-shown),
+select:valid {
+    border-left-color: var(--rojo-principal);
+}
+
+/* Mejora de contraste para opciones de select */
+select:focus option:checked,
+select:focus option:hover {
+    background: var(--rojo-claro);
+    color: var(--negro);
+}
+
+/* Estilos para mejor experiencia de usuario */
+label[for] {
+    cursor: pointer;
+}
+
+/* Hover en labels */
+label:hover {
+    color: var(--rojo-principal);
+}
+
+/* Spacing para agrupaciones lógicas */
+label[for="per_documento"],
+label[for="dis_fecha"],
+label[for="dis_hora_inicio"] {
+    margin-top: 1rem;
+}
+
+label[for="per_documento"] {
+    margin-top: 0;
+}
+
+/* Grupo visual para campos relacionados */
+label[for="dis_hora_inicio"] ~ input,
+label[for="dis_hora_fin"] ~ input {
+    margin-bottom: 0.5rem;
+}
+
+/* Estado de carga */
+form.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+form.loading button[type="submit"]::after {
+    content: "...";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}

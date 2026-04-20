@@ -1,0 +1,553 @@
+/* ============================================
+   CREAR SERVICIO - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+}
+
+/* Contenedor principal */
+#modulo-servicios-create {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Título */
+#modulo-servicios-create h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--negro);
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+#modulo-servicios-create h2:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background: var(--gris-claro);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--rojo-principal);
+}
+
+form:focus-within {
+    background: var(--blanco);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--negro);
+    font-size: 1rem;
+}
+
+label:hover {
+    color: var(--rojo-principal);
+}
+
+/* Inputs y textarea */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--gris-medio);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: var(--blanco);
+    color: var(--negro);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Textarea específico */
+textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+    color: var(--gris-medio);
+}
+
+/* Campos requeridos */
+input[required] {
+    border-left: 4px solid var(--rojo-principal);
+}
+
+/* Campos numéricos */
+input[type="number"] {
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+    height: 40px;
+}
+
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--gris-medio);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: var(--blanco);
+    color: var(--negro);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+select:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+select[required] {
+    border-left: 4px solid var(--rojo-principal);
+}
+
+select:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--rojo-principal);
+    background: var(--rojo-claro);
+}
+
+/* Contenedor de botones */
+.botones-form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Botón volver */
+.btn-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--blanco);
+    color: var(--rojo-principal);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 150px;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.btn-volver:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-volver:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Botón guardar */
+.btn-guardar {
+    padding: 12px 24px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 150px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-guardar:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+}
+
+.btn-guardar:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+.btn-guardar:active {
+    transform: translateY(0);
+}
+
+/* Separación visual entre campos */
+form > label:not(:first-of-type) {
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #modulo-servicios-create {
+        padding: 1.5rem;
+    }
+
+    #modulo-servicios-create h2 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .botones-form {
+        flex-direction: column;
+    }
+
+    .btn-volver,
+    .btn-guardar {
+        width: 100%;
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #modulo-servicios-create {
+        padding: 1rem;
+    }
+
+    #modulo-servicios-create h2 {
+        font-size: 1.3rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Estados disabled */
+input:disabled,
+textarea:disabled,
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--gris-claro);
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    form:focus-within {
+        border-width: 3px;
+    }
+
+    .btn-guardar:focus,
+    .btn-volver:focus {
+        outline-width: 4px;
+    }
+
+    input:focus,
+    textarea:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Validación visual */
+input:invalid:not(:focus):not(:placeholder-shown),
+textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--rojo-principal);
+    background: var(--rojo-claro);
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+    border-left-color: var(--rojo-principal);
+}
+
+/* Mejora visual para campos específicos */
+input[name="serv_precio"],
+input[name="serv_descuento"] {
+    font-weight: 600;
+    color: var(--rojo-principal);
+}
+
+input[name="serv_duracion"] {
+    font-weight: 600;
+}
+
+/* Estado de carga */
+form.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+form.loading .btn-guardar::after {
+    content: "...";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Indicador visual de campo requerido */
+label[for] {
+    position: relative;
+}
+
+input[required] ~ label::after {
+    content: " *";
+    color: var(--rojo-principal);
+    font-weight: 700;
+}
+
+/* Mejora de UX para focus en labels */
+label[for]:hover {
+    cursor: pointer;
+}
+
+/* Estilos para mensajes de error (si se añaden) */
+.error-message {
+    color: var(--rojo-principal);
+    background: var(--rojo-claro);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border-left: 4px solid var(--rojo-principal);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Transición suave para el formulario */
+form {
+    transition: all 0.3s ease;
+}
+
+/* Accesibilidad para elementos interactivos */
+[tabindex] {
+    cursor: pointer;
+}
+
+/* Mejora visual del formulario completo */
+#modulo-servicios-create {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   SECCIÓN DE COMBO - Servicios incluidos
+   ============================================ */
+.combo-servicios-fieldset {
+    border: 2px solid var(--rojo-principal);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 0.5rem 0;
+    background: var(--rojo-claro);
+    transition: all 0.3s ease;
+}
+
+.combo-servicios-fieldset legend {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--rojo-principal);
+    padding: 0 0.5rem;
+}
+
+.combo-help {
+    font-size: 0.9rem;
+    color: var(--gris-medio);
+    margin: 0 0 1rem 0;
+}
+
+.combo-servicios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.combo-servicio-check {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--blanco);
+    border: 2px solid var(--gris-medio);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.combo-servicio-check:hover {
+    border-color: var(--rojo-principal);
+    background: #FFF5F5;
+    transform: translateX(4px);
+}
+
+.combo-servicio-check:has(input:checked) {
+    border-color: var(--rojo-principal);
+    background: var(--rojo-claro);
+    box-shadow: 0 0 0 2px var(--rojo-principal);
+}
+
+.combo-servicio-check input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--rojo-principal);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.combo-servicio-check input[type="checkbox"]:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+.combo-servicio-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.combo-servicio-info strong {
+    color: var(--negro);
+    font-size: 1rem;
+}
+
+.combo-servicio-info small {
+    color: var(--gris-medio);
+    font-size: 0.85rem;
+}
+
+/* Scroll accesible */
+.combo-servicios-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.combo-servicios-list::-webkit-scrollbar-track {
+    background: var(--gris-claro);
+    border-radius: 4px;
+}
+
+.combo-servicios-list::-webkit-scrollbar-thumb {
+    background: var(--rojo-principal);
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .combo-servicios-fieldset {
+        padding: 1rem;
+    }
+    .combo-servicios-list {
+        max-height: 250px;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .combo-servicio-check:has(input:checked) {
+        outline: 3px solid var(--negro);
+    }
+}

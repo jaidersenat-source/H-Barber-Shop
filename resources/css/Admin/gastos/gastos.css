@@ -1,0 +1,863 @@
+/* ============================================
+   ESTILOS GESTIÓN DE GASTOS
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+.admin-gastos-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  margin: 2rem auto;
+  max-width: 1600px;
+  border: 2px solid #e5e5e5;
+}
+
+.modulo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid #dc0000;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.modulo-header h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #000;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -1px;
+}
+
+.header-acciones .btn {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+   background: #dc0000;
+    color: #ffffff;
+    border-color: #dc0000;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+ background: #b80000;
+    border-color: #b80000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 0, 0, 0.3);
+    
+}
+.btn-primary span {
+  font-size: 1.2rem;
+}
+
+.btn-secundario {
+   background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+
+}
+.btn-secundario:hover,
+.btn-secundario:focus {
+  background: #333333;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn-excel {
+      background: #166534;
+    color: #ffffff;
+    border-color: #166534;
+}
+.btn-excel:hover,
+.btn-excel:focus {
+  background: #14532d;
+    border-color: #14532d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(22, 101, 52, 0.3);
+}
+
+.alerta {
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.alerta-ok {
+  background: #f0fff4;
+  color: #166534;
+  border-left: 4px solid #10b981;
+}
+.alerta-error {
+  background: #fff3f3;
+  color: #dc0000;
+  border-left: 4px solid #dc0000;
+}
+
+/* === MODAL ELIMINAR === */
+.modal-eliminar {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.55);
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-eliminar.show {
+    display: flex;
+}
+
+.modal-contenido {
+    background: #ffffff;
+    padding: 2rem 2.25rem;
+    border-radius: 12px;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: slideUp 0.25s ease;
+    border-top: 4px solid #dc0000;
+}
+
+.modal-contenido h4 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #000000;
+    margin: 0 0 1rem 0;
+}
+
+.modal-contenido p {
+    color: #374151;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 0.5rem 0;
+}
+
+.modal-contenido strong {
+    color: #dc0000;
+    font-weight: 700;
+}
+
+.modal-acciones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.75rem;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+/* Editar (azul) */
+.btn-action.btn-edit {
+    background: #e0edff;
+    color: #1d4ed8;
+}
+.btn-action.btn-edit:hover,
+.btn-action.btn-edit:focus {
+    background: #1d4ed8;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(29, 78, 216, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Eliminar (rojo claro) */
+.btn-action.btn-delete {
+    background: #fff0f0;
+    color: #dc0000;
+}
+.btn-action.btn-delete:hover,
+.btn-action.btn-delete:focus {
+    background: #dc0000;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(220, 0, 0, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Botón eliminar modal */
+.btn-delete {
+    background: #dc0000;
+    color: #ffffff;
+    border-color: #dc0000;
+}
+.btn-delete:hover,
+.btn-delete:focus {
+    background: #b80000;
+    border-color: #b80000;
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.reporte-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  align-items: end;
+  background: #fafafa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 2px solid #e5e5e5;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-group input,
+.form-group select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #000;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+.form-group input:hover,
+.form-group select:hover {
+  border-color: #9ca3af;
+}
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #dc0000;
+  box-shadow: 0 0 0 3px rgba(220,0,0,0.1);
+}
+.form-group input::placeholder {
+  color: #9ca3af;
+}
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem;
+  padding-right: 3rem;
+}
+.btn-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.reporte-metricas {
+  margin-bottom: 2rem;
+}
+.metricas-principales {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+.metrica-card {
+  background: #f3f3f3;
+  border-radius: 6px;
+  padding: 1rem 2rem;
+  min-width: 180px;
+  text-align: center;
+}
+.metrica-label { font-size: 1em; color: #555; }
+.metrica-valor { font-size: 1.5em; font-weight: bold; color: #222; }
+
+.tabla-reporte {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 8px;
+  overflow: visible;
+}
+.tabla-reporte th, .tabla-reporte td {
+  padding: 1rem;
+  border: 1px solid #e5e5e5;
+  text-align: left;
+}
+.tabla-reporte thead th {
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  border-bottom: 4px solid #dc0000;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  padding: 1rem 0.75rem;
+}
+
+.tabla-reporte thead {
+  border-bottom: 4px solid #dc0000;
+}
+
+.tabla-reporte tbody tr {
+  border-bottom: 1px solid #e5e5e5;
+  transition: background-color 0.2s ease;
+}
+.tabla-reporte tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+.tabla-reporte tbody tr:hover {
+  background: #f8f8f8;
+}
+.tabla-reporte .num, .tabla-reporte .moneda {
+  text-align: right;
+}
+.badge-categoria {
+  background: #dc000022;
+  color: #dc0000;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+}
+.sin-comprobante { color: #aaa; font-style: italic; }
+.acciones-col { text-align: center; }
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.fila-vacia td {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Accesibilidad y responsividad */
+*:focus-visible {
+  outline: 3px solid #dc0000;
+  outline-offset: 3px;
+}
+/* ============================================
+   RESPONSIVE - GESTIÓN DE GASTOS
+   ============================================ */
+
+/* === TABLET GRANDE (max 1200px) === */
+@media (max-width: 1200px) {
+    .reportes-container {
+        padding: 2rem 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .tabla-reporte th,
+    .tabla-reporte td {
+        padding: 0.875rem 0.75rem;
+        font-size: 0.88rem;
+    }
+
+    .metricas-principales {
+        gap: 1.25rem;
+    }
+
+    .metrica-card {
+        padding: 1rem 1.5rem;
+        min-width: 140px;
+    }
+}
+
+/* === TABLET (max 992px) === */
+@media (max-width: 992px) {
+    .reportes-container {
+        padding: 1.5rem 1.25rem;
+        margin: 1rem;
+    }
+
+    /* Header apilado */
+    .modulo-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .modulo-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .header-acciones {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .header-acciones .btn {
+        flex: 1;
+        justify-content: center;
+        min-width: 140px;
+        margin-left: 0;
+    }
+
+    /* Formulario de filtros: 2 columnas */
+    .reporte-form {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        padding: 1.5rem;
+    }
+
+    .btn-group {
+        grid-column: 1 / -1;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .btn-group .btn,
+    .btn-group button {
+        flex: 1;
+        min-width: 120px;
+        justify-content: center;
+    }
+
+    /* Métricas */
+    .metricas-principales {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .metrica-card {
+        flex: 1;
+        min-width: 160px;
+    }
+
+    /* Tabla: compactar */
+    .tabla-reporte th,
+    .tabla-reporte td {
+        padding: 0.75rem 0.6rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* === MÓVIL - TABLA A CARDS (max 768px) === */
+@media (max-width: 768px) {
+    .reportes-container {
+        padding: 1.25rem 1rem;
+        margin: 0.75rem;
+        border-radius: 8px;
+    }
+
+    .modulo-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .header-acciones {
+        flex-direction: column;
+    }
+
+    .header-acciones .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Formulario: 1 columna */
+    .reporte-form {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-top: 0.5rem;
+    }
+
+    .btn-group .btn,
+    .btn-group button {
+        width: 100%;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Métricas en columna */
+    .metricas-principales {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .metrica-card {
+        min-width: unset;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .metrica-label {
+        font-size: 0.9rem;
+    }
+
+    .metrica-valor {
+        font-size: 1.3rem;
+    }
+
+    /* ---- Ocultar thead ---- */
+    .tabla-reporte thead {
+        display: none;
+    }
+
+    /* ---- Tabla y tbody como bloque ---- */
+    .tabla-reporte,
+    .tabla-reporte tbody {
+        display: block;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+    }
+
+    /* ---- tfoot ---- */
+    .tabla-reporte tfoot {
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    .tabla-reporte tfoot tr {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #000;
+        color: #fff;
+        border-radius: 8px;
+        padding: 0.875rem 1rem;
+    }
+
+    .tabla-reporte tfoot th,
+    .tabla-reporte tfoot td {
+        display: inline;
+        border: none;
+        background: transparent;
+        color: #fff;
+        font-size: 0.9rem;
+        padding: 0;
+    }
+
+    .tabla-reporte tfoot td.moneda {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #dc0000;
+    }
+
+    .tabla-reporte tfoot td:last-child {
+        display: none;
+    }
+
+    /* ---- Cada fila = card ---- */
+    .tabla-reporte tbody tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "fecha       categoria"
+            "descripcion descripcion"
+            "sede        monto"
+            "comprobante comprobante"
+            "acciones    acciones";
+        gap: 0.3rem 1rem;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 0.875rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border-top: 3px solid #dc0000;
+    }
+
+    .tabla-reporte tbody tr:nth-child(even) {
+        background: #fff;
+    }
+
+    .tabla-reporte tbody tr:hover {
+        border-color: #dc0000;
+        background: #fff5f5;
+    }
+
+    /* ---- Celdas con etiqueta ---- */
+    .tabla-reporte tbody td {
+        display: flex;
+        flex-direction: column;
+        padding: 0.25rem 0;
+        border: none;
+        font-size: 0.88rem;
+    }
+
+    .tabla-reporte tbody td::before {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #666;
+        margin-bottom: 0.15rem;
+    }
+
+    /* Etiquetas por columna (orden: fecha, categoria, descripcion, sede, monto, comprobante, acciones) */
+    .tabla-reporte tbody td:nth-child(1)::before { content: "Fecha"; grid-area: fecha; }
+    .tabla-reporte tbody td:nth-child(2)::before { content: "Categoría"; }
+    .tabla-reporte tbody td:nth-child(3)::before { content: "Descripción"; }
+    .tabla-reporte tbody td:nth-child(4)::before { content: "Sede"; }
+    .tabla-reporte tbody td:nth-child(5)::before { content: "Monto"; }
+    .tabla-reporte tbody td:nth-child(6)::before { content: "Comprobante"; }
+    .tabla-reporte tbody td:nth-child(7)::before { display: none; }
+
+    /* ---- Asignar áreas ---- */
+    .tabla-reporte tbody td:nth-child(1) { grid-area: fecha; }
+    .tabla-reporte tbody td:nth-child(2) { grid-area: categoria; }
+    .tabla-reporte tbody td:nth-child(3) { grid-area: descripcion; }
+    .tabla-reporte tbody td:nth-child(4) { grid-area: sede; }
+    .tabla-reporte tbody td:nth-child(5) {
+        grid-area: monto;
+        text-align: right;
+        font-weight: 700;
+        color: #dc0000;
+        font-size: 1rem;
+    }
+    .tabla-reporte tbody td:nth-child(6) { grid-area: comprobante; }
+    .tabla-reporte tbody td:nth-child(7) {
+        grid-area: acciones;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #e5e5e5;
+        margin-top: 0.25rem;
+    }
+
+    /* Acciones internos */
+    .tabla-reporte tbody td:nth-child(7) > div {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    .btn-action {
+        flex: 1;
+        justify-content: center;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.82rem;
+    }
+
+    /* Badge categoría */
+    .badge-categoria {
+        font-size: 0.78rem;
+        padding: 0.25rem 0.6rem;
+        display: inline-block;
+    }
+
+    /* Fila vacía */
+    .tabla-reporte tbody tr.fila-vacia {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 1rem;
+        grid-template-areas: unset;
+    }
+
+    .tabla-reporte tbody tr.fila-vacia td {
+        flex-direction: row;
+    }
+
+    .tabla-reporte tbody tr.fila-vacia td::before {
+        display: none;
+    }
+
+    /* Paginación */
+    .paginacion {
+        margin-top: 1.5rem;
+    }
+
+    /* Modal */
+    .modal-contenido {
+        width: 93vw;
+        padding: 1.75rem 1.25rem;
+        border-radius: 10px;
+    }
+
+    .modal-acciones {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .modal-acciones .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* === MÓVIL PEQUEÑO (max 480px) === */
+@media (max-width: 480px) {
+    .reportes-container {
+        padding: 1rem 0.875rem;
+        margin: 0.5rem;
+    }
+
+    .modulo-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .reporte-form {
+        padding: 1rem;
+        gap: 0.875rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 0.65rem 0.875rem;
+        font-size: 0.875rem;
+    }
+
+    /* Cards: 1 sola columna */
+    .tabla-reporte tbody tr {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "fecha"
+            "categoria"
+            "descripcion"
+            "sede"
+            "monto"
+            "comprobante"
+            "acciones";
+        padding: 0.875rem;
+        gap: 0.2rem;
+    }
+
+    .tabla-reporte tbody td:nth-child(5) {
+        text-align: left;
+        font-size: 1.1rem;
+    }
+
+    .tabla-reporte tbody td:nth-child(7) {
+        justify-content: stretch;
+    }
+
+    .tabla-reporte tbody td:nth-child(7) > div {
+        flex-direction: row;
+    }
+
+    .btn-action {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+
+    .modal-contenido {
+        width: 97vw;
+        padding: 1.5rem 1rem;
+    }
+
+    .modal-contenido h4 {
+        font-size: 1.1rem;
+    }
+}
+
+/* === LANDSCAPE MÓVIL === */
+@media (max-width: 768px) and (orientation: landscape) {
+    .tabla-reporte tbody tr {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "fecha       categoria   monto"
+            "descripcion descripcion sede"
+            "comprobante comprobante acciones";
+    }
+
+    .reporte-form {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .btn-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .btn-group .btn,
+    .btn-group button {
+        flex: 1;
+        min-width: 100px;
+    }
+
+    .modal-contenido {
+        max-height: 88vh;
+        overflow-y: auto;
+    }
+
+    .modal-acciones {
+        flex-direction: row;
+    }
+
+    .modal-acciones .btn {
+        width: auto;
+        flex: 1;
+    }
+}
+
+/* === REDUCCIÓN DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .btn-action,
+    .tabla-reporte tbody tr,
+    .modal-contenido {
+        transition: none;
+        transform: none;
+        animation: none;
+    }
+}

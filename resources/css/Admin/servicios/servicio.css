@@ -1,0 +1,772 @@
+/* ============================================
+   ESTILOS SERVICIOS Y COMBOS
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+/* === VARIABLES === */
+:root {
+    --rojo-principal: #dc0000;
+    --rojo-oscuro: #b80000;
+    --rojo-claro: #fff5f5;
+    --negro: #000000;
+    --gris-oscuro: #1a1a1a;
+    --gris-medio: #666666;
+    --blanco: #ffffff;
+    --gris-claro: #f3f4f6;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.servicios-container {
+    background: var(--blanco);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 1600px;
+    border: 2px solid #e5e5e5;
+}
+
+/* === HEADER CON TÍTULO Y BOTONES === */
+#modulo-servicios > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+/* === TÍTULO === */
+#modulo-servicios h2 {
+    margin: 0;
+    font-size: clamp(1.75rem, 4vw, 2rem);
+    font-weight: 800;
+    color: var(--negro);
+    letter-spacing: -1px;
+}
+
+#modulo-servicios h2:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* === GRUPO DE BOTONES DE FILTRO === */
+#modulo-servicios > div:first-child > div:nth-child(2) {
+    display: flex;
+    gap: 1rem;
+}
+
+/* === GRUPO DE BOTONES DE CREAR === */
+#modulo-servicios > div:first-child > div:nth-child(3) {
+    display: flex;
+    gap: 1rem;
+}
+
+/* === BOTONES BASE === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* === BOTONES PRIMARIOS === */
+.btn-primary {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: 2px solid var(--rojo-principal);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--rojo-oscuro);
+    border-color: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+}
+
+.btn-outline-primary {
+    background: transparent;
+    color: var(--rojo-principal);
+    border: 2px solid var(--rojo-principal);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+}
+
+/* === BOTONES SUCCESS (COMBOS) === */
+.btn-success {
+    background: #10b981;
+    color: var(--blanco);
+    border: 2px solid #10b981;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+    background: #059669;
+    border-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-outline-success {
+    background: transparent;
+    color: #10b981;
+    border: 2px solid #10b981;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+    background: #10b981;
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* === MENSAJE DE ÉXITO === */
+#modulo-servicios p[style*="color:green"] {
+    color: #166534;
+    background: #f0fff4;
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #10b981;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+/* === ACCESIBILIDAD === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* === TABLA === */
+.servicios-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--blanco);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* === ENCABEZADOS DE TABLA === */
+.servicios-container table thead {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.servicios-container table thead th {
+    padding: 1.25rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+/* === FILAS DE TABLA === */
+.servicios-container table tbody tr {
+    border-bottom: 1px solid #e5e5e5;
+    transition: all 0.2s ease;
+}
+
+.servicios-container table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.servicios-container table tbody tr:hover {
+    background: var(--rojo-claro);
+}
+
+.servicios-container table tbody tr:focus-within {
+    background: var(--rojo-claro);
+    outline: 2px solid var(--rojo-principal);
+    outline-offset: -2px;
+}
+
+/* === CELDAS DE TABLA === */
+.servicios-container table tbody td {
+    padding: 1rem;
+    color: #333333;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* === CELDAS ESPECÍFICAS === */
+.servicios-container table tbody td[aria-label="Precio"],
+.servicios-container table tbody td[aria-label="Precio final"] {
+    font-weight: 700;
+    color: var(--rojo-principal);
+}
+
+.servicios-container table tbody td[aria-label="Descuento"] {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.servicios-container table tbody td[aria-label="Estado"] {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: var(--gris-medio);
+}
+
+/* === BOTÓN EDITAR === */
+.btn-editar {
+    color: var(--rojo-principal);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+.btn-editar:hover,
+.btn-editar:focus {
+    background: var(--rojo-claro);
+    color: var(--rojo-oscuro);
+    border-color: var(--rojo-principal);
+    transform: translateY(-1px);
+}
+
+/* === FORMULARIO INLINE === */
+.servicios-container form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+/* === BOTÓN ELIMINAR === */
+.btn-eliminar {
+    background: transparent;
+    color: var(--negro);
+    border: 2px solid transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    margin: 0;
+    margin-left: 0.5rem;
+}
+
+.btn-eliminar:hover,
+.btn-eliminar:focus {
+    background: #f3f4f6;
+    color: var(--rojo-principal);
+    border-color: var(--negro);
+    transform: translateY(-1px);
+}
+
+/* === MODAL DE ELIMINACIÓN === */
+.modal-eliminar-servicio {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+/* === CONTENIDO DEL MODAL === */
+.modal-eliminar-servicio > div {
+    background: var(--blanco);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    max-width: 90vw;
+    width: 450px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #e5e5e5;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* === BOTÓN CERRAR MODAL === */
+#cerrar-modal-eliminar-servicio {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--gris-medio);
+    cursor: pointer;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cerrar-modal-eliminar-servicio:hover,
+#cerrar-modal-eliminar-servicio:focus {
+    background: var(--rojo-claro);
+    color: var(--rojo-principal);
+}
+
+/* === TÍTULO DEL MODAL === */
+#modal-eliminar-servicio-titulo {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--negro);
+    text-align: center;
+}
+
+/* === TEXTO DEL MODAL === */
+.modal-eliminar-servicio p {
+    margin: 0 0 2rem 0;
+    font-size: 1.05rem;
+    color: var(--gris-medio);
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* === CONTENEDOR DE BOTONES DEL MODAL === */
+.modal-eliminar-servicio > div > div:last-child {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+/* === BOTÓN CANCELAR === */
+#cancelar-eliminar-servicio {
+    background: var(--blanco);
+    color: var(--negro);
+    border: 2px solid var(--negro);
+    border-radius: 8px;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#cancelar-eliminar-servicio:hover,
+#cancelar-eliminar-servicio:focus {
+    background: var(--negro);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* === BOTÓN CONFIRMAR ELIMINACIÓN === */
+#confirmar-eliminar-servicio {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 8px;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#confirmar-eliminar-servicio:hover,
+#confirmar-eliminar-servicio:focus {
+    background: var(--rojo-oscuro);
+    border-color: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 0, 0, 0.4);
+}
+
+/* === FOCUS VISIBLE === */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+}
+/* ============================================
+   RESPONSIVE - SERVICIOS Y COMBOS
+   ============================================ */
+
+/* === TABLET GRANDE (max 1200px) === */
+@media (max-width: 1200px) {
+    .servicios-container {
+        padding: 2rem 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .servicios-container table thead th,
+    .servicios-container table tbody td {
+        padding: 1rem 0.75rem;
+        font-size: 0.88rem;
+    }
+}
+
+/* === TABLET (max 992px) === */
+@media (max-width: 992px) {
+    .servicios-container {
+        padding: 1.5rem 1.25rem;
+        margin: 1rem;
+    }
+
+    #modulo-servicios > div:first-child {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding-bottom: 1.5rem;
+    }
+
+    #modulo-servicios h2 {
+        font-size: 1.6rem;
+    }
+
+    .crear-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .servicios-container table thead th,
+    .servicios-container table tbody td {
+        padding: 0.875rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    /* Columnas menos críticas: compactar */
+    .servicios-container table tbody td[aria-label="Categoría"],
+    .servicios-container table tbody td[aria-label="Duración"] {
+        white-space: nowrap;
+    }
+}
+
+/* === MÓVIL - TABLA A CARDS (max 768px) === */
+@media (max-width: 768px) {
+    .servicios-container {
+        padding: 1.25rem 1rem;
+        margin: 0.75rem;
+        border-radius: 8px;
+        border-width: 1px;
+    }
+
+    #modulo-servicios h2 {
+        font-size: 1.4rem;
+    }
+
+    /* ---- Ocultar thead ---- */
+    .servicios-container table thead {
+        display: none;
+    }
+
+    /* ---- Tabla y tbody como bloque ---- */
+    .servicios-container table,
+    .servicios-container table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    /* ---- Cada fila = card ---- */
+    .servicios-container table tbody tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "tipo     nombre"
+            "cat      duracion"
+            "precio   descuento"
+            "pfinal   estado"
+            "incluye  incluye"
+            "acc      acc";
+        gap: 0.3rem 1rem;
+        background: var(--blanco);
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 0.875rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .servicios-container table tbody tr:nth-child(even) {
+        background: var(--blanco);
+    }
+
+    .servicios-container table tbody tr:hover {
+        border-color: var(--rojo-principal);
+        background: var(--rojo-claro);
+    }
+
+    /* Fila combo: borde verde sutil */
+    .servicios-container table tbody tr.fila-combo {
+        border-left: 4px solid #10b981;
+    }
+
+    /* ---- Celdas como bloque con etiqueta ---- */
+    .servicios-container table tbody td {
+        display: flex;
+        flex-direction: column;
+        padding: 0.25rem 0;
+        border: none;
+        font-size: 0.88rem;
+        white-space: normal;
+        vertical-align: top;
+    }
+
+    .servicios-container table tbody td::before {
+        content: attr(aria-label);
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--gris-medio);
+        margin-bottom: 0.15rem;
+    }
+
+    /* ---- Asignar áreas del grid ---- */
+    .servicios-container table tbody td[aria-label="Tipo"]               { grid-area: tipo; }
+    .servicios-container table tbody td[aria-label="Nombre"]             { grid-area: nombre; }
+    .servicios-container table tbody td[aria-label="Categoría"]          { grid-area: cat; }
+    .servicios-container table tbody td[aria-label="Precio"]             { grid-area: precio; }
+    .servicios-container table tbody td[aria-label="Descuento"]          { grid-area: descuento; }
+    .servicios-container table tbody td[aria-label="Precio final"]       { grid-area: pfinal; }
+    .servicios-container table tbody td[aria-label="Duración"]           { grid-area: duracion; }
+    .servicios-container table tbody td[aria-label="Estado"]             { grid-area: estado; }
+    .servicios-container table tbody td[aria-label="Servicios incluidos"]{ grid-area: incluye; }
+    .servicios-container table tbody td[aria-label="Acciones"]           {
+        grid-area: acc;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #e5e5e5;
+        margin-top: 0.5rem;
+    }
+
+    /* Ocultar label en acciones */
+    .servicios-container table tbody td[aria-label="Acciones"]::before {
+        display: none;
+    }
+
+    /* ---- Lista de servicios incluidos ---- */
+    .servicios-container table tbody td[aria-label="Servicios incluidos"] ul {
+        margin: 0.2rem 0 0 0;
+        padding-left: 1rem;
+        font-size: 0.82rem;
+        color: var(--gris-medio);
+    }
+
+    /* ---- Botones de acción ---- */
+    .btn-editar {
+        padding: 0.45rem 1rem;
+        font-size: 0.82rem;
+        border-radius: 6px;
+        border: 1.5px solid var(--rojo-principal);
+        background: var(--rojo-claro);
+        color: var(--rojo-principal);
+    }
+
+    .btn-eliminar {
+        padding: 0.45rem 1rem;
+        font-size: 0.82rem;
+        border-radius: 6px;
+        border: 1.5px solid #ccc;
+        background: #f3f4f6;
+        color: var(--negro);
+        margin-left: 0;
+    }
+
+    /* ---- Badge ---- */
+    .badge-combo,
+    .badge-servicio {
+        font-size: 0.75rem;
+        padding: 2px 8px;
+    }
+
+    /* ---- Fila vacía ---- */
+    .servicios-container table tbody tr:has(td[colspan]) {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 1rem;
+    }
+
+    /* ---- Modal ---- */
+    .modal-eliminar-servicio > div {
+        width: 93vw;
+        padding: 2rem 1.25rem;
+        border-radius: 10px;
+    }
+
+    #modal-eliminar-servicio-titulo {
+        font-size: 1.3rem;
+    }
+
+    .modal-eliminar-servicio p {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-eliminar-servicio > div > div:last-child {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    #cancelar-eliminar-servicio,
+    #confirmar-eliminar-servicio {
+        width: 100%;
+        padding: 0.875rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* === MÓVIL PEQUEÑO (max 480px) === */
+@media (max-width: 480px) {
+    .servicios-container {
+        padding: 1rem 0.875rem;
+        margin: 0.5rem;
+    }
+
+    #modulo-servicios h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Una sola columna en móvil muy pequeño */
+    .servicios-container table tbody tr {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "tipo"
+            "nombre"
+            "cat"
+            "precio"
+            "descuento"
+            "pfinal"
+            "duracion"
+            "estado"
+            "incluye"
+            "acc";
+        gap: 0.2rem;
+        padding: 0.875rem;
+    }
+
+    .servicios-container table tbody td[aria-label="Acciones"] {
+        justify-content: stretch;
+        gap: 0.5rem;
+    }
+
+    .btn-editar,
+    .btn-eliminar {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+
+    .modal-eliminar-servicio > div {
+        width: 97vw;
+        padding: 1.5rem 1rem;
+    }
+
+    #modal-eliminar-servicio-titulo {
+        font-size: 1.15rem;
+    }
+}
+
+/* === LANDSCAPE MÓVIL === */
+@media (max-width: 768px) and (orientation: landscape) {
+    .servicios-container table tbody tr {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "tipo     nombre    estado"
+            "precio   descuento pfinal"
+            "cat      duracion  incluye"
+            "acc      acc       acc";
+    }
+
+    .modal-eliminar-servicio > div {
+        max-height: 88vh;
+        overflow-y: auto;
+    }
+
+    .modal-eliminar-servicio > div > div:last-child {
+        flex-direction: row;
+    }
+
+    #cancelar-eliminar-servicio,
+    #confirmar-eliminar-servicio {
+        width: auto;
+        flex: 1;
+    }
+}
+
+/* === REDUCCIÓN DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .btn-editar,
+    .btn-eliminar,
+    .servicios-container table tbody tr,
+    #cancelar-eliminar-servicio,
+    #confirmar-eliminar-servicio,
+    #cerrar-modal-eliminar-servicio {
+        transition: none;
+        transform: none;
+        animation: none;
+    }
+
+    .modal-eliminar-servicio > div {
+        animation: none;
+    }
+}

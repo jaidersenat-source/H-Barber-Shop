@@ -1,0 +1,529 @@
+/* ============================================
+   REDES SOCIALES Y CONTACTO - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    --success: #059669;
+    --success-bg: #D1FAE5;
+    --whatsapp: #25D366;
+    --whatsapp-dark: #128C7E;
+}
+
+/* Contenedor principal */
+.social-container {
+    margin-top: 2rem;
+}
+
+.social-row {
+    display: flex;
+    justify-content: center;
+}
+
+.social-col {
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Header de página */
+.social-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.social-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--rojo-principal) 0%, var(--rojo-oscuro) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.social-icon-wrapper .icon {
+    font-size: 24px;
+    color: var(--blanco);
+}
+
+.social-header-content h2 {
+    margin: 0;
+    color: var(--negro);
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.social-header-content p {
+    margin: 5px 0 0 0;
+    color: var(--gris-medio);
+    font-size: 14px;
+}
+
+/* Alertas */
+.alert {
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background: var(--success-bg);
+    color: var(--success);
+    border-left: 4px solid var(--success);
+}
+
+.alert-danger {
+    background: var(--rojo-claro);
+    color: var(--rojo-oscuro);
+    border-left: 4px solid var(--rojo-principal);
+}
+
+.alert strong {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+}
+
+.alert ul {
+    margin: 0.5rem 0 0 1.5rem;
+    padding: 0;
+}
+
+.alert li {
+    margin-bottom: 0.25rem;
+}
+
+.alert .btn-close {
+    margin-left: auto;
+}
+
+/* Formulario */
+.social-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Cards */
+.social-card {
+    border: none;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.social-card-header {
+    color: var(--blanco);
+    border-radius: 15px 15px 0 0;
+    border: none;
+    padding: 1.25rem 1.5rem;
+}
+
+.social-card-header.whatsapp {
+    background: linear-gradient(135deg, var(--whatsapp) 0%, var(--whatsapp-dark) 100%);
+}
+
+.social-card-header.social-media {
+    background: linear-gradient(135deg, var(--rojo-principal) 0%, var(--rojo-oscuro) 100%);
+}
+
+.social-card-header h5 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.social-card-body {
+    padding: 2rem;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.form-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.form-label {
+    display: block;
+    color: var(--gris-oscuro);
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-label i {
+    margin-right: 8px;
+}
+
+.form-label .icon-instagram {
+    color: #E1306C;
+}
+
+.form-label .icon-facebook {
+    color: #1877F2;
+}
+
+.form-label .icon-tiktok {
+    color: var(--negro);
+}
+
+.form-label .icon-youtube {
+    color: #FF0000;
+}
+
+/* Form controls */
+.form-control {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    background: var(--blanco);
+    color: var(--negro);
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 0.2rem rgba(220, 38, 38, 0.25);
+}
+
+.form-control::placeholder {
+    color: var(--gris-medio);
+}
+
+/* Form text / hints */
+.form-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--gris-medio);
+    line-height: 1.4;
+}
+
+.form-text i {
+    margin-right: 4px;
+}
+
+/* Action buttons section */
+.action-section {
+    margin-top: 1.5rem;
+    padding: 2rem;
+    background: var(--gris-claro);
+    border-radius: 15px;
+    text-align: center;
+}
+
+/* Botones */
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--rojo-principal) 0%, var(--rojo-oscuro) 100%);
+    color: var(--blanco);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+}
+
+.btn-primary:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--blanco);
+    color: var(--gris-oscuro);
+    border: 2px solid var(--gris-medio);
+}
+
+.btn-secondary:hover {
+    background: var(--gris-oscuro);
+    color: var(--blanco);
+    border-color: var(--gris-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(31, 41, 55, 0.3);
+}
+
+.btn-secondary:focus {
+    outline: 3px solid var(--gris-oscuro);
+    outline-offset: 3px;
+}
+
+.btn-lg {
+    padding: 15px 30px;
+    font-size: 16px;
+}
+
+.btn i {
+    font-size: 1.1rem;
+}
+
+.ms-3 {
+    margin-left: 1rem;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.social-card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.social-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.social-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* Estados de validación */
+.form-control:valid:not(:placeholder-shown):not(:focus) {
+    border-left-color: var(--success);
+}
+
+.form-control.is-invalid {
+    border-color: var(--rojo-principal);
+    background: var(--rojo-claro);
+}
+
+.form-control.is-invalid:focus {
+    outline-color: var(--rojo-oscuro);
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+.form-control:disabled,
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .social-container {
+        padding: 0 15px;
+    }
+
+    .social-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .social-icon-wrapper {
+        width: 45px;
+        height: 45px;
+    }
+
+    .social-icon-wrapper .icon {
+        font-size: 20px;
+    }
+
+    .social-header-content h2 {
+        font-size: 24px;
+    }
+
+    .social-card-body {
+        padding: 1.25rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-col {
+        margin-bottom: 15px;
+    }
+
+    .form-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .btn-lg {
+        padding: 12px 25px;
+        font-size: 16px;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn-lg:last-child {
+        margin-bottom: 0;
+    }
+
+    .ms-3 {
+        margin-left: 0;
+    }
+
+    .action-section {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-header-content h2 {
+        font-size: 20px;
+    }
+
+    .social-header-content p {
+        font-size: 13px;
+    }
+
+    .social-card-body {
+        padding: 1rem;
+    }
+
+    .form-control,
+    .form-label {
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+
+    .btn {
+        font-size: 15px;
+    }
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .social-card {
+        border: 2px solid var(--negro);
+    }
+
+    .btn:focus {
+        outline-width: 4px;
+    }
+
+    .form-control:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Estado de carga */
+.social-form.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.social-form.loading .btn-primary::after {
+    content: "...";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}
+
+/* Mejora para autocomplete */
+.form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--blanco) inset;
+    -webkit-text-fill-color: var(--negro);
+}
+
+/* Transiciones suaves para todos los elementos interactivos */
+button,
+input,
+.social-card,
+.btn {
+    transition: all 0.3s ease;
+}
+
+/* Focus dentro de cards */
+.social-card:has(.form-control:focus) {
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.2);
+}
+
+/* Hover en labels con inputs asociados */
+.form-label:hover + .form-control {
+    border-color: var(--rojo-principal);
+}

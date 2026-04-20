@@ -1,0 +1,1678 @@
+/* ============================================================================
+   1. VARIABLES Y TOKENS DE DISEÑO
+   ============================================================================ */
+
+:root {
+    /* === Paleta de Colores === */
+    /* Rojos */
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    
+    /* Neutros */
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    
+    /* Dorados */
+    --dorado: #D4AF37;
+    --dorado-oscuro: #B8960B;
+    
+    /* === Familias Tipográficas === */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    
+    /* === Tamaños de Fuente === */
+    --text-xs: 0.7rem;
+    --text-sm: 0.9rem;
+    --text-base: 1rem;
+    --text-lg: 1.2rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 1.8rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.5rem;
+    
+    /* === Espaciado === */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 2.5rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 5rem;
+    
+    /* === Bordes === */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 20px;
+    --radius-full: 50%;
+    
+    /* === Sombras === */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(220, 38, 38, 0.4);
+    --shadow-lg: 0 10px 30px rgba(220, 38, 38, 0.5);
+    --shadow-xl: 0 20px 50px rgba(220, 38, 38, 0.3);
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 10px 30px rgba(212, 175, 55, 0.4);
+    
+    /* === Transiciones === */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* === Z-Index === */
+    --z-base: 1;
+    --z-dropdown: 10;
+    --z-sticky: 100;
+    --z-fixed: 1000;
+    --z-modal: 2000;
+}
+
+
+/* ============================================================================
+   2. RESET Y ESTILOS BASE
+   ============================================================================ */
+
+body {
+    font-family: var(--font-body);
+    background: var(--negro);
+    color: var(--blanco);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ============================================================================
+   3. SISTEMA DE LAYOUT
+   ============================================================================ */
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.section {
+    padding: 80px 0;
+    background: var(--negro);
+}
+
+
+/* ============================================================================
+   4. SISTEMA TIPOGRÁFICO
+   ============================================================================ */
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--blanco);
+    margin-bottom: var(--space-sm);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--gris-claro);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.gold-text {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+
+/* ============================================================================
+   6. COMPONENTE: HERO SECTION
+   ============================================================================ */
+
+.page-hero {
+    padding: 140px 0 80px;
+    background: linear-gradient(135deg, #000000 0%, #1F2937 100%);
+    position: relative;
+    overflow: hidden;
+     margin-top: 0;        /* ← quita margin-top: 73px */
+    padding-top: 145px; 
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: var(--z-dropdown);
+    text-align: center;
+}
+
+
+/* ============================================================================
+   7. COMPONENTE: TARJETA 3D INTERACTIVA
+   ============================================================================ */
+
+/* === Contenedor Principal === */
+.card-3d-container {
+    perspective: 1000px;
+    margin: 0 auto;
+    max-width: 450px;
+}
+
+.card-3d {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform var(--transition-slow);
+}
+
+.card-3d-container:hover .card-3d {
+    transform: rotateY(180deg);
+}
+
+/* === Caras de la Tarjeta === */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--radius-2xl);
+    padding: 30px;
+    box-shadow: var(--shadow-card);
+}
+
+/* === Frente de la Tarjeta === */
+.card-front {
+    background: linear-gradient(135deg, var(--rojo-oscuro) 0%, var(--negro) 100%);
+    border: 2px solid var(--dorado);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(212, 175, 55, 0.03) 10px,
+        rgba(212, 175, 55, 0.03) 20px
+    );
+    pointer-events: none;
+}
+
+.card-chip {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    border-radius: var(--radius-md);
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-chip::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 25px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.2) 2px,
+        rgba(0, 0, 0, 0.2) 4px
+    );
+    border-radius: 4px;
+}
+
+.card-logo {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--dorado);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1;
+}
+
+.card-logo span {
+    font-size: var(--text-xs);
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.card-number {
+    font-size: var(--text-xl);
+    letter-spacing: 4px;
+    color: var(--blanco);
+    margin: 30px 0 20px;
+    font-family: var(--font-mono);
+}
+
+.card-member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-member-label {
+    font-size: var(--text-xs);
+    color: var(--gris-claro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-member-name {
+    font-size: 1.1rem;
+    color: var(--blanco);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.card-tier {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.card-tier-label {
+    font-size: var(--text-xs);
+    color: var(--gris-claro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-tier-value {
+    font-size: 1.3rem;
+    color: var(--dorado);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* === Reverso de la Tarjeta === */
+.card-back {
+    background: linear-gradient(135deg, var(--gris-oscuro) 0%, var(--negro) 100%);
+    border: 2px solid var(--rojo-principal);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-back-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--dorado);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.card-back-info {
+    color: var(--gris-claro);
+    line-height: 1.6;
+    font-size: var(--text-sm);
+    margin-bottom: 30px;
+}
+
+.card-barcode {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    align-items: flex-end;
+    height: 40px;
+}
+
+.card-barcode span {
+    width: 3px;
+    background: var(--blanco);
+    border-radius: 1px;
+}
+
+
+/* ============================================================================
+   8. COMPONENTE: FORMULARIO DE CONSULTA
+   ============================================================================ */
+
+.consulta-form {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+.consulta-form h3 {
+    font-size: var(--text-2xl);
+    color: var(--blanco);
+    margin-bottom: 0.8rem;
+}
+
+.consulta-form p {
+    color: var(--gris-claro);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+}
+
+/* === Tabs del Formulario === */
+.form-tabs {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.form-tab {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid rgba(220, 38, 38, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--gris-claro);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.form-tab.active {
+    background: var(--rojo-principal);
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.form-tab:hover:not(.active) {
+    border-color: var(--rojo-principal);
+    color: var(--rojo-principal);
+}
+
+/* === Grupo de Inputs === */
+.input-group {
+    margin-bottom: var(--space-md);
+}
+
+.input-group label {
+    display: block;
+    color: var(--blanco);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    font-size: 0.95rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--blanco);
+    font-size: var(--text-base);
+    font-family: var(--font-body);
+    transition: all var(--transition-base);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--rojo-principal);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.input-group input::placeholder {
+    color: var(--gris-medio);
+}
+
+/* === Estados de error visibles para inputs y mensajes inline === */
+.input-error {
+  border-color: var(--rojo-principal) !important;
+  background: rgba(220, 38, 38, 0.03) !important;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.06);
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.field-error {
+  display: block;
+  color: #fecaca; /* texto claro sobre fondo oscuro */
+  color: var(--rojo-principal);
+  font-size: 0.88rem;
+  margin-top: 8px;
+  line-height: 1.2;
+}
+
+/* === Botón de Consulta === */
+.btn-consultar {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--rojo-principal), var(--rojo-oscuro));
+    color: var(--blanco);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-consultar:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-cta-fidelizacion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--text-base);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-cta-fidelizacion:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.45);
+}
+
+
+/* ============================================================================
+   9. COMPONENTE: RESULTADO DE CONSULTA
+   ============================================================================ */
+
+.resultado-consulta {
+    background: linear-gradient(135deg, var(--gris-oscuro) 0%, rgba(220, 38, 38, 0.1) 100%);
+    border: 2px solid var(--dorado);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    display: none;
+}
+
+.resultado-consulta.visible {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* === Header del Resultado === */
+.resultado-header {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.resultado-header h4 {
+    font-size: var(--text-2xl);
+    color: var(--blanco);
+    margin-bottom: var(--space-xs);
+}
+
+.resultado-header span {
+    color: var(--dorado);
+    font-size: var(--text-sm);
+}
+
+/* === Contenedor de Progreso === */
+.progreso-container {
+    margin-bottom: var(--space-xl);
+}
+
+.progreso-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+    color: var(--gris-claro);
+    font-size: 0.95rem;
+}
+
+.progreso-info strong {
+    color: var(--blanco);
+    font-size: 1.1rem;
+}
+
+/* === Barra de Progreso === */
+.progreso-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.progreso-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--rojo-principal), var(--dorado));
+    border-radius: 10px;
+    transition: width 1s ease-out;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+}
+
+/* === Visualización de Cortes === */
+.cortes-visual {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    margin-bottom: var(--space-lg);
+}
+
+.corte-icon {
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    border: 2px solid;
+    transition: all var(--transition-base);
+}
+
+.corte-icon.completado {
+    background: linear-gradient(135deg, var(--rojo-principal), var(--rojo-oscuro));
+    border-color: var(--rojo-principal);
+    color: var(--blanco);
+}
+
+.corte-icon.pendiente {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(220, 38, 38, 0.3);
+    color: var(--gris-medio);
+}
+
+.corte-icon.gratis {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    border-color: var(--dorado);
+    color: var(--negro);
+    animation: pulse 2s infinite;
+}
+
+/* === Mensaje del Resultado === */
+.resultado-mensaje {
+    text-align: center;
+    padding: var(--space-md);
+    background: rgba(220, 38, 38, 0.1);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--rojo-principal);
+}
+
+.resultado-mensaje p {
+    color: var(--gris-claro);
+    font-size: var(--text-base);
+    margin: 0;
+}
+
+.resultado-mensaje span {
+    display: inline-block;
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--dorado);
+    font-family: var(--font-heading);
+    margin: var(--space-xs);
+}
+
+
+/* ============================================================================
+   10. SECCIÓN: CÓMO FUNCIONA
+   ============================================================================ */
+
+.como-funciona {
+    background: linear-gradient(180deg, #000000 0%, #1F2937 50%, #000000 100%);
+    padding: 100px 0;
+}
+
+.pasos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-4xl);
+}
+
+.paso-card {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.paso-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rojo-principal), var(--dorado));
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.paso-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--rojo-principal);
+    box-shadow: var(--shadow-xl);
+}
+
+.paso-card:hover::before {
+    transform: scaleX(1);
+}
+
+.paso-numero {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto var(--space-md);
+    background: linear-gradient(135deg, var(--rojo-principal), var(--rojo-oscuro));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--blanco);
+    font-family: var(--font-heading);
+    box-shadow: var(--shadow-gold);
+}
+
+.paso-card h4 {
+    font-size: var(--text-xl);
+    color: var(--blanco);
+    margin-bottom: var(--space-sm);
+}
+
+.paso-card p {
+    color: var(--gris-claro);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+
+/* ============================================================================
+   11. SECCIÓN: BENEFICIOS
+   ============================================================================ */
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-4xl);
+}
+
+.beneficio-card {
+    background: var(--gris-oscuro);
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.beneficio-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--dorado);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+}
+
+.beneficio-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-md);
+    background: rgba(212, 175, 55, 0.1);
+    border: 2px solid var(--dorado);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.beneficio-card:hover .beneficio-icon {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+    transform: scale(1.1);
+}
+
+.beneficio-card:hover .beneficio-icon svg {
+    stroke: var(--negro);
+}
+
+.beneficio-card h4 {
+    font-size: 1.4rem;
+    color: var(--blanco);
+    margin-bottom: var(--space-sm);
+}
+
+.beneficio-card p {
+    color: var(--gris-claro);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+
+/* ============================================================================
+   14. ANIMACIONES Y TRANSICIONES
+   ============================================================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+}
+
+
+/* =============================================
+   RESPONSIVE CSS - Pagina de Fidelizacion
+   H Barber Shop SAS
+   ============================================= */
+
+/* -----------------------------------------------
+   BREAKPOINT: Laptop / Tablet grande (1024px)
+   ----------------------------------------------- */
+@media (max-width: 1024px) {
+
+  /* Hero */
+  .page-hero {
+    background-attachment: scroll;
+  }
+
+  .page-hero .section-title {
+    font-size: 2.2rem;
+  }
+
+  .page-hero .section-subtitle {
+    font-size: 1rem;
+    max-width: 560px;
+  }
+
+  /* Tarjeta 3D + Formulario: reducir gap */
+  .section > .container > div[style*="grid-template-columns: 1fr 1fr"] {
+    gap: 40px;
+  }
+
+  /* Como funciona */
+  .pasos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Beneficios */
+  .beneficios-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* -----------------------------------------------
+   BREAKPOINT: Tablet (768px)
+   ----------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* Container general */
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Hero ---------- */
+  .page-hero {
+    min-height: 45vh;
+    background-attachment: scroll !important;
+    padding: 80px 20px 50px;
+  }
+
+  .page-hero .section-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .page-hero .section-subtitle {
+    font-size: 0.9rem;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- Tarjeta 3D + Formulario ---------- */
+  /* Grid de 2 columnas a 1 columna */
+  .section > .container > div[style*="grid-template-columns: 1fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  /* Titulo tarjeta de miembro */
+  .section > .container > div > div > h3[style*="font-size: 1.8rem"] {
+    font-size: 1.4rem !important;
+  }
+
+  .section > .container > div > div > p[style*="font-size: 0.9rem"] {
+    font-size: 0.85rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Tarjeta 3D */
+  .card-3d-container {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+
+  .card-3d {
+    width: 100%;
+  }
+
+  .card-front,
+  .card-back {
+    border-radius: 12px;
+  }
+
+  .card-logo {
+    font-size: 1.8rem;
+  }
+
+  .card-logo span {
+    font-size: 0.65rem;
+  }
+
+  .card-number {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .card-member-name {
+    font-size: 0.85rem;
+  }
+
+  .card-member-label,
+  .card-tier-label {
+    font-size: 0.65rem;
+  }
+
+  .card-tier-value {
+    font-size: 0.8rem;
+  }
+
+  .card-back-title {
+    font-size: 1rem;
+  }
+
+  .card-back-info {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Instruccion de hover -> toque en movil */
+  .section > .container > div > div > p[style*="Pasa el cursor"] {
+    font-size: 0.8rem !important;
+  }
+
+  /* ---------- Formulario de Consulta ---------- */
+  .consulta-form {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+
+  .consulta-form h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .consulta-form p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .form-tabs {
+    margin: 20px 0;
+  }
+
+  .form-tab {
+    padding: 10px 24px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+
+  .input-group label {
+    font-size: 0.85rem;
+  }
+
+  .input-group input {
+    padding: 12px 16px;
+    font-size: 16px; /* Evita zoom en iOS */
+    border-radius: 8px;
+    min-height: 48px;
+  }
+
+  .btn-consultar {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 15px;
+    min-height: 48px;
+    border-radius: 8px;
+  }
+
+  /* ---------- Resultado de Consulta ---------- */
+  .resultado-consulta {
+    padding: 20px 16px;
+    border-radius: 12px;
+    margin-top: 24px;
+  }
+
+  .resultado-header h4 {
+    font-size: 1.1rem;
+  }
+
+  .resultado-header span {
+    font-size: 0.8rem;
+  }
+
+  .progreso-container {
+    margin: 16px 0;
+  }
+
+  .progreso-info {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85rem;
+  }
+
+  .progreso-info span {
+    font-size: 0.85rem;
+  }
+
+  .progreso-bar {
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  /* Cortes visuales */
+  .cortes-visual {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .corte-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .corte-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .resultado-mensaje p {
+    font-size: 0.9rem;
+  }
+
+  .resultado-mensaje span {
+    font-size: 2.5rem;
+  }
+
+  /* Resultado error / no registrado */
+  .resultado-consulta[style*="background: rgba(220"] {
+    padding: 20px 16px !important;
+    margin-top: 20px !important;
+  }
+
+  .resultado-consulta[style*="background: rgba(220"] p {
+    font-size: 0.9rem !important;
+  }
+
+  .resultado-consulta[style*="background: rgba(220"] a {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px !important;
+    font-size: 14px;
+    min-height: 44px;
+  }
+
+  /* ---------- Como Funciona ---------- */
+  .como-funciona {
+    padding: 60px 0;
+  }
+
+  .pasos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .paso-card {
+    padding: 24px 16px;
+    text-align: center;
+  }
+
+  .paso-numero {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+  }
+
+  .paso-card h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .paso-card p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* ---------- Beneficios ---------- */
+  .beneficios-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .beneficio-card {
+    padding: 24px 16px;
+    text-align: center;
+  }
+
+  .beneficio-icon {
+    margin-bottom: 14px;
+  }
+
+  .beneficio-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .beneficio-card h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .beneficio-card p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* ---------- CTA Final ---------- */
+  .section[style*="padding: 80px 0"][style*="text-align: center"] {
+    padding: 50px 0 !important;
+  }
+
+  .section[style*="text-align: center"] p[style*="font-size: 1.1rem"] {
+    font-size: 0.9rem !important;
+    padding: 0 10px;
+    margin-bottom: 24px !important;
+  }
+
+
+}
+
+/* -----------------------------------------------
+   BREAKPOINT: Mobile (576px)
+   ----------------------------------------------- */
+@media (max-width: 576px) {
+
+  /* Container */
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  /* ---------- Hero ---------- */
+  .page-hero {
+    min-height: 40vh;
+    padding: 70px 16px 40px;
+  }
+
+  .page-hero .section-title {
+    font-size: 1.5rem;
+  }
+
+  .page-hero .section-subtitle {
+    font-size: 0.85rem;
+    max-width: 320px;
+  }
+
+  /* ---------- Tarjeta 3D ---------- */
+  .section[style*="padding: 60px 0"] {
+    padding: 40px 0 !important;
+  }
+
+  .card-3d-container {
+    max-width: 300px;
+  }
+
+  .card-logo {
+    font-size: 1.5rem;
+  }
+
+  .card-logo span {
+    font-size: 0.55rem;
+  }
+
+  .card-number {
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+  }
+
+  .card-member-name {
+    font-size: 0.75rem;
+  }
+
+  .card-member-label,
+  .card-tier-label {
+    font-size: 0.6rem;
+  }
+
+  .card-tier-value {
+    font-size: 0.7rem;
+  }
+
+  .card-chip {
+    width: 36px;
+    height: 28px;
+  }
+
+  .card-back-title {
+    font-size: 0.9rem;
+  }
+
+  .card-back-info {
+    font-size: 0.75rem;
+  }
+
+  .card-barcode span {
+    width: 2px;
+  }
+
+  /* ---------- Formulario ---------- */
+  .consulta-form {
+    padding: 20px 16px;
+  }
+
+  .consulta-form h3 {
+    font-size: 1.15rem;
+  }
+
+  .consulta-form p {
+    font-size: 0.8rem;
+  }
+
+  .form-tabs {
+    flex-direction: row;
+    gap: 0;
+    width: 100%;
+  }
+
+  .form-tab {
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .input-group {
+    margin-bottom: 14px;
+  }
+
+  .input-group label {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .input-group input {
+    padding: 12px 14px;
+    font-size: 16px;
+    min-height: 46px;
+  }
+
+  .btn-consultar {
+    padding: 13px 20px;
+    font-size: 14px;
+    min-height: 46px;
+  }
+
+  /* ---------- Resultado ---------- */
+  .resultado-consulta {
+    padding: 16px 14px;
+    margin-top: 20px;
+  }
+
+  .resultado-header {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .resultado-header h4 {
+    font-size: 1rem;
+  }
+
+  .resultado-header span {
+    font-size: 0.75rem;
+  }
+
+  .progreso-info {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .cortes-visual {
+    gap: 6px;
+  }
+
+  .corte-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  .corte-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .resultado-mensaje span {
+    font-size: 2rem;
+  }
+
+  .resultado-mensaje p {
+    font-size: 0.85rem;
+  }
+
+  /* ---------- Como Funciona ---------- */
+  .como-funciona {
+    padding: 48px 0;
+  }
+
+  .pasos-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .paso-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    text-align: left;
+    padding: 20px 16px;
+  }
+
+  .paso-numero {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+
+  .paso-card h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .paso-card p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* ---------- Beneficios ---------- */
+  .section[style*="padding: 80px 0"]:not([style*="text-align: center"]) {
+    padding: 48px 0 !important;
+  }
+
+  .beneficios-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .beneficio-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    text-align: left;
+    padding: 18px 16px;
+  }
+
+  .beneficio-icon {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .beneficio-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .beneficio-card h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .beneficio-card p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* ---------- CTA Final ---------- */
+  .section[style*="padding: 80px 0"][style*="text-align: center"] {
+    padding: 40px 0 !important;
+  }
+
+  .section[style*="text-align: center"] .section-title {
+    font-size: 1.3rem;
+  }
+
+  .section[style*="text-align: center"] p[style*="font-size: 1.1rem"] {
+    font-size: 0.85rem !important;
+    max-width: 300px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .btn-primary {
+    max-width: 100%;
+    padding: 13px 24px;
+    font-size: 14px;
+  }
+}
+
+/* -----------------------------------------------
+   BREAKPOINT: Mobile pequeno (400px)
+   ----------------------------------------------- */
+@media (max-width: 400px) {
+
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* Hero */
+  .page-hero {
+    min-height: 35vh;
+    padding: 60px 12px 36px;
+  }
+
+  .page-hero .section-title {
+    font-size: 1.25rem;
+  }
+
+  .page-hero .section-subtitle {
+    font-size: 0.8rem;
+  }
+
+  /* Tarjeta 3D */
+  .card-3d-container {
+    max-width: 260px;
+  }
+
+  .card-logo {
+    font-size: 1.3rem;
+  }
+
+  .card-number {
+    font-size: 0.75rem;
+  }
+
+  .card-member-name {
+    font-size: 0.65rem;
+  }
+
+  .card-chip {
+    width: 30px;
+    height: 24px;
+  }
+
+  /* Formulario */
+  .consulta-form {
+    padding: 16px 12px;
+  }
+
+  .consulta-form h3 {
+    font-size: 1.05rem;
+  }
+
+  .form-tab {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .btn-consultar {
+    font-size: 13px;
+    padding: 12px 16px;
+  }
+
+  /* Resultado */
+  .corte-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+
+  .corte-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .resultado-mensaje span {
+    font-size: 1.8rem;
+  }
+
+  /* Pasos */
+  .paso-numero {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .paso-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .paso-card p {
+    font-size: 0.75rem;
+  }
+
+  /* Beneficios */
+  .beneficio-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .beneficio-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .beneficio-card p {
+    font-size: 0.75rem;
+  }
+
+  /* CTA */
+  .section[style*="text-align: center"] .section-title {
+    font-size: 1.15rem;
+  }
+
+  .btn-primary {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+}
+
+/* -----------------------------------------------
+   MEJORAS GENERALES PARA MOVIL - FIDELIZACION
+   ----------------------------------------------- */
+
+/* Parallax desactivado en moviles */
+@media (max-width: 768px) {
+  .page-hero {
+    background-attachment: scroll !important;
+  }
+}
+
+/* Tarjeta 3D: cambiar hover a tap en movil */
+@media (hover: none) and (pointer: coarse) {
+  .card-3d-container {
+    cursor: pointer;
+  }
+
+  /* La tarjeta se voltea con tap en lugar de hover */
+  .card-3d:hover .card-front {
+    transform: none;
+  }
+
+  .card-3d:hover .card-back {
+    transform: rotateY(180deg);
+  }
+
+  .card-3d.flipped .card-front {
+    transform: rotateY(180deg);
+  }
+
+  .card-3d.flipped .card-back {
+    transform: rotateY(0deg);
+  }
+}
+
+/* Evitar zoom en inputs iOS (minimo 16px) */
+input[type="text"],
+input[type="tel"],
+select,
+textarea {
+  font-size: 16px;
+}
+
+/* Touch targets minimo 44px */
+.form-tab,
+.btn-consultar,
+.btn-primary,
+.resultado-consulta a {
+  min-height: 44px;
+}
+
+/* Orientacion landscape en celulares */
+@media (orientation: landscape) and (max-height: 500px) {
+
+  .page-hero {
+    min-height: auto;
+    padding: 30px 20px;
+  }
+
+  .page-hero .section-title {
+    font-size: 1.3rem;
+  }
+
+  .page-hero .section-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  .section > .container > div[style*="grid-template-columns: 1fr 1fr"] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+  }
+
+  .card-3d-container {
+    max-width: 280px;
+  }
+
+  .pasos-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .paso-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .beneficios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .beneficio-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,0 +1,568 @@
+/* ============================================
+   CREAR PRODUCTO - DISEÑO PROFESIONAL
+   Colores: Rojo, Negro y Blanco
+   Optimizado para lectores de pantalla
+   ============================================ */
+
+/* Variables de color */
+:root {
+    --rojo-principal: #DC2626;
+    --rojo-oscuro: #991B1B;
+    --rojo-claro: #FEE2E2;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+}
+
+/* Contenedor principal */
+#modulo-productos-create {
+    background: var(--blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Header */
+.productos-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--rojo-principal);
+}
+
+.productos-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--negro);
+}
+
+.productos-header h2:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 4px;
+}
+
+/* Formulario */
+.producto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: var(--gris-claro);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--rojo-principal);
+}
+
+.producto-form:focus-within {
+    background: var(--blanco);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Grupo de formulario */
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Labels */
+.form-grupo label {
+    display: block;
+    font-weight: 700;
+    color: var(--negro);
+    font-size: 1rem;
+}
+
+.form-grupo label:hover {
+    color: var(--rojo-principal);
+    cursor: pointer;
+}
+
+/* Inputs, textarea y file */
+.form-grupo input[type="text"],
+.form-grupo input[type="number"],
+.form-grupo input[type="file"],
+.form-grupo textarea,
+.form-grupo select{
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--gris-medio);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: var(--blanco);
+    color: var(--negro);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-grupo input:focus,
+.form-grupo textarea:focus,
+.form-grupo select:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 4px var(--rojo-claro);
+}
+
+/* Textarea */
+.form-grupo textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.form-grupo select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23DC2626' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.form-grupo select option {
+    padding: 8px;
+}
+
+/* Input file especial */
+.form-grupo input[type="file"] {
+    padding: 10px;
+    cursor: pointer;
+    border-style: dashed;
+}
+
+.form-grupo input[type="file"]:hover {
+    background: var(--rojo-claro);
+    border-color: var(--rojo-principal);
+}
+
+.form-grupo input[type="file"]:focus {
+    border-style: solid;
+}
+
+.form-grupo input[type="file"]::file-selector-button {
+    padding: 8px 16px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+}
+
+.form-grupo input[type="file"]::file-selector-button:hover {
+    background: var(--rojo-oscuro);
+}
+
+/* Placeholder */
+.form-grupo input::placeholder,
+.form-grupo textarea::placeholder {
+    color: var(--gris-medio);
+}
+
+/* Campos requeridos */
+.form-grupo input[required],
+.form-grupo select[required] {
+    border-left: 4px solid var(--rojo-principal);
+}
+
+/* Campos numéricos */
+.form-grupo input[type="number"] {
+    appearance: textfield;
+}
+
+.form-grupo input[type="number"]::-webkit-inner-spin-button,
+.form-grupo input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+    height: 40px;
+}
+
+/* Campos específicos con estilos visuales */
+.form-grupo input[name="pro_precio"],
+.form-grupo input[name="pro_descuento"] {
+    font-weight: 600;
+    color: var(--rojo-principal);
+}
+
+.form-grupo input[name="pro_stock"] {
+    font-weight: 600;
+}
+
+/* Contenedor de acciones */
+.form-acciones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Botón guardar */
+.btn-guardar {
+    flex: 1;
+    min-width: 150px;
+    padding: 14px 24px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-guardar:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+}
+
+.btn-guardar:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+.btn-guardar:active {
+    transform: translateY(0);
+}
+
+/* Botón cancelar */
+.btn-cancelar {
+    flex: 1;
+    min-width: 150px;
+    padding: 14px 24px;
+    background: var(--blanco);
+    color: var(--rojo-principal);
+    border: 2px solid var(--rojo-principal);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-cancelar:hover {
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-cancelar:focus {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--rojo-claro);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #modulo-productos-create {
+        padding: 1.5rem;
+    }
+
+    .productos-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .producto-form {
+        padding: 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .form-acciones {
+        flex-direction: column;
+    }
+
+    .btn-guardar,
+    .btn-cancelar {
+        width: 100%;
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #modulo-productos-create {
+        padding: 1rem;
+    }
+
+    .productos-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .producto-form {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .form-grupo input,
+    .form-grupo textarea,
+    .form-grupo select {
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+}
+
+/* Mejoras de accesibilidad */
+*:focus-visible {
+    outline: 3px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+/* Estados disabled */
+.form-grupo input:disabled,
+.form-grupo textarea:disabled,
+.form-grupo select:disabled,
+.btn-guardar:disabled,
+.btn-cancelar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--gris-claro);
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .producto-form:focus-within {
+        border-width: 3px;
+    }
+
+    .btn-guardar:focus,
+    .btn-cancelar:focus {
+        outline-width: 4px;
+    }
+
+    .form-grupo input:focus,
+    .form-grupo textarea:focus,
+    .form-grupo select:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Validación visual */
+.form-grupo input:invalid:not(:focus):not(:placeholder-shown),
+.form-grupo textarea:invalid:not(:focus):not(:placeholder-shown){
+    border-color: var(--rojo-principal);
+    background: var(--rojo-claro);
+}
+
+.form-grupo input:valid:not(:placeholder-shown),
+.form-grupo textarea:valid:not(:placeholder-shown),
+.form-grupo select:valid  {
+    border-left-color: var(--rojo-principal);
+}
+
+/* Estado de carga */
+.producto-form.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.producto-form.loading .btn-guardar::after {
+    content: "...";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+    color: var(--rojo-principal);
+    background: var(--rojo-claro);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border-left: 4px solid var(--rojo-principal);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Animación de entrada */
+#modulo-productos-create {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accesibilidad para elementos interactivos */
+[tabindex] {
+    cursor: pointer;
+}
+
+/* Preview de imagen (opcional, para futuras mejoras) */
+.image-preview {
+    margin-top: 12px;
+    max-width: 200px;
+    border-radius: 8px;
+    border: 2px solid var(--gris-claro);
+}
+
+.image-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+/* Transición suave del formulario */
+.producto-form {
+    transition: all 0.3s ease;
+}
+
+/* Mejora visual para el input file */
+.form-grupo input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px;
+    background: var(--rojo-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+}
+
+.form-grupo input[type="file"]::-webkit-file-upload-button:hover {
+    background: var(--rojo-oscuro);
+}
+
+/* Mejora de contraste para opciones de select */
+.form-grupo select:focus option:checked,
+.form-grupo select:focus option:hover {
+    background: var(--rojo-claro);
+    color: var(--negro);
+}
+
+/* ============================================
+   SECCIÓN DE PRODUCTOS DEL KIT
+   ============================================ */
+
+#seccion-productos-kit {
+    margin-top: 1rem;
+}
+
+#seccion-productos-kit fieldset {
+    border: 2px solid var(--rojo-principal);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: var(--blanco);
+}
+
+#seccion-productos-kit legend {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--rojo-principal);
+    padding: 0 0.5rem;
+}
+
+#seccion-productos-kit .help-text {
+    color: var(--gris-medio);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.productos-kit-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0.5rem;
+    border: 1px solid var(--gris-claro);
+    border-radius: 4px;
+    background: var(--gris-claro);
+}
+
+.producto-kit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--blanco);
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.producto-kit-item:hover {
+    border-color: var(--rojo-principal);
+    background: var(--rojo-claro);
+}
+
+.producto-kit-item:focus-within {
+    outline: 2px solid var(--rojo-principal);
+    outline-offset: 2px;
+}
+
+.producto-kit-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--rojo-principal);
+}
+
+.producto-kit-item label {
+    font-weight: 500;
+    color: var(--negro);
+    cursor: pointer;
+    flex: 1;
+}
+
+.producto-kit-item input[type="checkbox"]:checked + label {
+    color: var(--rojo-principal);
+    font-weight: 700;
+}

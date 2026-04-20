@@ -1,0 +1,504 @@
+/* ============================================
+   ESTILOS EDITAR SEDE
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+/* === CONTENEDOR PRINCIPAL === */
+#modulo-sedes-form .card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    border: 2px solid #e5e5e5;
+}
+
+/* === TÍTULO PRINCIPAL === */
+#modulo-sedes-form h1 {
+    color: #000000;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    letter-spacing: -0.5px;
+    border-bottom: 3px solid #dc0000;
+    padding-bottom: 1rem;
+}
+
+/* === FORMULARIO === */
+#modulo-sedes-form form {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* === FIELDSET === */
+#modulo-sedes-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+#modulo-sedes-form legend {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    width: 100%;
+}
+
+/* === FORM GROUP === */
+#modulo-sedes-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+/* === LABELS === */
+#modulo-sedes-form label {
+    display: block;
+    color: #000000;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
+/* === INPUTS Y TEXTAREA === */
+#modulo-sedes-form input[type="text"],
+#modulo-sedes-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #000000;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+#modulo-sedes-form input[type="text"]:hover,
+#modulo-sedes-form textarea:hover {
+    border-color: #9ca3af;
+}
+
+#modulo-sedes-form input[type="text"]:focus,
+#modulo-sedes-form textarea:focus {
+    outline: 3px solid #dc0000;
+    outline-offset: 2px;
+    border-color: #dc0000;
+    box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
+    background: #ffffff;
+}
+
+/* === TEXTAREA ESPECÍFICO === */
+#modulo-sedes-form textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* === HINT - texto de ayuda debajo del input === */
+#modulo-sedes-form .hint {
+    display: block;
+    color: #555555;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* === INPUT FILE PERSONALIZADO === */
+#modulo-sedes-form .file-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#modulo-sedes-form .file-input-hidden {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#modulo-sedes-form .file-input-label {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+#modulo-sedes-form .file-input-label:hover {
+    border-color: #9ca3af;
+}
+
+#modulo-sedes-form .file-input-wrapper:focus-within .file-input-label {
+    outline: 3px solid #dc0000;
+    outline-offset: 2px;
+    border-color: #dc0000;
+    box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
+}
+
+#modulo-sedes-form .file-input-btn {
+    background: #000000;
+    color: #ffffff;
+    padding: 0.875rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+#modulo-sedes-form .file-input-name {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+    color: #6b7280;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+}
+#modulo-sedes-form .botones-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* === BOTÓN SUBMIT === */
+#modulo-sedes-form button[type="submit"],
+#modulo-sedes-form .guardar-btn {
+    width: 100%;
+    padding: 0.875rem 2rem;
+    background: #dc0000;
+    color: #ffffff;
+    border: 2px solid #dc0000;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+#modulo-sedes-form button[type="submit"]:hover,
+#modulo-sedes-form .guardar-btn:hover {
+    background: #b80000;
+    border-color: #b80000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
+}
+
+#modulo-sedes-form button[type="submit"]:focus,
+#modulo-sedes-form .guardar-btn:focus {
+    outline: 3px solid #dc0000;
+    outline-offset: 3px;
+    background: #b80000;
+    border-color: #b80000;
+}
+
+#modulo-sedes-form button[type="submit"]:active,
+#modulo-sedes-form .guardar-btn:active {
+    transform: translateY(0);
+}
+
+/* === BOTÓN VOLVER / CANCELAR === */
+#modulo-sedes-form .volver-btn,
+#modulo-sedes-form .btn-outline-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.875rem 2rem;
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+#modulo-sedes-form .volver-btn:hover,
+#modulo-sedes-form .btn-outline-primary:hover {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#modulo-sedes-form .volver-btn:focus,
+#modulo-sedes-form .btn-outline-primary:focus {
+    outline: 3px solid #000000;
+    outline-offset: 3px;
+    background: #333333;
+    border-color: #333333;
+}
+
+#modulo-sedes-form .volver-btn:active,
+#modulo-sedes-form .btn-outline-primary:active {
+    transform: translateY(0);
+}
+
+/* === ACCESIBILIDAD GLOBAL === */
+*:focus-visible {
+    outline: 3px solid #dc0000;
+    outline-offset: 3px;
+}
+
+/* === SR-ONLY (oculto visualmente pero legible por lector) === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* === PLACEHOLDER === */
+#modulo-sedes-form input::placeholder,
+#modulo-sedes-form textarea::placeholder {
+    color: #9ca3af;
+    opacity: 0.7;
+}
+
+/* === VALIDACIÓN === */
+#modulo-sedes-form input:invalid:not(:placeholder-shown):not(:focus),
+#modulo-sedes-form textarea:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: #dc0000;
+    background: #fff5f5;
+}
+
+#modulo-sedes-form input:valid:not(:placeholder-shown):not(:focus),
+#modulo-sedes-form textarea:valid:not(:placeholder-shown):not(:focus) {
+    border-color: #10b981;
+    background: #f0fff4;
+}
+
+/* === MENSAJE DE ERROR === */
+.error-message,
+[role="alert"] {
+    display: block;
+    color: #dc0000;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.input-error {
+    border-color: #dc0000 !important;
+    background: #fff5f5 !important;
+}
+
+/* === AUTOCOMPLETE === */
+#modulo-sedes-form input:-webkit-autofill,
+#modulo-sedes-form input:-webkit-autofill:hover,
+#modulo-sedes-form input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+    -webkit-text-fill-color: #000000;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* === ANIMACIÓN DE ENTRADA === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#modulo-sedes-form .card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* === ANIMACIÓN DE FOCUS === */
+@keyframes focusPulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 0, 0, 0.4); }
+    100% { box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1); }
+}
+
+#modulo-sedes-form input:focus,
+#modulo-sedes-form textarea:focus {
+    animation: focusPulse 0.3s ease-out;
+}
+
+/* === ESTADO DE CARGA === */
+#modulo-sedes-form button.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+#modulo-sedes-form button.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* === RESPONSIVIDAD TABLET === */
+@media (max-width: 1024px) {
+    #modulo-sedes-form .card {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 768px) {
+    #modulo-sedes-form .card {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    #modulo-sedes-form h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+    }
+
+    #modulo-sedes-form label {
+        font-size: 0.9rem;
+    }
+
+    #modulo-sedes-form input[type="text"],
+    #modulo-sedes-form textarea {
+        padding: 0.75rem 0.875rem;
+        font-size: 0.95rem;
+    }
+
+    #modulo-sedes-form textarea {
+        min-height: 100px;
+    }
+
+    #modulo-sedes-form button[type="submit"],
+    #modulo-sedes-form .volver-btn {
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL PEQUEÑO === */
+@media (max-width: 480px) {
+    #modulo-sedes-form .card {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    #modulo-sedes-form h1 {
+        font-size: 1.25rem;
+        padding-bottom: 0.6rem;
+    }
+
+    #modulo-sedes-form label {
+        font-size: 0.85rem;
+    }
+
+    #modulo-sedes-form input[type="text"],
+    #modulo-sedes-form textarea {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    #modulo-sedes-form textarea {
+        min-height: 90px;
+    }
+
+    #modulo-sedes-form button[type="submit"],
+    #modulo-sedes-form .volver-btn {
+        padding: 0.9rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* === CONTRASTE ALTO === */
+@media (prefers-contrast: high) {
+    #modulo-sedes-form .card {
+        border: 3px solid #000000;
+    }
+
+    #modulo-sedes-form input[type="text"],
+    #modulo-sedes-form textarea {
+        border: 3px solid #000000;
+    }
+
+    #modulo-sedes-form h1 {
+        border-bottom: 4px solid #dc0000;
+    }
+
+    #modulo-sedes-form .hint {
+        color: #000000;
+        font-style: normal;
+        font-weight: 600;
+    }
+}
+
+/* === MODO REDUCIDO DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* === LANDSCAPE EN MÓVILES === */
+@media (max-width: 768px) and (orientation: landscape) {
+    #modulo-sedes-form .card {
+        padding: 1rem 1.5rem;
+    }
+
+    #modulo-sedes-form h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    #modulo-sedes-form textarea {
+        min-height: 80px;
+    }
+}

@@ -1,0 +1,453 @@
+/* Variables de color - Paleta Barbero (Azul) */
+:root {
+    --azul-principal: #2563EB;
+    --azul-oscuro: #1E40AF;
+    --azul-claro: #DBEAFE;
+    --negro: #000000;
+    --gris-oscuro: #1F2937;
+    --gris-medio: #6B7280;
+    --blanco: #FFFFFF;
+    --gris-claro: #F3F4F6;
+    --success: #059669;
+    --success-light: #D1FAE5;
+    --warning: #F59E0B;
+    --warning-light: #FEF3C7;
+    --danger: #DC2626;
+    --danger-light: #FEE2E2;
+    --info: #0EA5E9;
+    --info-light: #E0F2FE;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+.turnos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* ============================================
+   ENCABEZADO
+   ============================================ */
+.turnos-header {
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-oscuro) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.turnos-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.turnos-header h2 {
+    color: var(--blanco);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.turnos-doc {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    margin: 0 0 1rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.turnos-doc strong {
+    color: var(--blanco);
+    font-weight: 600;
+}
+
+.btn-nuevo-turno {
+    display: inline-block;
+    background-color: var(--blanco);
+    color: var(--azul-principal);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.btn-nuevo-turno:hover,
+.btn-nuevo-turno:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: var(--gris-claro);
+}
+
+/* ============================================
+   ESTADO VACÍO
+   ============================================ */
+.turnos-vacio {
+    background-color: var(--azul-claro);
+    border: 2px dashed var(--azul-principal);
+    border-radius: 12px;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: var(--azul-oscuro);
+    margin-top: 2rem;
+}
+
+.turnos-vacio svg {
+    color: var(--azul-principal);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.turnos-vacio p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ============================================
+   TARJETAS (MOBILE)
+   ============================================ */
+.turnos-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.turno-card {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--gris-claro);
+    transition: all 0.3s ease;
+}
+
+.turno-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Parte superior de la tarjeta */
+.turno-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.turno-fecha-hora {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.turno-fecha {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gris-medio);
+    text-transform: capitalize;
+}
+
+.turno-hora {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+}
+
+/* Estados del turno */
+.turno-estado {
+    display: inline-block;
+    padding: 0.4rem 0.875rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.turno-estado--pendiente {
+    background-color: var(--warning-light);
+    color: var(--warning);
+}
+
+.turno-estado--realizado {
+    background-color: var(--success-light);
+    color: var(--success);
+}
+
+.turno-estado--cancelado {
+    background-color: var(--danger-light);
+    color: var(--danger);
+}
+
+.turno-estado--reprogramado {
+    background-color: var(--info-light);
+    color: var(--info);
+}
+
+.turno-estado--confirmado {
+    background-color: var(--azul-claro);
+    color: var(--azul-oscuro);
+}
+
+/* Info del cliente */
+.turno-cliente {
+    padding: 1rem;
+    background-color: var(--gris-claro);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.turno-cliente-nombre {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gris-oscuro);
+    margin-bottom: 0.25rem;
+}
+
+.turno-cliente-doc {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--gris-medio);
+}
+
+/* Acción en la tarjeta */
+.turno-accion {
+    margin: 0;
+}
+
+.turno-accion select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--gris-claro);
+    border-radius: 8px;
+    background-color: var(--blanco);
+    color: var(--gris-oscuro);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+.turno-accion select:active {
+    border-color: var(--azul-principal);
+    background-color: var(--azul-claro);
+}
+
+.turno-accion select:focus {
+    outline: none;
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ============================================
+   TABLA (DESKTOP) - Oculta en móvil
+   ============================================ */
+.turnos-tabla-wrapper {
+    display: none;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   TABLET (640px+)
+   ============================================ */
+@media (min-width: 640px) {
+    .turnos-container {
+        padding: 1.5rem;
+    }
+
+    .turnos-header {
+        padding: 2rem;
+    }
+
+    .turnos-header h2 {
+        font-size: 2rem;
+    }
+
+    .turnos-cards {
+        gap: 1.25rem;
+    }
+
+    .turno-card {
+        padding: 1.5rem;
+    }
+
+    .turno-hora {
+        font-size: 1.5rem;
+    }
+
+    .btn-nuevo-turno {
+        padding: 0.875rem 1.75rem;
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   DESKTOP (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+    .turnos-container {
+        padding: 2rem;
+    }
+
+    .turnos-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem 2.5rem;
+    }
+
+    .turnos-header h2 {
+        font-size: 2.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .turnos-doc {
+        margin-bottom: 0;
+    }
+
+    /* Ocultar tarjetas en desktop */
+    .turnos-cards {
+        display: none;
+    }
+
+    /* Mostrar tabla en desktop */
+    .turnos-tabla-wrapper {
+        display: block;
+        background: var(--blanco);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .turnos-tabla {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .turnos-tabla thead {
+        background-color: var(--azul-principal);
+    }
+
+    .turnos-tabla th {
+        padding: 1.25rem 1.5rem;
+        text-align: left;
+        font-weight: 700;
+        color: var(--blanco);
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        letter-spacing: 0.5px;
+    }
+
+    .turnos-tabla tbody tr {
+        border-bottom: 1px solid var(--gris-claro);
+        transition: background-color 0.2s ease;
+    }
+
+    .turnos-tabla tbody tr:hover {
+        background-color: var(--azul-claro);
+    }
+
+    .turnos-tabla tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .turnos-tabla td {
+        padding: 1.25rem 1.5rem;
+        color: var(--gris-oscuro);
+        font-size: 0.95rem;
+    }
+
+    .turnos-tabla select {
+        padding: 0.625rem 1.25rem;
+        border: 2px solid var(--gris-claro);
+        border-radius: 6px;
+        background-color: var(--blanco);
+        color: var(--gris-oscuro);
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 160px;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+    }
+
+    .turnos-tabla select:hover {
+        border-color: var(--azul-principal);
+        background-color: var(--azul-claro);
+    }
+
+    .turnos-tabla select:focus {
+        outline: none;
+        border-color: var(--azul-principal);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+}
+
+/* ============================================
+   DESKTOP GRANDE (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+    .turnos-container {
+        padding: 2.5rem;
+    }
+
+    .turnos-header {
+        padding: 2.5rem 3rem;
+    }
+
+    .turnos-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .turnos-tabla th {
+        padding: 1.5rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .turnos-tabla td {
+        padding: 1.5rem 2rem;
+        font-size: 1rem;
+    }
+}

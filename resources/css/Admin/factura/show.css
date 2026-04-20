@@ -1,0 +1,586 @@
+/* ============================================
+   ESTILOS DETALLE FACTURA
+   Diseño profesional y accesible
+   Colores: Rojo, Negro y Blanco
+   ============================================ */
+
+/* === VARIABLES === */
+:root {
+    --factura-primary: #DC2626;
+    --factura-primary-dark: #991B1B;
+    --factura-primary-light: #FEE2E2;
+    --factura-negro: #000000;
+    --factura-gris-oscuro: #1a1a1a;
+    --factura-gris-medio: #666666;
+    --factura-blanco: #ffffff;
+    --factura-gris-claro: #f3f4f6;
+    --factura-success: #10b981;
+    --factura-success-light: #d1fae5;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.facturas-container {
+    background: var(--factura-blanco);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    border: 2px solid #e5e5e5;
+}
+
+/* === HEADER === */
+.factura-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--factura-primary);
+    flex-wrap: wrap;
+}
+
+/* h1 en lugar de h2 — mismo estilo visual */
+.factura-header h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 1.875rem);
+    font-weight: 800;
+    color: var(--factura-negro);
+    letter-spacing: -1px;
+}
+
+.factura-header h1:focus {
+    outline: 3px solid var(--factura-primary);
+    outline-offset: 4px;
+}
+
+/* === BOTÓN VOLVER === */
+.btn-volver-factura {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: var(--factura-primary);
+    color: var(--factura-blanco);
+    border: 2px solid var(--factura-primary);
+    white-space: nowrap;
+}
+
+.btn-volver-factura:hover,
+.btn-volver-factura:focus {
+    background: var(--factura-primary-dark);
+    border-color: var(--factura-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* === DETALLE DE FACTURA (ahora usa dl/dt/dd) === */
+.factura-detalle {
+    background: var(--factura-gris-claro);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+/* dl: resetear estilos por defecto del navegador */
+.factura-detalle dl {
+    margin: 0;
+    padding: 0;
+}
+
+/* Cada par dt+dd en su propio div */
+.factura-detalle > div,
+.factura-detalle dl > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    margin: 0.75rem 0;
+    color: #333333;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.factura-detalle > div:first-child,
+.factura-detalle dl > div:first-child {
+    margin-top: 0;
+}
+
+.factura-detalle > div:last-child,
+.factura-detalle dl > div:last-child {
+    margin-bottom: 0;
+}
+
+.factura-detalle dt {
+    font-weight: 700;
+    color: var(--factura-negro);
+    min-width: 120px;
+}
+
+.factura-detalle dt strong {
+    font-weight: 700;
+}
+
+.factura-detalle dd {
+    margin: 0;
+    color: #333333;
+}
+
+/* === DIVISOR === */
+#modulo-factura-show hr {
+    margin: 2rem 0;
+    border: none;
+    border-top: 2px solid #e5e5e5;
+}
+
+/* === SUBTÍTULOS h2 dentro del main (antes h4) === */
+#modulo-factura-show h2:not(#titulo-pagina):not(.sr-only) {
+    font-size: 1.25rem;
+    color: var(--factura-primary);
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+#modulo-factura-show h2:focus {
+    outline: 3px solid var(--factura-primary);
+    outline-offset: 4px;
+}
+
+/* === LISTA ACCESIBLE DE SERVICIOS === */
+.facturas-container ul[aria-label] {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+.facturas-container ul[aria-label] li {
+    background: var(--factura-gris-claro);
+    border-left: 4px solid var(--factura-primary);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #333333;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.facturas-container ul[aria-label] li span {
+    display: block;
+}
+
+/* === WRAPPER DE TABLA === */
+.facturas-table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* === TABLA (oculta para JAWS, visible para usuarios videntes) === */
+.facturas-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--factura-blanco);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* === ENCABEZADOS DE TABLA === */
+.facturas-table thead {
+    background: var(--factura-negro);
+    color: var(--factura-blanco);
+}
+
+.facturas-table thead th {
+    padding: 1.25rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--factura-primary);
+}
+
+/* === FILAS DE TABLA === */
+.facturas-table tbody tr {
+    border-bottom: 1px solid #e5e5e5;
+    transition: all 0.2s ease;
+}
+
+.facturas-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.facturas-table tbody tr:hover {
+    background: var(--factura-primary-light);
+}
+
+.facturas-table tbody tr:focus-within {
+    background: var(--factura-primary-light);
+    outline: 2px solid var(--factura-primary);
+    outline-offset: -2px;
+}
+
+/* === CELDAS DE TABLA === */
+.facturas-table tbody td {
+    padding: 1rem;
+    color: #333333;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.facturas-table tbody td[data-label="Valor original"],
+.facturas-table tbody td[data-label="Valor final"] {
+    font-weight: 700;
+    color: var(--factura-primary);
+}
+
+.facturas-table tbody td[data-label="Descuento (%)"] {
+    color: var(--factura-success);
+    font-weight: 600;
+}
+
+/* === RESUMEN DE FACTURA (ahora usa dl/dt/dd) === */
+.factura-resumen {
+    background: var(--factura-primary-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--factura-primary);
+}
+
+/* dl dentro del resumen */
+.factura-resumen dl {
+    margin: 0;
+    padding: 0;
+}
+
+.factura-resumen > div,
+.factura-resumen dl > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0.75rem 0;
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.factura-resumen > div:first-child,
+.factura-resumen dl > div:first-child {
+    margin-top: 0;
+}
+
+/* Último ítem del resumen (saldo) con línea separadora */
+.factura-resumen > div:last-child,
+.factura-resumen dl > div:last-child {
+    margin-bottom: 0;
+    padding-top: 0.75rem;
+    border-top: 2px solid var(--factura-primary);
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--factura-negro);
+}
+
+.factura-resumen dt {
+    font-weight: 700;
+    color: var(--factura-negro);
+}
+
+.factura-resumen dt strong {
+    font-weight: 700;
+}
+
+.factura-resumen dd {
+    margin: 0;
+    font-weight: 600;
+    color: var(--factura-negro);
+}
+
+/* === ACCESIBILIDAD === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* === FOCUS VISIBLE === */
+*:focus-visible {
+    outline: 3px solid var(--factura-primary);
+    outline-offset: 3px;
+}
+
+/* === RESPONSIVIDAD TABLET === */
+@media (max-width: 768px) {
+    .facturas-container {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+
+    .factura-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .factura-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .btn-volver-factura {
+        width: 100%;
+    }
+
+    .factura-detalle dt {
+        display: block;
+        min-width: auto;
+        margin-bottom: 0.15rem;
+    }
+
+    .factura-resumen > div,
+    .factura-resumen dl > div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 640px) {
+    .facturas-container {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    .factura-header {
+        padding-bottom: 1rem;
+    }
+
+    .factura-detalle {
+        padding: 1rem;
+    }
+
+    /* Lista accesible en móvil */
+    .facturas-container ul[aria-label] li {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Tabla responsive - Vista de tarjetas */
+    .facturas-table-wrapper {
+        overflow-x: visible;
+    }
+
+    .facturas-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .facturas-table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 1.25rem;
+        background: var(--factura-blanco);
+    }
+
+    .facturas-table tbody tr:nth-child(even) {
+        background: var(--factura-blanco);
+    }
+
+    .facturas-table tbody tr:hover {
+        background: var(--factura-blanco);
+        border-color: var(--factura-primary);
+    }
+
+    .facturas-table tbody td {
+        display: block;
+        text-align: left;
+        padding: 0.75rem 0;
+        border: none;
+    }
+
+    .facturas-table tbody td::before {
+        content: attr(data-label) ": ";
+        font-weight: 700;
+        color: var(--factura-negro);
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .facturas-table tbody td:not(:last-child) {
+        border-bottom: 1px solid #f3f4f6;
+        padding-bottom: 0.75rem;
+    }
+}
+
+/* === RESPONSIVIDAD MÓVIL PEQUEÑO === */
+@media (max-width: 480px) {
+    .facturas-container {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .factura-header h1 {
+        font-size: 1.25rem;
+    }
+
+    #modulo-factura-show h2:not(#titulo-pagina) {
+        font-size: 1.1rem;
+    }
+
+    .factura-detalle,
+    .factura-resumen {
+        padding: 1rem;
+    }
+
+    .btn-volver-factura {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* === CONTRASTE ALTO === */
+@media (prefers-contrast: high) {
+    .facturas-container {
+        border: 3px solid var(--factura-negro);
+    }
+
+    .factura-header {
+        border-bottom: 4px solid var(--factura-primary);
+    }
+
+    .facturas-table thead {
+        border-bottom: 4px solid var(--factura-primary);
+    }
+
+    .facturas-table tbody tr {
+        border: 2px solid var(--factura-negro);
+    }
+
+    .factura-detalle,
+    .factura-resumen {
+        border: 2px solid var(--factura-negro);
+    }
+
+    .facturas-container ul[aria-label] li {
+        border: 2px solid var(--factura-negro);
+    }
+}
+
+/* === MODO REDUCIDO DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* === ANIMACIÓN DE ENTRADA === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.facturas-container {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.facturas-table tbody tr {
+    animation: fadeInUp 0.3s ease-out;
+    animation-fill-mode: both;
+}
+
+.facturas-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.facturas-table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+.facturas-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.facturas-table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+.facturas-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+/* === MEJORA VISUAL AL INTERACTUAR === */
+.facturas-container:focus-within {
+    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.15);
+}
+
+/* === IMPRESIÓN === */
+@media print {
+    .facturas-container {
+        box-shadow: none;
+        border: 1px solid #000;
+        max-width: 100%;
+        margin: 0;
+        padding: 1.5rem;
+    }
+
+    .btn-volver-factura {
+        display: none;
+    }
+
+    .factura-header {
+        border-bottom: 2px solid #000;
+    }
+
+    .facturas-table thead {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .factura-resumen {
+        background: #f0f0f0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* En impresión mostrar solo la tabla, ocultar lista accesible */
+    .facturas-container ul[aria-label] {
+        display: none;
+    }
+
+    [aria-hidden="true"] .facturas-table-wrapper {
+        display: block !important;
+    }
+}
